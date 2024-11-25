@@ -56,7 +56,7 @@ int main() {
     if (result == false) {
       printf("%s\n", debuglog);
       printf("Failed to init MX28\n");
-      return 0;
+      // return 0;
     } else {
       printf("Succeed to init(%d)\n", baud_rate_mx28);
     }
@@ -65,10 +65,12 @@ int main() {
     if (result == false) {
       printf("%s\n", debuglog);
       printf("Failed to init XL320\n");
-      return 0;
+      // return 0;
     } else {
       printf("Succeed to init(%d)\n", baud_rate_xl320);
     }
+
+    TerminalHelper::saveOriginalTerminal();
 
     while (isRecording) {
       int key = TerminalHelper::getKeyPress();

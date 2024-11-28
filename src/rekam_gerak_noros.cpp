@@ -18,7 +18,14 @@ void readServoMX28(int id) {
     int defaultInByte = RekamGerakHelper::degreeToByteMX28(Default[id]);
     // TO DO: Read the present position from the servo
     int32_t presentPosition = defaultInByte;
-    bool result = dxl_wb_mx28.itemRead(id, "Present_Position", &presentPosition, &debuglog);
+    uint16_t model_number = 0;
+    if (dxl_wb_mx28.ping(id, &model_number, &debuglog) == false) {
+      printf("%s\n", debuglog);
+      printf("Failed to ping\n");
+      errorBaca = true;
+    }
+    // bool result = dxl_wb_mx28.itemRead(id, "Present_Position", &presentPosition, &debuglog);
+    bool result = dxl_wb_mx28.getPresentPositionData(id, &presentPosition, &debuglog);
     if (result == false) {
       printf("%s\n", debuglog);
       printf("Failed to get present position\n");
@@ -37,6 +44,12 @@ void readServoXL320(int id) {
     int defaultIntByte = RekamGerakHelper::degreeToByteXL320(Default[id]);
     // TO DO: Read the present position from the servo
     int32_t presentPosition = defaultIntByte;
+    uint16_t model_number = 0;
+    if (dxl_wb_xl320.ping(id, &model_number, &debuglog) == false) {
+      printf("%s\n", debuglog);
+      printf("Failed to ping\n");
+      errorBaca = true;
+    }
     bool result = dxl_wb_xl320.itemRead(id, "Present_Position", &presentPosition, &debuglog);
     if (result == false) {
       printf("%s\n", debuglog);
@@ -61,14 +74,14 @@ int main() {
       printf("Succeed to init(%d)\n", baud_rate_mx28);
     }
 
-    result = dxl_wb_xl320.init(usb_port, baud_rate_xl320, &debuglog);
-    if (result == false) {
-      printf("%s\n", debuglog);
-      printf("Failed to init XL320\n");
-      // return 0;
-    } else {
-      printf("Succeed to init(%d)\n", baud_rate_xl320);
-    }
+    // result = dxl_wb_xl320.init(usb_port, baud_rate_xl320, &debuglog);
+    // if (result == false) {
+    //   printf("%s\n", debuglog);
+    //   printf("Failed to init XL320\n");
+    //   // return 0;
+    // } else {
+    //   printf("Succeed to init(%d)\n", baud_rate_xl320);
+    // }
 
     TerminalHelper::saveOriginalTerminal();
 
@@ -85,7 +98,7 @@ int main() {
           cout << "Rekam gerak..." << endl;
           string filename = FileManager::generateFilename();
           readServoMX28(21);
-          readServoXL320(22);
+          // readServoXL320(22);
           FileManager::createFile(filename, fileDataTxt, fileDataJson);
         }
 

@@ -45,8 +45,9 @@ namespace fs = std::filesystem;
 #define KANAN 0
 #define KIRI 1
 
-#define BYTE_TO_DEGREE_MX28 360.0/4095.0
-#define BYTE_TO_DEGREE_XL320 300.0/1023.0
+// Maksimal sudut dibagi dengan maksimal value dari servo
+const float CONST_MX28 = 360.0 / 4095.0;    // 0.088
+const float CONST_XL320 = 300.0 / 1023.0;   // 0.293
 
 unordered_map<uint8_t, int32_t> Default = {
     {1, 0},
@@ -87,7 +88,6 @@ class FileManager {
     // Error check
     if (errorBaca) {
         cerr << "Error detected. File not created.\n";
-        // RCLCPP_ERROR(this->get_logger(), "Error detected. File not created.");
         errorBaca = false;
         fileDataTxt = ""; // Reset the file data
         fileDataJson = ""; // Reset the file data
@@ -103,12 +103,10 @@ class FileManager {
         fileTxt << dataTxt;
         fileTxt.close();
         cout << "File created and written successfully.\n";
-        // RCLCPP_INFO(this->get_logger(), "File TXT created and written successfully.");
 
         fileDataTxt = ""; // Reset the file data
     } else {
         cerr << "Unable to create the TXT file.\n";
-        // RCLCPP_ERROR(this->get_logger(), "Unable to create the TXT file.");
     }
 
     // Check if the file was created successfully
@@ -122,12 +120,10 @@ class FileManager {
         // Close the file after writing
         fileJson.close();
         cout << "File created and written successfully.\n";
-        // RCLCPP_INFO(this->get_logger(), "File  JSON created and written successfully.");
 
         fileDataJson = ""; // Reset the file data
     } else {
         cerr << "Unable to create the JSON file.\n";
-        // RCLCPP_ERROR(this->get_logger(), "Unable to create the JSON file.");
     }
 
   }
@@ -155,29 +151,28 @@ class FileManager {
 
 };
 
+class Converter {
+  public:
+  static int degreeToValueMX28(float degree) {
+      return degree / CONST_MX28;
+  }
+
+  static int degreeToValueXL320(float degree) {
+      return degree / CONST_XL320;
+  }
+
+  static int valueToDegreeMX28(int value) {
+      return abs(floor(value * CONST_MX28));
+  }
+
+  static int valueToDegreeXL320(int value) {
+      return abs(floor(value * CONST_XL320));
+  }
+};
+
 
 class RekamGerakHelper {
   public:
-  static int degreeToByteMX28(float degree) {
-      float degreeToByte = 360.0 / 4095.0;
-      return degree / degreeToByte;
-  }
-
-  static int degreeToByteXL320(float degree) {
-      float degreeToByte = 300.0 / 1023.0;
-      return degree / degreeToByte;
-  }
-
-  static int byteToDegreeMX28(int byte) {
-      float degreeToByte = 360.0 / 4095.0;
-      return abs(floor(byte * degreeToByte));
-  }
-
-  static int byteToDegreeXL320(int byte) {
-      float degreeToByte = 300.0 / 1023.0;
-      return abs(floor(byte * degreeToByte));
-  }
-
   static void debugRekam(uint8_t id, int32_t presentPosition) {
       string changeDirection = "";
       
@@ -236,23 +231,17 @@ class RekamGerakHelper {
       if (id == 21) {
           cout << "------------------------------------------------------------------------------" << endl;
           cout << "Create file GERAK: " + to_string(counter - 1) + "\n";
-        //   RCLCPP_INFO(this->get_logger(), "Create file GERAK: %d", counter);
       }
       
       cout << "ID: " << id << "\t";
-    //   RCLCPP_INFO(this->get_logger(), "ID: %d", id);
       cout << "ΔSudut: " << selisihPresentDefault << " (DEC)\t";
-    //   RCLCPP_INFO(this->get_logger(), "ΔSudut: %d (DEC)", selisihPresentDefault);
       if (id == 21 || id == 31) {
-          cout << byteToDegreeMX28(selisihPresentDefault) << " (DEG) ";
-        //   RCLCPP_INFO(this->get_logger(), "%d (DEG)", byteToDegreeMX28(selisihPresentDefault));
+          cout << Converter::valueToDegreeMX28(selisihPresentDefault) << " (DEG) ";
       } else {
-          cout << byteToDegreeXL320(selisihPresentDefault) << " (DEG) ";
-        //   RCLCPP_INFO(this->get_logger(), "%d (DEG)", byteToDegreeXL320(selisihPresentDefault));
+          cout << Converter::valueToDegreeXL320(selisihPresentDefault) << " (DEG) ";
       }
       cout << changeDirection << "\t\t";
       cout << "Present Position: " << presentPosition << " (DEC)" << endl;
-    //   RCLCPP_INFO(this->get_logger(), "Present Position: %d (DEC)", presentPosition);
   }
 };
 

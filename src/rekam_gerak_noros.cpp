@@ -15,7 +15,7 @@ const char *debuglog;
 bool result = false;
 
 void readServoMX28(int id) {
-    int defaultInByte = RekamGerakHelper::degreeToByteMX28(Default[id]);
+    int defaultInByte = Converter::valueToDegreeMX28(Default[id]);
     // TO DO: Read the present position from the servo
     int32_t presentPosition = defaultInByte;
     uint16_t model_number = 0;
@@ -41,7 +41,7 @@ void readServoMX28(int id) {
 }
 
 void readServoXL320(int id) {
-    int defaultIntByte = RekamGerakHelper::degreeToByteXL320(Default[id]);
+    int defaultIntByte = Converter::degreeToValueXL320(Default[id]);
     // TO DO: Read the present position from the servo
     int32_t presentPosition = defaultIntByte;
     uint16_t model_number = 0;

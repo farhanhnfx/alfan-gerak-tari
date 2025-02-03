@@ -1,5 +1,5 @@
-#ifndef REKAM_GERAK_H
-#define REKAM_GERAK_H
+#ifndef LIB_ALFAN_H
+#define LIB_ALFAN_H
 
 // #include <rclcpp/rclcpp.hpp>
 
@@ -14,6 +14,8 @@
 #include <termios.h>
 #include <unistd.h>
 #include <fcntl.h>
+
+#include <program_rekam_gerak/nlohmann_json/json.hpp>
 
 using namespace std;
 // using namespace rclcpp;
@@ -58,6 +60,8 @@ unordered_map<uint8_t, int32_t> Default = {
 };
 
 
+
+/* Kebutuhan Rekam Gerak */
 string fileDataTxt = ""; // Contain the data to be written to the file`
 string fileDataJson = ""; // Contain the data to be written to the file
 int counter = 0;
@@ -65,14 +69,35 @@ int32_t selisihPresentDefault = 0;
 
 bool errorBaca = false;
 
-
 // Terminal state
 termios originalTermios;
 
+/* Digunakan untuk konversi dari
+   derajat ke value ataupun
+   sebaliknya */
+class ConvertUtils {
+    public:
+    static int degreeToValueMX28(float degree) {
+        return degree / CONST_MX28;
+    }
 
+    static int degreeToValueXL320(float degree) {
+        return degree / CONST_XL320;
+    }
+
+    static int valueToDegreeMX28(int value) {
+        return abs(floor(value * CONST_MX28));
+    }
+
+    static int valueToDegreeXL320(int value) {
+        return abs(floor(value * CONST_XL320));
+    }
+};
+
+/* Digunakan untuk write/read file Program Rekam Gerak */
 class FileManager {
-  public:
-  static string generateFilename() {
+    public:
+    static string generateFilename() {
     string filenameTxt;
     string filenameJson;
 
@@ -86,7 +111,7 @@ class FileManager {
     return FILE_BASENAME + to_string(counter-1);
 }
 
-  static void createFile(string filename, string dataTxt, string dataJson) {
+    static void createFile(string filename, string dataTxt, string dataJson) {
     // Error check
     if (errorBaca) {
         cerr << "Error detected. File not created.\n";
@@ -130,7 +155,7 @@ class FileManager {
 
   }
 
-  static void writeFileData(uint8_t id, int32_t selisihPresentDefault) {
+    static void writeFileData(uint8_t id, int32_t selisihPresentDefault) {
       // buat TXT file-nya
       fileDataTxt += "A";
       fileDataTxt += to_string(id);
@@ -151,31 +176,86 @@ class FileManager {
       }
   }
 
+
+    static unordered_map<uint8_t, int32_t> parseFileTxt(int counterGerak) {
+        unordered_map<uint8_t, int32_t> parsedData;
+        string filePath = string(FILE_PATH_TXT) + FILE_BASENAME + to_string(counterGerak) + FILE_EXTENSION_TXT;
+        ifstream fileTxt(filePath);
+
+        if (fileTxt.is_open()) {
+            string line;
+            while (getline(fileTxt, line)) {
+                if (!line.empty()) {
+                    // Parse the line
+                    size_t idStart = line.find('A') + 1;  // Position after 'A'
+                    size_t idEnd = line.find(';');        // Position of ';'
+                    size_t valueEnd = line.find('B');     // Position of 'B'
+
+                    if (idStart != string::npos && idEnd != string::npos && valueEnd != string::npos) {
+                        uint8_t id = stoi(line.substr(idStart, idEnd - idStart));           // Extract id
+                        int32_t deltaPositionInByte = stoi(line.substr(idEnd + 1, valueEnd - idEnd - 1)); // Extract value
+                        int32_t value;// = deltaPosition + Default[id];
+                        if (id == 21 || id == 31) {
+                            // value = RekamGerakHelper::byteToDegreeMX28(deltaPositionInByte) + Default[id];    // Convert to degree
+                            value = deltaPositionInByte + ConvertUtils::degreeToValueMX28(Default[id]);   // In Byte
+                        }
+                        else {
+                            // value = RekamGerakHelper::byteToDegreeXL320(deltaPositionInByte) + Default[id];  // Convert to degree
+                            value = deltaPositionInByte + ConvertUtils::degreeToValueXL320(Default[id]);     // In Byte
+                        }
+                        parsedData[id] = value;                                         // Store in map
+
+                        // goalPosition[id] = value;
+                    }
+                }
+            }
+            fileTxt.close();
+        } else {
+            cerr << "Unable to open file: " << filePath << endl;
+        }
+
+        return parsedData;
+    }
+
+
+    static unordered_map<uint8_t, int32_t> parseFileJson(int counterGerak) {
+        unordered_map<uint8_t, int32_t> parsedData;
+        string filePath = string(FILE_PATH_JSON) + FILE_BASENAME + to_string(counterGerak) + FILE_EXTENSION_JSON;
+        ifstream fileJson(filePath);
+
+        if (fileJson.is_open()) {
+            nlohmann::json jsonData;
+            fileJson >> jsonData;
+            fileJson.close();
+
+            // for (auto const& [id, value] : jsonData.items()) {
+            //     parsedData[stoi(id)] = value;
+            // }
+            for (const auto &entry : jsonData["data"]) {
+                // cout << "ID: " << entry["id"] << ", Value: " << entry["deltaPosition"] << endl;
+                uint8_t id = entry["id"];
+                int32_t deltaPositionInByte = entry["deltaPosition"];
+                
+                if (id == 21 || id == 31) {
+                    parsedData[id] = deltaPositionInByte + ConvertUtils::degreeToValueMX28(Default[id]);   // In Byte
+                }
+                else {
+                    parsedData[id] = deltaPositionInByte + ConvertUtils::degreeToValueXL320(Default[id]);     // In Byte
+                }
+            }
+
+        } else {
+            cerr << "Unable to open file: " << filePath << endl;
+        }
+
+        return parsedData;
+    }
 };
 
-class ConvertUtils {
-  public:
-  static int degreeToValueMX28(float degree) {
-      return degree / CONST_MX28;
-  }
-
-  static int degreeToValueXL320(float degree) {
-      return degree / CONST_XL320;
-  }
-
-  static int valueToDegreeMX28(int value) {
-      return abs(floor(value * CONST_MX28));
-  }
-
-  static int valueToDegreeXL320(int value) {
-      return abs(floor(value * CONST_XL320));
-  }
-};
-
-
+/* Helper untuk mempermudah debug rekam gerak */
 class RekamGerakHelper {
-  public:
-  static void debugRekam(uint8_t id, int32_t presentPosition) {
+    public:
+    static void debugRekam(uint8_t id, int32_t presentPosition) {
       string changeDirection = "";
       
       switch(id){
@@ -247,38 +327,41 @@ class RekamGerakHelper {
   }
 };
 
+
+/* Digunakan untuk program Rekam Gerak yang
+   memerlukan bantuan terminal */
 class TerminalHelper {
-  public:
-  // Function to make terminal non-blocking
-  static void setNonBlockingInput() {
-      termios term;
-      tcgetattr(STDIN_FILENO, &term);
-      term.c_lflag &= ~ICANON;  // Disable canonical mode
-      term.c_lflag &= ~ECHO;   // Disable echo
-      tcsetattr(STDIN_FILENO, TCSANOW, &term);
-  }
+    public:
+    // Function to make terminal non-blocking
+    static void setNonBlockingInput() {
+        termios term;
+        tcgetattr(STDIN_FILENO, &term);
+        term.c_lflag &= ~ICANON;  // Disable canonical mode
+        term.c_lflag &= ~ECHO;   // Disable echo
+        tcsetattr(STDIN_FILENO, TCSANOW, &term);
+    }
 
-  static void saveOriginalTerminal() {
-      tcgetattr(STDIN_FILENO, &originalTermios);
-  }
+    static void saveOriginalTerminal() {
+        tcgetattr(STDIN_FILENO, &originalTermios);
+    }
 
-  static void resetTerminal() {
-      tcsetattr(STDIN_FILENO, TCSANOW, &originalTermios);
-  }
+    static void resetTerminal() {
+        tcsetattr(STDIN_FILENO, TCSANOW, &originalTermios);
+    }
 
-  // Function to check for a key press
-  static int getKeyPress() {
-      setNonBlockingInput();
-      int ch = -1;
-      struct timeval tv = {0, 0};
-      fd_set readfds;
-      FD_ZERO(&readfds);
-      FD_SET(STDIN_FILENO, &readfds);
-      if (select(STDIN_FILENO + 1, &readfds, NULL, NULL, &tv) > 0) {
-          ch = getchar();
-      }
-      return ch;
-  }
+    // Function to check for a key press
+    static int getKeyPress() {
+        setNonBlockingInput();
+        int ch = -1;
+        struct timeval tv = {0, 0};
+        fd_set readfds;
+        FD_ZERO(&readfds);
+        FD_SET(STDIN_FILENO, &readfds);
+        if (select(STDIN_FILENO + 1, &readfds, NULL, NULL, &tv) > 0) {
+            ch = getchar();
+        }
+        return ch;
+    }
 };
 
 

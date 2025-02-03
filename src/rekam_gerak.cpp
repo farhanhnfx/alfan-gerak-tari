@@ -1,5 +1,5 @@
 #include <dynamixel_workbench_toolbox/dynamixel_workbench.h>
-#include <program_rekam_gerak/rekam_gerak.h>
+#include <program_rekam_gerak/lib_alfan.h>
 
 
 const char usb_port[] = "/dev/ttyUSB0";

@@ -1,20 +1,22 @@
 #ifndef REKAM_GERAK_H
 #define REKAM_GERAK_H
 
-#include <rclcpp/rclcpp.hpp>
+// #include <rclcpp/rclcpp.hpp>
 
 #include <cstdio>
 #include <fstream>
+#include <iostream>
 #include <string>
 #include <filesystem>
 #include <unordered_map>
+#include <cmath>
 
 #include <termios.h>
 #include <unistd.h>
 #include <fcntl.h>
 
 using namespace std;
-using namespace rclcpp;
+// using namespace rclcpp;
 namespace fs = std::filesystem;
 
 //_FILE SETTINGS_//
@@ -151,7 +153,7 @@ class FileManager {
 
 };
 
-class Converter {
+class ConvertUtils {
   public:
   static int degreeToValueMX28(float degree) {
       return degree / CONST_MX28;
@@ -236,9 +238,9 @@ class RekamGerakHelper {
       cout << "ID: " << id << "\t";
       cout << "ΔSudut: " << selisihPresentDefault << " (DEC)\t";
       if (id == 21 || id == 31) {
-          cout << Converter::valueToDegreeMX28(selisihPresentDefault) << " (DEG) ";
+          cout << ConvertUtils::valueToDegreeMX28(selisihPresentDefault) << " (DEG) ";
       } else {
-          cout << Converter::valueToDegreeXL320(selisihPresentDefault) << " (DEG) ";
+          cout << ConvertUtils::valueToDegreeXL320(selisihPresentDefault) << " (DEG) ";
       }
       cout << changeDirection << "\t\t";
       cout << "Present Position: " << presentPosition << " (DEC)" << endl;

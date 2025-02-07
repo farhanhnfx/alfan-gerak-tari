@@ -8,7 +8,7 @@
 #include <iostream>
 #include <string>
 #include <filesystem>
-#include <unordered_map>
+#include <map>
 #include <cmath>
 
 #include <termios.h>
@@ -40,7 +40,7 @@ namespace fs = std::filesystem;
 //_LEFT HAND_//
 //___DEGREE___//
 #define KIRI31 225  //- NAIK
-#define KIRI32 195  //-keluar
+#define KIRI32 105  //-keluar
 #define KIRI33 105  // +dalam
 #define KIRI34 250  //-naik
 #define KIRI35 195  // +dalam
@@ -177,8 +177,8 @@ class FileManager {
   }
 
 
-    static unordered_map<uint8_t, int32_t> parseFileTxt(int counterGerak) {
-        unordered_map<uint8_t, int32_t> parsedData;
+    static map<uint8_t, int32_t> parseFileTxt(int counterGerak) {
+        map<uint8_t, int32_t> parsedData;
         string filePath = string(FILE_PATH_TXT) + FILE_BASENAME + to_string(counterGerak) + FILE_EXTENSION_TXT;
         ifstream fileTxt(filePath);
 
@@ -218,8 +218,8 @@ class FileManager {
     }
 
 
-    static unordered_map<uint8_t, int32_t> parseFileJson(int counterGerak) {
-        unordered_map<uint8_t, int32_t> parsedData;
+    static map<uint8_t, int32_t> parseFileJson(int counterGerak) {
+        map<uint8_t, int32_t> parsedData;
         string filePath = string(FILE_PATH_JSON) + FILE_BASENAME + to_string(counterGerak) + FILE_EXTENSION_JSON;
         ifstream fileJson(filePath);
 

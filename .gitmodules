@@ -1,0 +1,6 @@
+[submodule "external/rapidyaml"]
+	path = external/rapidyaml
+	url = https://github.com/biojppm/rapidyaml.git
+[submodule "external_dependencies/rapidyaml"]
+	path = external_dependencies/rapidyaml
+	url = https://github.com/biojppm/rapidyaml.git

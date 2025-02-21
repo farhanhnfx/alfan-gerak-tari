@@ -150,7 +150,7 @@ class TanganController {
             degree = ConvertUtils::valueToDegreeMX28(goalPosition);
             /* TO DO: mencari perhitungan moving_speeds[id] */
             degreeDifference[id] = abs(latestPositionInDegree[id] - degree);
-            if (degreeDifference[id] > 5)
+            // if (degreeDifference[id] > 5)
             moving_speeds[id] = degreeDifference[id] / (speed * CONVERSION_FACTOR_MX28);
 
             secondToReach = (degreeDifference[id]/360.0) / ((moving_speeds[id] * 0.229) / 60.0); // for debug purpose only
@@ -159,7 +159,7 @@ class TanganController {
             degree = ConvertUtils::valueToDegreeXL320(goalPosition);
             /* TO DO: mencari perhitungan moving_speeds[id] */
             degreeDifference[id] = abs(latestPositionInDegree[id] - degree);
-            if (degreeDifference[id] > 5)
+            // if (degreeDifference[id] > 5)
             moving_speeds[id] = degreeDifference[id] / (speed * CONVERSION_FACTOR_XL320);
 
             secondToReach = (degreeDifference[id]/360.0) / ((moving_speeds[id] * 0.111) / 60.0); // for debug purpose only
@@ -184,12 +184,12 @@ class TanganController {
     }
 
     void sendMovementCommands() {
-        int32_t mx28_goal_positions[] = {goal_positions[21], goal_positions[31]};
-        int32_t xl320_goal_positions[] = {goal_positions[22], goal_positions[23], goal_positions[24], goal_positions[25], goal_positions[26], 
+        int mx28_goal_positions[] = {goal_positions[21], goal_positions[31]};
+        int xl320_goal_positions[] = {goal_positions[22], goal_positions[23], goal_positions[24], goal_positions[25], goal_positions[26], 
                                           goal_positions[32], goal_positions[33], goal_positions[34], goal_positions[35], goal_positions[36]};
         
-        int32_t mx28_moving_speeds[] = {moving_speeds[21], moving_speeds[31]};
-        int32_t xl320_moving_speeds[] = {moving_speeds[22], moving_speeds[23], moving_speeds[24], moving_speeds[25], moving_speeds[26], 
+        int mx28_moving_speeds[] = {moving_speeds[21], moving_speeds[31]};
+        int xl320_moving_speeds[] = {moving_speeds[22], moving_speeds[23], moving_speeds[24], moving_speeds[25], moving_speeds[26], 
                                          moving_speeds[32], moving_speeds[33], moving_speeds[34], moving_speeds[35], moving_speeds[36]};
         bool result = false;
         const char* log;

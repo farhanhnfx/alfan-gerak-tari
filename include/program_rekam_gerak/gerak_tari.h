@@ -27,7 +27,7 @@ struct GerakTari {
     std::vector<MotionFrame> motion_frames;
 };
 
-#define PATH_TO_CONFIG "/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/gerak_tari.yaml"
+#define PATH_TO_CONFIG BASE_PATH "gerak_tari.yaml"
 
 
 class GerakTariHandler {

@@ -236,7 +236,7 @@ void RekamGerakHelper::debugRekam(uint8_t id, int32_t presentPosition) {
         cout << "Create file GERAK: " + to_string(counter - 1) + "\n";
     }
       
-    cout << "ID: " << id << "\t";
+    cout << "ID: " << to_string(id) << "\t";
     cout << "ΔSudut: " << selisihPresentDefault << " (DEC)\t";
     if (id == 21 || id == 31) {
         cout << ConvertUtils::valueToDegreeMX28(selisihPresentDefault) << " (DEG) ";

@@ -11,7 +11,7 @@ find_package(rclcpp REQUIRED)
 find_package(dynamixel_workbench_toolbox REQUIRED)
 
 # Add the gerak_tari library
-add_library(alfan_lib_main src/lib_alfan.cpp)
+add_library(alfan_lib_main src/lib_alfan.cpp src/tangan_controller.cpp)
 add_library(gerak_tari_lib src/gerak_tari.cpp)
 
 target_include_directories(alfan_lib_main PUBLIC

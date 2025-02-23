@@ -12,9 +12,15 @@ find_package(dynamixel_workbench_toolbox REQUIRED)
 
 # Add the gerak_tari library
 add_library(alfan_lib_main src/lib_alfan.cpp src/tangan_controller.cpp)
+add_library(comms_lib src/communication.cpp)
 add_library(gerak_tari_lib src/gerak_tari.cpp)
 
 target_include_directories(alfan_lib_main PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+
+target_include_directories(comms_lib PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
@@ -45,10 +51,11 @@ target_compile_features(tangan_driver PUBLIC c_std_99 cxx_std_17)
 
 # Ensure gerak_tari_lib links to required dependencies
 ament_target_dependencies(alfan_lib_main rclcpp dynamixel_workbench_toolbox)
+ament_target_dependencies(comms_lib)
 ament_target_dependencies(gerak_tari_lib rclcpp dynamixel_workbench_toolbox)
 
 # Link RapidYAML to gerak_tari_lib
-target_link_libraries(gerak_tari_lib ryml)
+target_link_libraries(gerak_tari_lib ryml comms_lib)
 
 # Link dependencies
 ament_target_dependencies(rekam_gerak rclcpp dynamixel_workbench_toolbox)
@@ -57,7 +64,7 @@ ament_target_dependencies(tangan_driver rclcpp dynamixel_workbench_toolbox)
 # Library Rapid YAML
 add_subdirectory(external/rapidyaml ryml)
 target_link_libraries(rekam_gerak alfan_lib_main)
-target_link_libraries(tangan_driver ryml alfan_lib_main gerak_tari_lib)
+target_link_libraries(tangan_driver ryml alfan_lib_main comms_lib gerak_tari_lib)
 
 
 # Install target and include directory

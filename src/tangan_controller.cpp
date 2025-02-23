@@ -115,7 +115,7 @@ void TanganController::calculateSpeeds(int id, int goalPosition, float speed) {
     if (moving_speeds[id] > 1023) {
         moving_speeds[id] = 1023;
     }
-    printf("ID: %d\tGoal Position: %d\t(%d derajat)\tPrev Degree: %d\t Diff: %d\tSpeed: %d in %f second\n", id, goalPosition, degree, latestPositionInDegree[id], degreeDifference[id], moving_speeds[id], secondToReach);
+    // printf("ID: %d\tGoal Position: %d\t(%d derajat)\tPrev Degree: %d\t Diff: %d\tSpeed: %d in %f second\n", id, goalPosition, degree, latestPositionInDegree[id], degreeDifference[id], moving_speeds[id], secondToReach);
     // printf("ID: %d\tGoal Position: %d\t(%d derajat)\tPrev Degree: %d\tDiff: %d\n", id, goalPosition, degree, latestPositionInDegree[id], degreeDifference[id]);
 
     updateLatestPositionInDegree(id, goalPosition);
@@ -141,7 +141,7 @@ void TanganController::sendMovementCommands() {
     bool result = false;
     const char* log;
 
-    printf("[INFO] Mengirimkan Perintah Gerak\n------------------------------------------------\n");
+    // printf("[INFO] Mengirimkan Perintah Gerak\n------------------------------------------------\n");
 
     /* SEMENTARA DI-COMMENT TERLEBIH DAHULU UNTUK DUMMY
         KARENA BELUM ADA SERVO YANG BISA DICOBA UNTUK DIGERAKKAN */

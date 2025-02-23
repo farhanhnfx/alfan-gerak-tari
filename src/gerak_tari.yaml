@@ -10,15 +10,15 @@ gerak_tari_sequences:
     times: 585
     motion_frames:
       - tangan: 190
-        # di bawah ini opsional parameter semua
-        kepala: {kepala41: 30, kepala43: 0, speeds: 6}
-        kaki: 0 # misal kalau ada mendak, mungkin
-        delay: 2000 # opsional
+        # # di bawah ini opsional parameter semua
+        # kepala: {kepala41: 30, kepala43: 0, speeds: 6}
+        # kaki: 0 # misal kalau ada mendak, mungkin
+        # delay: 2000 # opsional
       - tangan: 191
       - tangan: 192
 
   - name: contohGerakTari_2
-    is_walking: true
+    is_walking: false
     speeds: 6
     times: 585
     motion_frames:
@@ -27,5 +27,141 @@ gerak_tari_sequences:
         kepala: {kepala41: 30, kepala42: 0, kepala43: 0, speeds: 6}
         kaki: 0 # misal kalau ada mendak, mungkin
         delay: 0 # opsional
+      - tangan: 191
+      - tangan: 192
+
+  - name: contohGerakTari_3
+    is_walking: false
+    speeds: 4
+    times: 385
+    motion_frames:
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+      
+  - name: contohGerakTari_4
+    is_walking: false
+    speeds: 5
+    times: 485
+    motion_frames:
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+
+  - name: contohGerakTari_Jalan1
+    is_walking: true
+    speeds: 5
+    times: 500
+    motion_frames:
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+      - tangan: 190
+
+  - name: contohGerakTari_Jalan2
+    is_walking: true
+    speeds: 5
+    times: 500
+    motion_frames:
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+      - tangan: 190
+
+  - name: contohGerakTari_Jalan3
+    is_walking: true
+    speeds: 5
+    times: 500
+    motion_frames:
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+      - tangan: 190
+
+  - name: contohGerakTari_Jalan4
+    is_walking: true
+    speeds: 5
+    times: 500
+    motion_frames:
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+      - tangan: 190
+      
+  - name: contohGerakTari_5
+    is_walking: false
+    speeds: 4
+    times: 385
+    motion_frames:
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+
+  - name: contohGerakTari_5
+    is_walking: false
+    speeds: 4
+    times: 385
+    motion_frames:
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+      
+  - name: contohGerakTari_6
+    is_walking: false
+    speeds: 5
+    times: 485
+    motion_frames:
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+
+  - name: contohGerakTari_7
+    is_walking: false
+    speeds: 4
+    times: 385
+    motion_frames:
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+      
+  - name: contohGerakTari_8
+    is_walking: false
+    speeds: 5
+    times: 485
+    motion_frames:
+      - tangan: 190
+      - tangan: 191
+      - tangan: 192
+      - tangan: 190
       - tangan: 191
       - tangan: 192

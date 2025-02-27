@@ -121,7 +121,7 @@ void GerakTariHandler::play() {
                 count_transmit++;
             }
 
-            printf("Waiting for counter match...\n");
+            printf("Waiting for counter match...(count time: %i)\n", count_time);
             comms.receives_data();
             std::this_thread::sleep_for(std::chrono::milliseconds(10)); // Simulate delay
         }
@@ -256,7 +256,10 @@ void GerakTariHandler::execute_move(GerakTari gerak_tari) {
             // printf("MUSIC STATE == FALSE | MOVEMENT NOT EXECUTED\n");
         }
             
-        usleep(gerak_tari.times * 1000);
+        // usleep(gerak_tari.times * 1000);
+        std::this_thread::sleep_for(std::chrono::milliseconds(gerak_tari.times));
+
+        printf("\nNext Frame:\n");
     }
 
 }

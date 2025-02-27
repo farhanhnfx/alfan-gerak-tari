@@ -277,3 +277,107 @@ int TerminalHelper::getKeyPress() {
     }
     return ch;
 }
+
+
+ServoConnector::ServoConnector() {
+    init();
+}
+
+void ServoConnector::init() {
+    const char* log;
+    if (is_init) return;
+
+    if (dxl_wb.init(usb_port, baud_rate, &log)) {
+        cout << "[INFO] Dynamixel Workbench Initialization Success\n";
+        is_init = true;
+    } else {
+        cout << "[ERROR] Failed to init: " << log << endl;
+    }
+}
+
+void ServoConnector::setupSyncWriteHandler() {
+    const char* log;
+
+    cout << "[INFO] Setup Sync Write Handler\n";
+
+    if (dxl_wb.addSyncWriteHandler(R_PROFILE_VELOCITY_MX28, 4, &log) == false) {
+        cout << "[ERROR] Failed to add Sync Write Handler for Profile Velocity MX-28: " << log << endl;
+    }
+
+    if (dxl_wb.addSyncWriteHandler(R_GOAL_POSITION_MX28, 4, &log) == false) {
+        cout << "[ERROR] Failed to add Sync Write Handler for Goal Position MX-28: " << log << endl;
+    }
+
+    if (dxl_wb.addSyncWriteHandler(R_GOAL_POSITION_XL320, 2, &log) == false) {
+        cout << "[ERROR] Failed to add Sync Write Handler for Goal Position XL-320: " << log << endl;
+    }
+
+    if (dxl_wb.addSyncWriteHandler(R_MOVING_SPEED_XL320, 2, &log) == false) {
+        cout << "[ERROR] Failed to add Sync Write Handler for Moving Speed XL-320: " << log << endl;
+    }
+}
+
+void ServoConnector::sendMovementCommands() {
+                                // TO DO: Ditambah dari yg kaki juga
+    int mx28_goal_positions[] = {goal_positions[1], goal_positions[2], goal_positions[3], goal_positions[4], goal_positions[5], goal_positions[6],
+                                 goal_positions[11], goal_positions[12], goal_positions[13], goal_positions[14], goal_positions[15], goal_positions[16],
+                                 goal_positions[21], 
+                                 goal_positions[31]};
+
+                                // TO DO: Ditambah dari servo kepala juga
+    int xl320_goal_positions[] = {goal_positions[22], goal_positions[23], goal_positions[24], goal_positions[25], goal_positions[26],
+                                  goal_positions[32], goal_positions[33], goal_positions[34], goal_positions[35], goal_positions[36],
+                                  goal_positions[41], goal_positions[42], goal_positions[43]};
+        
+    int mx28_moving_speeds[] = {moving_speeds[1], moving_speeds[2], moving_speeds[3], moving_speeds[4], moving_speeds[5], moving_speeds[6],
+                                moving_speeds[11], moving_speeds[12], moving_speeds[13], moving_speeds[14], moving_speeds[15], moving_speeds[16],
+                                moving_speeds[21], 
+                                moving_speeds[31]};
+
+    int xl320_moving_speeds[] = {moving_speeds[22], moving_speeds[23], moving_speeds[24], moving_speeds[25], moving_speeds[26],
+                                 moving_speeds[32], moving_speeds[33], moving_speeds[34], moving_speeds[35], moving_speeds[36],
+                                 moving_speeds[41], moving_speeds[42], moving_speeds[43]};
+    bool result = false;
+    const char* log;
+
+    // printf("[INFO] Mengirimkan Perintah Gerak\n------------------------------------------------\n");
+
+    /* SEMENTARA DI-COMMENT TERLEBIH DAHULU UNTUK DUMMY
+        KARENA BELUM ADA SERVO YANG BISA DICOBA UNTUK DIGERAKKAN */
+
+    /* Lakukan Sync Write untuk servo terkait 
+       Ingat index handler untuk masing-masing register tadi */
+        
+    // Index Handler = 0 untuk Profile Velocity MX-28
+    result = dxl_wb.syncWrite(0, mx28_ids, sizeof(mx28_ids)/sizeof(mx28_ids[0]), mx28_moving_speeds, 1, &log);
+    if (!result) {
+        printf("[ERROR] Sync Write untuk Profile Velocity MX-28 gagal: %s\n", log);
+    } else {
+        printf("[INFO] Sync Write untuk Profile Velocity MX-28 berhasil untuk %lu servo\n", sizeof(mx28_ids)/sizeof(mx28_ids[0]));
+    }
+
+    // Index Handler = 1 untuk Goal Position MX-28
+    result = dxl_wb.syncWrite(1, mx28_ids, sizeof(mx28_ids)/sizeof(mx28_ids[0]), mx28_goal_positions, 1, &log);
+    if (!result) {
+        printf("[ERROR] Sync Write untuk Goal Position MX-28 gagal: %s\n", log);
+    } else {
+        printf("[INFO] Sync Write untuk Goal Position MX-28 berhasil untuk %lu servo\n", sizeof(mx28_ids)/sizeof(mx28_ids[0]));
+    }
+
+
+    // Index Handler = 2 untuk Goal Position XL-320
+    result = dxl_wb.syncWrite(2, xl320_ids, sizeof(xl320_ids)/sizeof(xl320_ids[0]), xl320_goal_positions, 1, &log);
+    if (!result) {
+        printf("[ERROR] Sync Write untuk Goal Position XL-320 gagal: %s\n", log);
+    } else {
+        printf("[INFO] Sync Write untuk Goal Position XL-320 berhasil untuk %lu servo\n", sizeof(xl320_ids)/sizeof(xl320_ids[0]));
+    }
+
+    // Index Handler = 3 untuk Moving Speed XL-320
+    result = dxl_wb.syncWrite(3, xl320_ids, sizeof(xl320_ids)/sizeof(xl320_ids[0]), xl320_moving_speeds, 1, &log);
+    if (!result) {
+        printf("[ERROR] Sync Write untuk Moving Speed XL-320 gagal: %s\n", log);
+    } else {
+        printf("[INFO] Sync Write untuk Moving Speed XL-320 berhasil untuk %lu servo\n", sizeof(xl320_ids)/sizeof(xl320_ids[0]));
+    }
+}

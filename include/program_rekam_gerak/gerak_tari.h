@@ -40,10 +40,10 @@ class GerakTariHandler {
     void preload_config();
     void play();
     void setCurrentMusicState(int current_music_state);
+    TanganController tanganController;
     
     private:
     std::vector<GerakTari> list_of_gerak_tari;
-    TanganController tanganController;
     int gerak_tari_size = 0; // Digunakan untuk menyimpan total gerak tari yang ada
     int mute_on_walk_counter = 0; // Menghitung berapa banyak mute ketika walk [int mute di program lama]
     std::vector<GerakTari> muted_walks; // List berisi walk yang akan dijalankan karena sebelumnya di-mute [array data_replace di program lama]

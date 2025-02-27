@@ -4,164 +4,242 @@
 #########################################
 
 gerak_tari_sequences:
-  - name: contohGerakTari_1
+  # - name: contohGerakTari_1
+  #   is_walking: false
+  #   speeds: 6
+  #   times: 585
+  #   motion_frames:
+  #     - tangan: 190
+  #       # # di bawah ini opsional parameter semua
+  #       # kepala: {kepala41: 30, kepala43: 0, speeds: 6}
+  #       # kaki: 0 # misal kalau ada mendak, mungkin
+  #       # delay: 2000 # opsional
+  #     - tangan: 191
+  #     - tangan: 192
+
+  # - name: contohGerakTari_2
+  #   is_walking: false
+  #   speeds: 6
+  #   times: 585
+  #   motion_frames:
+  #     - tangan: 190
+  #       # di bawah ini opsional parameter semua
+  #       kepala: {kepala41: 30, kepala42: 0, kepala43: 0, speeds: 6}
+  #       kaki: 0 # misal kalau ada mendak, mungkin
+  #       delay: 0 # opsional
+  #     - tangan: 191
+  #     - tangan: 192
+
+  # - name: contohGerakTari_3
+  #   is_walking: false
+  #   speeds: 4
+  #   times: 385
+  #   motion_frames:
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+      
+  # - name: contohGerakTari_4
+  #   is_walking: false
+  #   speeds: 5
+  #   times: 485
+  #   motion_frames:
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+
+  # - name: contohGerakTari_Jalan1
+  #   is_walking: true
+  #   speeds: 5
+  #   times: 500
+  #   motion_frames:
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+  #     - tangan: 190
+
+  # - name: contohGerakTari_Jalan2
+  #   is_walking: true
+  #   speeds: 5
+  #   times: 500
+  #   motion_frames:
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+  #     - tangan: 190
+
+  # - name: contohGerakTari_Jalan3
+  #   is_walking: true
+  #   speeds: 5
+  #   times: 500
+  #   motion_frames:
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+  #     - tangan: 190
+
+  # - name: contohGerakTari_Jalan4
+  #   is_walking: true
+  #   speeds: 5
+  #   times: 500
+  #   motion_frames:
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+  #     - tangan: 190
+      
+  # - name: contohGerakTari_5
+  #   is_walking: false
+  #   speeds: 4
+  #   times: 385
+  #   motion_frames:
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+
+  # - name: contohGerakTari_5
+  #   is_walking: false
+  #   speeds: 4
+  #   times: 385
+  #   motion_frames:
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+      
+  # - name: contohGerakTari_6
+  #   is_walking: false
+  #   speeds: 5
+  #   times: 485
+  #   motion_frames:
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+
+  # - name: contohGerakTari_7
+  #   is_walking: false
+  #   speeds: 4
+  #   times: 385
+  #   motion_frames:
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+      
+  # - name: contohGerakTari_8
+  #   is_walking: false
+  #   speeds: 5
+  #   times: 485
+  #   motion_frames:
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+  #     - tangan: 190
+  #     - tangan: 191
+  #     - tangan: 192
+
+  # - name: contohGerakRekam_1
+  #   is_walking: false
+  #   speeds: 4
+  #   times: 400
+  #   motion_frames:
+  #     - tangan: 0
+  #     - tangan: 1
+  #     - tangan: 2
+  #     - tangan: 3
+  #     - tangan: 4
+  #     - tangan: 5
+  #     - tangan: 6
+
+
+## 26 FEBRUARI 2025
+  - name: fortune_cookie1
     is_walking: false
     speeds: 6
-    times: 585
+    times: 600
     motion_frames:
-      - tangan: 190
-        # # di bawah ini opsional parameter semua
-        # kepala: {kepala41: 30, kepala43: 0, speeds: 6}
-        # kaki: 0 # misal kalau ada mendak, mungkin
-        # delay: 2000 # opsional
-      - tangan: 191
-      - tangan: 192
+      - tangan: 12
+      - tangan: 13
+      - tangan: 14
+      - tangan: 15
+      - tangan: 16
+      - tangan: 17
+      - tangan: 18
+      - tangan: 19
+      - tangan: 20
+      - tangan: 21
+      - tangan: 22
 
-  - name: contohGerakTari_2
+  - name: fortune_cookie2
     is_walking: false
     speeds: 6
-    times: 585
+    times: 600
     motion_frames:
-      - tangan: 190
-        # di bawah ini opsional parameter semua
-        kepala: {kepala41: 30, kepala42: 0, kepala43: 0, speeds: 6}
-        kaki: 0 # misal kalau ada mendak, mungkin
-        delay: 0 # opsional
-      - tangan: 191
-      - tangan: 192
+      - tangan: 23
+      - tangan: 24
+      - tangan: 25
+      - tangan: 26
+      - tangan: 27
+      - tangan: 28
+      - tangan: 29
+      - tangan: 30
+      - tangan: 31
+      - tangan: 32
 
-  - name: contohGerakTari_3
+  - name: fortune_cookie3
     is_walking: false
-    speeds: 4
-    times: 385
+    speeds: 6
+    times: 600
     motion_frames:
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-      
-  - name: contohGerakTari_4
-    is_walking: false
-    speeds: 5
-    times: 485
-    motion_frames:
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
+      - tangan: 23
+      - tangan: 24
+      - tangan: 25
+      - tangan: 26
+      - tangan: 27
+      - tangan: 28
+      - tangan: 29
+      - tangan: 30
+      - tangan: 31
+      - tangan: 32
 
-  - name: contohGerakTari_Jalan1
-    is_walking: true
-    speeds: 5
-    times: 500
-    motion_frames:
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-      - tangan: 190
-
-  - name: contohGerakTari_Jalan2
-    is_walking: true
-    speeds: 5
-    times: 500
-    motion_frames:
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-      - tangan: 190
-
-  - name: contohGerakTari_Jalan3
-    is_walking: true
-    speeds: 5
-    times: 500
-    motion_frames:
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-      - tangan: 190
-
-  - name: contohGerakTari_Jalan4
-    is_walking: true
-    speeds: 5
-    times: 500
-    motion_frames:
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-      - tangan: 190
-      
-  - name: contohGerakTari_5
+  - name: fortune_cookie3
     is_walking: false
-    speeds: 4
-    times: 385
+    speeds: 6
+    times: 600
     motion_frames:
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-
-  - name: contohGerakTari_5
-    is_walking: false
-    speeds: 4
-    times: 385
-    motion_frames:
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-      
-  - name: contohGerakTari_6
-    is_walking: false
-    speeds: 5
-    times: 485
-    motion_frames:
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-
-  - name: contohGerakTari_7
-    is_walking: false
-    speeds: 4
-    times: 385
-    motion_frames:
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-      
-  - name: contohGerakTari_8
-    is_walking: false
-    speeds: 5
-    times: 485
-    motion_frames:
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
-      - tangan: 190
-      - tangan: 191
-      - tangan: 192
+      - tangan: 33
+      - tangan: 34
+      - tangan: 35
+      - tangan: 36
+      - tangan: 37
+      - tangan: 38
+      - tangan: 39
+      - tangan: 40

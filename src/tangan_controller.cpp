@@ -11,7 +11,7 @@ void TanganController::init() {
     bool result = false;
         
     result = dxl_wb.init(usb_port, baud_rate, &log);
-    result = true; // Dummy buat testing bentar
+    // result = true; // Dummy buat testing bentar
     if (result == false) {
         printf("[ERROR] Gagal Inisialisasi Dynamixel: %s\n", log);
         return;
@@ -80,10 +80,19 @@ void TanganController::processMotionFrame(int gerakCounter, float speed) {
             
         /* Maksimal Value Goal Position XL-320 = 1023
             Sedangkan Maksimum MX-28 = 4095 */
-        if (goalPositionValue > 1023) {
-            goal_positions[id] = 1023;
-        } else if (goalPositionValue < 0) {
-            goal_positions[id] = 0;
+        if (id == 21 || id == 31) {
+            if (goalPositionValue > 4095) {
+                goal_positions[id] = 4095;
+            } else if (goalPositionValue < 0) {
+                goal_positions[id] = 0;
+            }
+        }
+        else {
+            if (goalPositionValue > 1023) {
+                goal_positions[id] = 1023;
+            } else if (goalPositionValue < 0) {
+                goal_positions[id] = 0;
+            }
         }
             
         calculateSpeeds(id, goal_positions[id], speed);
@@ -115,7 +124,10 @@ void TanganController::calculateSpeeds(int id, int goalPosition, float speed) {
     if (moving_speeds[id] > 1023) {
         moving_speeds[id] = 1023;
     }
-    // printf("ID: %d\tGoal Position: %d\t(%d derajat)\tPrev Degree: %d\t Diff: %d\tSpeed: %d in %f second\n", id, goalPosition, degree, latestPositionInDegree[id], degreeDifference[id], moving_speeds[id], secondToReach);
+    else if (moving_speeds[id] <= 0) {
+        moving_speeds[id] = 1;
+    }
+    printf("ID: %d\tGoal Position: %d\t(%d derajat)\tPrev Degree: %d\t Diff: %d\tSpeed: %d in %f second\n", id, goalPosition, degree, latestPositionInDegree[id], degreeDifference[id], moving_speeds[id], secondToReach);
     // printf("ID: %d\tGoal Position: %d\t(%d derajat)\tPrev Degree: %d\tDiff: %d\n", id, goalPosition, degree, latestPositionInDegree[id], degreeDifference[id]);
 
     updateLatestPositionInDegree(id, goalPosition);
@@ -146,38 +158,73 @@ void TanganController::sendMovementCommands() {
     /* SEMENTARA DI-COMMENT TERLEBIH DAHULU UNTUK DUMMY
         KARENA BELUM ADA SERVO YANG BISA DICOBA UNTUK DIGERAKKAN */
 
-    // /* Lakukan Sync Write untuk servo terkait 
-    //    Ingat index handler untuk masing-masing register tadi */
+    /* Lakukan Sync Write untuk servo terkait 
+       Ingat index handler untuk masing-masing register tadi */
         
-    // // Index Handler = 0 untuk Profile Velocity MX-28
-    // result = dxl_wb.syncWrite(0, mx28_ids, sizeof(mx28_ids)/sizeof(mx28_ids[0]), mx28_moving_speeds, 1, &log);
-    // if (!result) {
-    //     printf("[ERROR] Sync Write untuk Profile Velocity MX-28 gagal: %s\n", log);
-    // } else {
-    //     printf("[INFO] Sync Write untuk Profile Velocity MX-28 berhasil untuk %lu servo\n", sizeof(mx28_ids)/sizeof(mx28_ids[0]));
-    // }
+    // Index Handler = 0 untuk Profile Velocity MX-28
+    result = dxl_wb.syncWrite(0, mx28_ids, sizeof(mx28_ids)/sizeof(mx28_ids[0]), mx28_moving_speeds, 1, &log);
+    if (!result) {
+        printf("[ERROR] Sync Write untuk Profile Velocity MX-28 gagal: %s\n", log);
+    } else {
+        // printf("[INFO] Sync Write untuk Profile Velocity MX-28 berhasil untuk %lu servo\n", sizeof(mx28_ids)/sizeof(mx28_ids[0]));
+    }
 
-    // // Index Handler = 1 untuk Goal Position MX-28
-    // result = dxl_wb.syncWrite(1, mx28_ids, sizeof(mx28_ids)/sizeof(mx28_ids[0]), mx28_goal_positions, 1, &log);
-    // if (!result) {
-    //     printf("[ERROR] Sync Write untuk Goal Position MX-28 gagal: %s\n", log);
-    // } else {
-    //     printf("[INFO] Sync Write untuk Goal Position MX-28 berhasil untuk %lu servo\n", sizeof(mx28_ids)/sizeof(mx28_ids[0]));
-    // }
+    // Index Handler = 1 untuk Goal Position MX-28
+    result = dxl_wb.syncWrite(1, mx28_ids, sizeof(mx28_ids)/sizeof(mx28_ids[0]), mx28_goal_positions, 1, &log);
+    if (!result) {
+        printf("[ERROR] Sync Write untuk Goal Position MX-28 gagal: %s\n", log);
+    } else {
+        // printf("[INFO] Sync Write untuk Goal Position MX-28 berhasil untuk %lu servo\n", sizeof(mx28_ids)/sizeof(mx28_ids[0]));
+    }
 
-    // // Index Handler = 2 untuk Goal Position XL-320
-    // result = dxl_wb.syncWrite(2, xl320_ids, sizeof(xl320_ids)/sizeof(xl320_ids[0]), xl320_goal_positions, 1, &log);
-    // if (!result) {
-    //     printf("[ERROR] Sync Write untuk Goal Position XL-320 gagal: %s\n", log);
-    // } else {
-    //     printf("[INFO] Sync Write untuk Goal Position XL-320 berhasil untuk %lu servo\n", sizeof(xl320_ids)/sizeof(xl320_ids[0]));
-    // }
+    // Index Handler = 2 untuk Goal Position XL-320
+    result = dxl_wb.syncWrite(2, xl320_ids, sizeof(xl320_ids)/sizeof(xl320_ids[0]), xl320_goal_positions, 1, &log);
+    if (!result) {
+        printf("[ERROR] Sync Write untuk Goal Position XL-320 gagal: %s\n", log);
+    } else {
+        // printf("[INFO] Sync Write untuk Goal Position XL-320 berhasil untuk %lu servo\n", sizeof(xl320_ids)/sizeof(xl320_ids[0]));
+    }
 
-    // // Index Handler = 3 untuk Moving Speed XL-320
-    // result = dxl_wb.syncWrite(3, xl320_ids, sizeof(xl320_ids)/sizeof(xl320_ids[0]), xl320_moving_speeds, 1, &log);
-    // if (!result) {
-    //     printf("[ERROR] Sync Write untuk Moving Speed XL-320 gagal: %s\n", log);
-    // } else {
-    //     printf("[INFO] Sync Write untuk Moving Speed XL-320 berhasil untuk %lu servo\n", sizeof(xl320_ids)/sizeof(xl320_ids[0]));
-    // }
+    // Index Handler = 3 untuk Moving Speed XL-320
+    result = dxl_wb.syncWrite(3, xl320_ids, sizeof(xl320_ids)/sizeof(xl320_ids[0]), xl320_moving_speeds, 1, &log);
+    if (!result) {
+        printf("[ERROR] Sync Write untuk Moving Speed XL-320 gagal: %s\n", log);
+    } else {
+        // printf("[INFO] Sync Write untuk Moving Speed XL-320 berhasil untuk %lu servo\n", sizeof(xl320_ids)/sizeof(xl320_ids[0]));
+    }
+}
+
+void TanganController::toDefaultPose() {
+    goal_positions[21] = ConvertUtils::degreeToValueMX28(Default[21]);
+    goal_positions[22] = ConvertUtils::degreeToValueXL320(Default[22]);
+    goal_positions[23] = ConvertUtils::degreeToValueXL320(Default[23]);
+    goal_positions[24] = ConvertUtils::degreeToValueXL320(Default[24]);
+    goal_positions[25] = ConvertUtils::degreeToValueXL320(Default[25]);
+    goal_positions[26] = ConvertUtils::degreeToValueXL320(Default[26]);
+
+    goal_positions[31] = ConvertUtils::degreeToValueMX28(Default[31]);
+    goal_positions[32] = ConvertUtils::degreeToValueXL320(Default[32]);
+    goal_positions[33] = ConvertUtils::degreeToValueXL320(Default[33]);
+    goal_positions[34] = ConvertUtils::degreeToValueXL320(Default[34]);
+    goal_positions[35] = ConvertUtils::degreeToValueXL320(Default[35]);
+    goal_positions[36] = ConvertUtils::degreeToValueXL320(Default[36]);
+
+    calculateSpeeds(21, goal_positions[21], 30);
+    calculateSpeeds(22, goal_positions[22], 30);
+    calculateSpeeds(23, goal_positions[23], 30);
+    calculateSpeeds(24, goal_positions[24], 30);
+    calculateSpeeds(25, goal_positions[25], 30);
+    calculateSpeeds(26, goal_positions[26], 30);
+
+    calculateSpeeds(31, goal_positions[31], 30);
+    calculateSpeeds(32, goal_positions[32], 30);
+    calculateSpeeds(33, goal_positions[33], 30);
+    calculateSpeeds(34, goal_positions[34], 30);
+    calculateSpeeds(35, goal_positions[35], 30);
+    calculateSpeeds(36, goal_positions[36], 30);
+
+    dxl_wb.torqueOn(21);
+    dxl_wb.torqueOn(31);
+
+    transmit();
 }

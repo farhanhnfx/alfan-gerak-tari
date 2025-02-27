@@ -17,6 +17,8 @@
 
 #include <program_rekam_gerak/nlohmann_json/json.hpp>
 
+#include <dynamixel_workbench_toolbox/dynamixel_workbench.h>
+
 using namespace std;
 // using namespace rclcpp;
 namespace fs = std::filesystem;
@@ -49,6 +51,20 @@ namespace fs = std::filesystem;
 
 #define KANAN 0
 #define KIRI 1
+
+/* ENUM FOR CONTROL TABLE ADDRESS
+    SERVO MX-28 DAN XL-320 
+    DETAILNYA BISA DICEK DI DOKUMENTASI RESMI
+    MX-28 DAN XL-320 
+    */
+enum ControlTableAddress {
+    R_PROFILE_VELOCITY_MX28 = 112,  // LENGTH 4
+    R_GOAL_POSITION_MX28 = 116,     // LENGTH 4
+    
+    R_GOAL_POSITION_XL320 = 30,     // LENGTH 2
+    R_MOVING_SPEED_XL320 = 32       // LENGTH 2
+};
+
 
 // Maksimal sudut dibagi dengan maksimal value dari servo
 const float CONST_MX28 = 360.0 / 4095.0;    // 0.088
@@ -116,6 +132,35 @@ class TerminalHelper {
 
     // Function to check for a key press
     static int getKeyPress();
+};
+
+
+class ServoConnector {
+    private:
+    const uint32_t baud_rate = 1000000;
+    const char* usb_port = "/dev/ttyUSB0";
+    
+    public:
+    DynamixelWorkbench dxl_wb;
+    bool is_init = false;
+    int32_t goal_positions[45];
+    int32_t moving_speeds[45];
+    int32_t latest_position_in_degree[45];
+    uint32_t degree_difference[45];
+    // ID servo tangan, kepala, dan kaki
+    uint8_t mx28_ids[14] = {1, 2, 3, 4, 5, 6,       // Kaki Kanan
+                            11, 12, 13, 14, 15, 16, // Kaki Kiri
+                            21,     // Tangan Kanan
+                            31};    // Tangan Kiri
+    uint8_t xl320_ids[13] = {22, 23, 24, 25, 26,    // Tangan Kanan
+                             32, 33, 34, 35, 36,    // Tangan Kiri
+                             41, 42, 43};           // Kepala
+
+    ServoConnector();
+    void init();
+    void setupSyncWriteHandler();
+    void sendMovementCommands();
+
 };
 
 

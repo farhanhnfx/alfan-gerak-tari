@@ -21,6 +21,8 @@ int main() {
     GerakTariHandler gerakTariHandler;
     int key = 0;
 
+    printf("'q' untuk Quit\n'd' untuk Default\n'Space untuk Play Gerak Tari\n");
+
     while (test_run) {
         key = TerminalHelper::getKeyPress();
         if (key != -1) {
@@ -30,12 +32,10 @@ int main() {
             test_run = false;
             break;
         }
-        // simulasi mute
-        else if (key == 'm') {
-            gerakTariHandler.setCurrentMusicState(0);
-        }
-        else if (key == 'r') {
-            gerakTariHandler.setCurrentMusicState(1);
+        else if (key == 'd') {
+            // Set Posisi Tangan Default
+            cout << "Default Pose" << endl;
+            gerakTariHandler.tanganController.toDefaultPose();
         }
         else if (key == ' ') {
             cout << "Playing Tari" << endl;

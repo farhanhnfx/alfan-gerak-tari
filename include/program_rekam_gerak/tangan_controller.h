@@ -2,20 +2,20 @@
 #define TANGAN_CONTROLLER_H
 
 #include <program_rekam_gerak/lib_alfan.h>
-#include <dynamixel_workbench_toolbox/dynamixel_workbench.h>
+// #include <dynamixel_workbench_toolbox/dynamixel_workbench.h>
 
-/* ENUM FOR CONTROL TABLE ADDRESS
-    SERVO MX-28 DAN XL-320 
-    DETAILNYA BISA DICEK DI DOKUMENTASI RESMI
-    MX-28 DAN XL-320 
-    */
-enum ControlTableAddress {
-    R_PROFILE_VELOCITY_MX28 = 112,  // LENGTH 4
-    R_GOAL_POSITION_MX28 = 116,     // LENGTH 4
+// /* ENUM FOR CONTROL TABLE ADDRESS
+//     SERVO MX-28 DAN XL-320 
+//     DETAILNYA BISA DICEK DI DOKUMENTASI RESMI
+//     MX-28 DAN XL-320 
+//     */
+// enum ControlTableAddress {
+//     R_PROFILE_VELOCITY_MX28 = 112,  // LENGTH 4
+//     R_GOAL_POSITION_MX28 = 116,     // LENGTH 4
     
-    R_GOAL_POSITION_XL320 = 30,     // LENGTH 2
-    R_MOVING_SPEED_XL320 = 32       // LENGTH 2
-};
+//     R_GOAL_POSITION_XL320 = 30,     // LENGTH 2
+//     R_MOVING_SPEED_XL320 = 32       // LENGTH 2
+// };
 
 /* Conversion Factor untuk Menghitung Moving Speed XL-320
    dan Profile Velocity MX-28
@@ -31,6 +31,7 @@ class TanganController {
     /* Sama seperti baca(int gerak, float speed) di program lama (SEMOGA) */
     void bacaGerak(int gerakCounter, float speed);
     void transmit();
+    void toDefaultPose();
 
     private:
     DynamixelWorkbench dxl_wb;

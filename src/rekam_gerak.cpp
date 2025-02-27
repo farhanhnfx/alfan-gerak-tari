@@ -13,7 +13,7 @@ const char *debuglog;
 bool result = false;
 
 void readServoMX28(int id) {
-    int defaultInByte = ConvertUtils::valueToDegreeMX28(Default[id]);
+    int defaultInByte = ConvertUtils::degreeToValueMX28(Default[id]);
     // TO DO: Read the present position from the servo
     int32_t presentPosition = defaultInByte;
     uint16_t model_number = 0;

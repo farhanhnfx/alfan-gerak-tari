@@ -1,0 +1,52 @@
+{
+  "data": [
+	{
+		"id": 21,
+		"deltaPosition": 138
+	},
+	{
+		"id": 22,
+		"deltaPosition": -93
+	},
+	{
+		"id": 23,
+		"deltaPosition": 12
+	},
+	{
+		"id": 24,
+		"deltaPosition": 64
+	},
+	{
+		"id": 25,
+		"deltaPosition": 15
+	},
+	{
+		"id": 26,
+		"deltaPosition": 26
+	},
+	{
+		"id": 31,
+		"deltaPosition": -51
+	},
+	{
+		"id": 32,
+		"deltaPosition": -178
+	},
+	{
+		"id": 33,
+		"deltaPosition": -2
+	},
+	{
+		"id": 34,
+		"deltaPosition": -73
+	},
+	{
+		"id": 35,
+		"deltaPosition": 18
+	},
+	{
+		"id": 36,
+		"deltaPosition": -35
+	}
+  ]
+}

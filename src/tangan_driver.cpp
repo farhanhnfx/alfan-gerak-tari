@@ -1,33 +1,56 @@
-#include <program_rekam_gerak/tangan_controller.h>
+#include <program_rekam_gerak/gerak_tari.h>
 
+// int main() {
+// std::vector<GerakTari> gerak_tari_var_kiri;
+//     // Preload config gerak tari harapannya akan dijalankan ketika program dimulai
 
-TanganController tanganController;
+//     GerakTariHandler gerakTariHandler;
+//     gerakTariHandler.preload_config();
 
-/* Replika sebagian dari Transmit.ino */
-void runAll(uint times, int music) {
-    if (music == 1) {
-        tanganController.transmit();
-    }
-    else if (music == 0) {
-        // music di-mute maka tidak perlu transmit gerakan
-    }
+//     gerakTariHandler.play();
 
-    /* TO DO: Bagaimana caranya agar fungsi ini tidak langsung selesai,
-       namun perlu menunggu selama times milidetik terlebih dahulu? */
-}
+//     return 0;
+// }
 
-/* Replika sebagian dari GerakTari.ino */
-void cobaGerakTari(int isWalking, int music_state, int speed, int times) {
-    tanganController.bacaGerak(190, speed);
-    runAll(times, music_state);
-    tanganController.bacaGerak(191, speed);
-    runAll(times, music_state);
-    tanganController.bacaGerak(192, speed);
-    runAll(times, music_state);
-}
+bool test_run = true;
 
 
 int main() {
-    cobaGerakTari(0, 1, 6, 585);
+    TerminalHelper::saveOriginalTerminal();
+
+    GerakTariHandler gerakTariHandler;
+    int key = 0;
+
+    printf("'q' untuk Quit\n'd' untuk Default\n'Space untuk Play Gerak Tari\n");
+
+    while (test_run) {
+        key = TerminalHelper::getKeyPress();
+        if (key != -1) {
+            cout << "Key pressed: " << char(key) << endl;
+            if (key == 'q') {
+            TerminalHelper::resetTerminal();
+            test_run = false;
+            break;
+        }
+        else if (key == 'd') {
+            // Set Posisi Tangan Default
+            cout << "Default Pose" << endl;
+            gerakTariHandler.tanganController.toDefaultPose();
+        }
+        else if (key == ' ') {
+            cout << "Playing Tari" << endl;
+            std::vector<GerakTari> gerak_tari_var_kiri;
+            // Preload config gerak tari harapannya akan dijalankan ketika program dimulai
+
+            gerakTariHandler.preload_config();
+
+            gerakTariHandler.play();
+
+            cout << "Tari Selesai\n\n";
+        }
+
+      }
+    }
+
     return 0;
 }

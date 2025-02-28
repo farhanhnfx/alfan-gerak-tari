@@ -180,66 +180,217 @@ gerak_tari_sequences:
   #     - tangan: 6
 
 
-## 26 FEBRUARI 2025
-  - name: fortune_cookie1
-    is_walking: false
-    speeds: 6
-    times: 600
-    motion_frames:
-      - tangan: 12
-      - tangan: 13
-      - tangan: 14
-      - tangan: 15
-      - tangan: 16
-      - tangan: 17
-      - tangan: 18
-      - tangan: 19
-      - tangan: 20
-      - tangan: 21
-      - tangan: 22
+# ## 26 FEBRUARI 2025
+#   - name: fortune_cookie1
+#     is_walking: false
+#     speeds: 6
+#     times: 600
+#     motion_frames:
+#       - tangan: 12
+#       - tangan: 13
+#       - tangan: 14
+#       - tangan: 15
+#       - tangan: 16
+#       - tangan: 17
+#       - tangan: 18
+#       - tangan: 19
+#       - tangan: 20
+#       - tangan: 21
+#       - tangan: 22
 
-  - name: fortune_cookie2
-    is_walking: false
-    speeds: 6
-    times: 600
-    motion_frames:
-      - tangan: 23
-      - tangan: 24
-      - tangan: 25
-      - tangan: 26
-      - tangan: 27
-      - tangan: 28
-      - tangan: 29
-      - tangan: 30
-      - tangan: 31
-      - tangan: 32
+#   - name: fortune_cookie2
+#     is_walking: false
+#     speeds: 6
+#     times: 600
+#     motion_frames:
+#       - tangan: 23
+#       - tangan: 24
+#       - tangan: 25
+#       - tangan: 26
+#       - tangan: 27
+#       - tangan: 28
+#       - tangan: 29
+#       - tangan: 30
+#       - tangan: 31
+#       - tangan: 32
 
-  - name: fortune_cookie3
-    is_walking: false
-    speeds: 6
-    times: 600
-    motion_frames:
-      - tangan: 23
-      - tangan: 24
-      - tangan: 25
-      - tangan: 26
-      - tangan: 27
-      - tangan: 28
-      - tangan: 29
-      - tangan: 30
-      - tangan: 31
-      - tangan: 32
+#   - name: fortune_cookie3
+#     is_walking: false
+#     speeds: 6
+#     times: 600
+#     motion_frames:
+#       - tangan: 23
+#       - tangan: 24
+#       - tangan: 25
+#       - tangan: 26
+#       - tangan: 27
+#       - tangan: 28
+#       - tangan: 29
+#       - tangan: 30
+#       - tangan: 31
+#       - tangan: 32
 
-  - name: fortune_cookie3
+#   - name: fortune_cookie3
+#     is_walking: false
+#     speeds: 6
+#     times: 600
+#     motion_frames:
+#       - tangan: 33
+#       - tangan: 34
+#       - tangan: 35
+#       - tangan: 36
+#       - tangan: 37
+#       - tangan: 38
+#       - tangan: 39
+#       - tangan: 40
+
+# 27 FEBRUARI TEST MX
+  # - name: Test
+  #   is_walking: false
+  #   speeds: 10
+  #   times: 1000
+  #   motion_frames:
+  #     - tangan: 48
+  #     - tangan: 49
+  #     - tangan: 50
+  #     - tangan: 51
+  #     - tangan: 52
+  #     - tangan: 53
+  #     - tangan: 54
+  #     - tangan: 55
+
+  # - name: hormat
+  #   is_walking: false
+  #   speeds: 6
+  #   times: 600
+  #   motion_frames:
+  #     - tangan: 56
+  #     - tangan: 57
+  #     - tangan: 58
+  #     - tangan: 59
+  #     - tangan: 60
+
+  # - name: lope
+  #   is_walking: false
+  #   speeds: 6
+  #   times: 600
+  #   motion_frames:
+  #     - tangan: 61
+  #     - tangan: 62
+  #     - tangan: 63
+  #     - tangan: 64
+  #     - tangan: 65
+  #     - tangan: 66
+  #     - tangan: 67
+
+  # - name: tiktok
+  #   is_walking: false
+  #   speeds: 6
+  #   times: 600
+  #   motion_frames:
+  #     - tangan: 74
+  #     - tangan: 75
+
+  # - name: tiktok2
+  #   is_walking: false
+  #   speeds: 7
+  #   times: 700
+  #   motion_frames:
+  #     - tangan: 76
+  #     - tangan: 77
+  #     - tangan: 78
+
+  # - name: tiktok3
+  #   is_walking: false
+  #   speeds: 6
+  #   times: 600
+  #   motion_frames:
+  #     - tangan: 79
+  #     - tangan: 80
+  #     - tangan: 81
+  #     - tangan: 82
+  #     - tangan: 84
+  #     - tangan: 85
+  #     - tangan: 86
+  #     - tangan: 87
+  #     - tangan: 88
+  #     - tangan: 89
+  #     - tangan: 90
+
+  # - name: tiktok1_1
+  #   is_walking: false
+  #   speeds: 6
+  #   times: 600
+  #   motion_frames:
+  #     - tangan: 108
+  #     - tangan: 109
+
+  # - name: tiktok1_2
+  #   is_walking: false
+  #   speeds: 7
+  #   times: 700
+  #   motion_frames:
+  #     - tangan: 110
+  #     - tangan: 111
+  #     - tangan: 112
+  #     - tangan: 113
+  #     - tangan: 115
+  #     - tangan: 116
+
+  # - name: tiktok1_3
+  #   is_walking: false
+  #   speeds: 6
+  #   times: 600
+  #   motion_frames:
+  #     - tangan: 117
+  #     - tangan: 118
+  #     - tangan: 119
+  #     - tangan: 120
+  #     - tangan: 121
+  #     - tangan: 122
+  #     - tangan: 123
+  #     - tangan: 124
+  #     - tangan: 125
+
+  - name: tiktok1_1
     is_walking: false
-    speeds: 6
-    times: 600
+    speeds: 5
+    times: 500
     motion_frames:
-      - tangan: 33
-      - tangan: 34
-      - tangan: 35
-      - tangan: 36
-      - tangan: 37
-      - tangan: 38
-      - tangan: 39
-      - tangan: 40
+      - tangan: 135
+      - tangan: 136
+      - tangan: 137
+
+  - name: tiktok1_2
+    is_walking: false
+    speeds: 5
+    times: 500
+    motion_frames:
+      - tangan: 139
+      - tangan: 140
+      - tangan: 141
+      - tangan: 142
+      - tangan: 143
+      - tangan: 144
+      - tangan: 145
+      - tangan: 146
+      - tangan: 147
+
+
+  - name: tiktok1_3
+    is_walking: false
+    speeds: 5
+    times: 500
+    motion_frames:
+      - tangan: 148
+      - tangan: 149
+      - tangan: 150
+      - tangan: 151
+      - tangan: 152
+      - tangan: 153
+      - tangan: 154
+      - tangan: 155
+      - tangan: 156
+      - tangan: 157
+      - tangan: 158
+      - tangan: 159

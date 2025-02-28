@@ -32,11 +32,16 @@ class TanganController {
     void bacaGerak(int gerakCounter, float speed);
     void transmit();
     void toDefaultPose();
+    void pingMX28();
+    void pingXL320();
+    void setTorqueOn();
+    void setTorqueOff();
 
     private:
     DynamixelWorkbench dxl_wb;
     const uint32_t baud_rate = 1000000;
     const char* usb_port = "/dev/ttyUSB0";
+    bool first_time_init = true;
 
     /* Buat nampung perhitungan Goal Position &
         Moving Speed masing-masing servo */

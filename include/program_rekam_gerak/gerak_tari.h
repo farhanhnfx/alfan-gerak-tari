@@ -4,7 +4,6 @@
 
 #include <program_rekam_gerak/tangan_controller.h>
 #include <program_rekam_gerak/communication.h>
-#include <unistd.h>
 
 #include <ryml.hpp>
 #include <ryml_std.hpp>
@@ -39,7 +38,6 @@ class GerakTariHandler {
 
     void preload_config();
     void play();
-    void setCurrentMusicState(int current_music_state);
     TanganController tanganController;
     
     private:

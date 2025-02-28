@@ -1,8 +1,5 @@
 #include <program_rekam_gerak/gerak_tari.h>
 
-#include <chrono>
-#include <iostream>
-#include <thread>
 
 void GerakTariHandler::preload_config() {
     std::string yaml_content = read_file(PATH_TO_CONFIG);
@@ -48,19 +45,6 @@ void GerakTariHandler::preload_config() {
             list_of_gerak_tari.push_back(gt);
         }
     }
-
-    // for (int i = 0; i < gerak_tari_seq.size(); i++) {
-    //     cout << gerak_tari_seq.at(i).name << endl;
-    //     cout << gerak_tari_seq.at(i).is_walking << endl;
-    //     cout << gerak_tari_seq.at(i).speeds << endl;
-    //     cout << gerak_tari_seq.at(i).times << endl;
-                
-    //     cout << "\t Each Motion Frame:" << endl;
-    //     for (int j = 0; j < gerak_tari_seq.at(i).motion_frames.size(); j++) {
-    //         cout << " \t\t Tangan:" + to_string(gerak_tari_seq.at(i).motion_frames.at(j).tangan) << endl;
-    //     }
-    //     cout << "-----------------------" << endl;
-    // }
 
     gerak_tari_size = list_of_gerak_tari.size();
 }
@@ -262,10 +246,4 @@ void GerakTariHandler::execute_move(GerakTari gerak_tari) {
         printf("\nNext Frame:\n");
     }
 
-}
-
-void GerakTariHandler::setCurrentMusicState(int current_music_state) {
-    if ((current_music_state != 0 && current_music_state != 1) || music_state == current_music_state) return;
-    printf("\tchanging music state to %b\n", current_music_state);
-    music_state = current_music_state;
 }

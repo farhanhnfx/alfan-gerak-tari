@@ -12,10 +12,14 @@ void GerakTariHandler::preload_config() {
         
     ryml::NodeRef root = tree["gerak_tari_sequences"];
     cout << root.num_children() << endl;
-    if (root.num_children() > 0) {
-        for (int i = 0; i < root.num_children(); i++) {
+    string subfolder;
+    root["subfolder"] >> subfolder;
+    FileManager::setNewFullPathTxt(FILE_PATH_TXT + subfolder);
+
+    if (root["sequences"].num_children() > 0) {
+        for (int i = 0; i < root["sequences"].num_children(); i++) {
             GerakTari gt;
-            auto tree_gerak_tari = root[i];
+            auto tree_gerak_tari = root["sequences"][i];
 
             tree_gerak_tari["name"] >> gt.name;
             tree_gerak_tari["is_walking"] >> gt.is_walking;
@@ -45,6 +49,11 @@ void GerakTariHandler::preload_config() {
             list_of_gerak_tari.push_back(gt);
         }
     }
+
+    for (int i = 0; i < list_of_gerak_tari.size(); i++) {
+        cout << list_of_gerak_tari.at(i).name << endl;
+    }
+    cout << file_path_txt << endl;
 
     gerak_tari_size = list_of_gerak_tari.size();
 }

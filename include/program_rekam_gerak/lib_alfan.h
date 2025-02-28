@@ -80,6 +80,8 @@ extern string fileDataJson;
 extern int32_t selisihPresentDefault;
 extern bool errorBaca;
 
+extern string file_path_txt;
+
 /* Digunakan untuk konversi dari
    derajat ke value ataupun
    sebaliknya */
@@ -109,6 +111,8 @@ class FileManager {
 
     static void createFile(string filename, string dataTxt, string dataJson);
     static void writeFileData(uint8_t id, int32_t selisihPresentDefault);
+    static void setSubfolder(string subfolder);
+    static void setNewFullPathTxt(string full_path);
 
     static map<uint8_t, int32_t> parseFileTxt(int counterGerak);
 
@@ -117,8 +121,17 @@ class FileManager {
 
 /* Helper untuk mempermudah debug rekam gerak */
 class RekamGerakHelper {
+    private:
+    DynamixelWorkbench dxl_wb;
+    const uint32_t baud_rate = 1000000;
+    const char* usb_port = "/dev/ttyUSB0";
+    const char *debuglog;
+
     public:
     static void debugRekam(uint8_t id, int32_t presentPosition);
+    void init();
+    void readMX28(int id);
+    void readXL320(int id);
 };
 
 
@@ -139,7 +152,7 @@ class TerminalHelper {
     // Function to check for a key press
     static int getKeyPress();
 
-    static void buildTerminal(void (*function)());
+    static void buildTerminalLoop(void (*function)());
 };
 
 

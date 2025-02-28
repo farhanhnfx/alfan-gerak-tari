@@ -18,7 +18,7 @@ void cobaGerakTangan() {
         std::vector<GerakTari> gerak_tari_var_kiri;
         // Preload config gerak tari harapannya akan dijalankan ketika program dimulai
         gerakTariHandler.preload_config();
-        gerakTariHandler.play();
+        // gerakTariHandler.play();
 
         cout << "Tari Selesai\n\n";
     }
@@ -37,7 +37,7 @@ void cobaGerakTangan() {
 
 int main() {
 
-    TerminalHelper::buildTerminal(cobaGerakTangan);
+    TerminalHelper::buildTerminalLoop(cobaGerakTangan);
 
     return 0;
 }

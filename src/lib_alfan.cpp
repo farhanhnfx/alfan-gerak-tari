@@ -17,6 +17,8 @@ int32_t selisihPresentDefault = 0;
 
 bool errorBaca = false;
 
+string file_path_txt = FILE_PATH_TXT;
+
 // Terminal state
 termios originalTermios;
 
@@ -29,8 +31,9 @@ string FileManager::generateFilename() {
 
     do {
         // Generate the filename with the counter
-        filenameTxt = string(FILE_PATH_TXT) + FILE_BASENAME + to_string(counter);
-        filenameJson = string(FILE_PATH_JSON) + FILE_BASENAME + to_string(counter);
+        // filenameTxt = string(FILE_PATH_TXT) + FILE_BASENAME + to_string(counter);
+        // filenameJson = string(FILE_PATH_JSON) + FILE_BASENAME + to_string(counter);
+        filenameTxt = file_path_txt + FILE_BASENAME + to_string(counter);
         counter++;
     } while (fs::exists(filenameTxt + FILE_EXTENSION_TXT));  // Check if the file already exists
 
@@ -48,7 +51,8 @@ void FileManager::createFile(string filename, string dataTxt, string dataJson) {
         return;
     }
 
-    ofstream fileTxt(string(FILE_PATH_TXT) + filename + FILE_EXTENSION_TXT);
+    // ofstream fileTxt(string(FILE_PATH_TXT) + filename + FILE_EXTENSION_TXT);
+    ofstream fileTxt(file_path_txt + filename + FILE_EXTENSION_TXT);
 
     // ofstream fileJson(string(FILE_PATH_JSON) + filename + FILE_EXTENSION_JSON);
 
@@ -81,6 +85,24 @@ void FileManager::createFile(string filename, string dataTxt, string dataJson) {
 
 }
 
+void FileManager::setSubfolder(string subfolder) {
+    file_path_txt = string(FILE_PATH_TXT) + "/" + subfolder + "/";
+    if (fs::exists(file_path_txt)) {
+        printf("Melanjutkan rekaman Gerak Tari (%s)\n", subfolder.c_str());
+    }
+    else {
+        printf("Menyiapkan folder Gerak Tari baru (%s)\n", subfolder.c_str());
+        fs::create_directory(file_path_txt);
+    }
+}
+
+void FileManager::setNewFullPathTxt(string full_path) {
+    file_path_txt = full_path;
+    if (full_path.back() != '/') {
+        file_path_txt.push_back('/');
+    }
+}
+
 void FileManager::writeFileData(uint8_t id, int32_t selisihPresentDefault) {
     // buat TXT file-nya
     fileDataTxt += "A";
@@ -104,7 +126,8 @@ void FileManager::writeFileData(uint8_t id, int32_t selisihPresentDefault) {
 
 map<uint8_t, int32_t> FileManager::parseFileTxt(int counterGerak) {
     map<uint8_t, int32_t> parsedData;
-    string filePath = string(FILE_PATH_TXT) + FILE_BASENAME + to_string(counterGerak) + FILE_EXTENSION_TXT;
+    // string filePath = string(FILE_PATH_TXT) + FILE_BASENAME + to_string(counterGerak) + FILE_EXTENSION_TXT;
+    string filePath = file_path_txt + FILE_BASENAME + to_string(counterGerak) + FILE_EXTENSION_TXT;
     ifstream fileTxt(filePath);
 
     if (fileTxt.is_open()) {
@@ -175,6 +198,67 @@ map<uint8_t, int32_t> FileManager::parseFileJson(int counterGerak) {
     return parsedData;
 }
 
+
+
+void RekamGerakHelper::init() {
+    bool result = dxl_wb.init(usb_port, baud_rate, &debuglog);
+    if (result == false) {
+      printf("%s\n", debuglog);
+      printf("Failed to init\n");
+      // return 0;
+    } else {
+      printf("Succeed to init (%d)\n", baud_rate);
+    }
+}
+
+void RekamGerakHelper::readMX28(int id) {
+    int defaultInByte = ConvertUtils::degreeToValueMX28(Default[id]);
+    // TO DO: Read the present position from the servo
+    int32_t presentPosition = defaultInByte;
+    uint16_t model_number = 0;
+    if (dxl_wb.ping(id, &model_number, &debuglog) == false) {
+      printf("%s\n", debuglog);
+      printf("Failed to ping\n");
+      errorBaca = true;
+    }
+    // bool result = dxl_wb_mx28.itemRead(id, "Present_Position", &presentPosition, &debuglog);
+    bool result = dxl_wb.getPresentPositionData(id, &presentPosition, &debuglog);
+    if (result == false) {
+      printf("%s\n", debuglog);
+      printf("Failed to get present position\n");
+      errorBaca = true;
+    }
+
+    selisihPresentDefault = presentPosition - defaultInByte;
+
+
+    FileManager::writeFileData(id, selisihPresentDefault);
+
+    debugRekam(id, presentPosition);
+}
+void RekamGerakHelper::readXL320(int id) {
+    int defaultIntByte = ConvertUtils::degreeToValueXL320(Default[id]);
+    // TO DO: Read the present position from the servo
+    int32_t presentPosition = defaultIntByte;
+    uint16_t model_number = 0;
+    if (dxl_wb.ping(id, &model_number, &debuglog) == false) {
+      printf("%s\n", debuglog);
+      printf("Failed to ping\n");
+      errorBaca = true;
+    }
+    bool result = dxl_wb.getPresentPositionData(id, &presentPosition, &debuglog);
+    if (result == false) {
+      printf("%s\n", debuglog);
+      printf("Failed to get present position\n");
+      errorBaca = true;
+    }
+
+    selisihPresentDefault = presentPosition - defaultIntByte;
+
+    FileManager::writeFileData(id, selisihPresentDefault);
+
+    RekamGerakHelper::debugRekam(id, presentPosition);
+}
 
 void RekamGerakHelper::debugRekam(uint8_t id, int32_t presentPosition) {
     string changeDirection = "";
@@ -266,7 +350,7 @@ void TerminalHelper::resetTerminal() {
     tcsetattr(STDIN_FILENO, TCSANOW, &originalTermios);
 }
 
-void TerminalHelper::buildTerminal(void (*function)()) {
+void TerminalHelper::buildTerminalLoop(void (*function)()) {
     saveOriginalTerminal();
     is_running = true;
     

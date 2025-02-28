@@ -3,52 +3,70 @@
 #               ALFAN 2025              #
 #########################################
 
+# gerak_tari_sequences:
+#   subfolder: Tiktok 27-02-2025
+#   sequences:
+#     - name: tiktok1_1
+#       is_walking: false
+#       speeds: 5
+#       times: 500
+#       motion_frames:
+#         - tangan: 135
+#           # # di bawah ini opsional parameter semua
+#           # kepala: {kepala41: 30, kepala43: 0, speeds: 6}
+#           # kaki: 0 # misal kalau ada mendak, mungkin
+#           # delay: 2000 # opsional
+#         - tangan: 136
+#         - tangan: 137
+
+#     - name: tiktok1_2
+#       is_walking: false
+#       speeds: 5
+#       times: 500
+#       motion_frames:
+#         - tangan: 139
+#         - tangan: 140
+#         - tangan: 141
+#         - tangan: 142
+#         - tangan: 143
+#         - tangan: 144
+#         - tangan: 145
+#         - tangan: 146
+#         - tangan: 147
+
+
+#     - name: tiktok1_3
+#       is_walking: false
+#       speeds: 5
+#       times: 500
+#       motion_frames:
+#         - tangan: 148
+#         - tangan: 149
+#         - tangan: 150
+#         - tangan: 151
+#         - tangan: 152
+#         - tangan: 153
+#         - tangan: 154
+#         - tangan: 155
+#         - tangan: 156
+#         - tangan: 157
+#         - tangan: 158
+#         - tangan: 159
+
+
 gerak_tari_sequences:
-  subfolder: Tiktok 27-02-2025
+  subfolder: fortune cookie
   sequences:
-    - name: tiktok1_1
+    - name: fc1
       is_walking: false
       speeds: 5
       times: 500
       motion_frames:
-        - tangan: 135
-          # # di bawah ini opsional parameter semua
-          # kepala: {kepala41: 30, kepala43: 0, speeds: 6}
-          # kaki: 0 # misal kalau ada mendak, mungkin
-          # delay: 2000 # opsional
-        - tangan: 136
-        - tangan: 137
-
-    - name: tiktok1_2
-      is_walking: false
-      speeds: 5
-      times: 500
-      motion_frames:
-        - tangan: 139
-        - tangan: 140
-        - tangan: 141
-        - tangan: 142
-        - tangan: 143
-        - tangan: 144
-        - tangan: 145
-        - tangan: 146
-        - tangan: 147
-
-
-    - name: tiktok1_3
-      is_walking: false
-      speeds: 5
-      times: 500
-      motion_frames:
-        - tangan: 148
-        - tangan: 149
-        - tangan: 150
-        - tangan: 151
-        - tangan: 152
-        - tangan: 153
-        - tangan: 154
-        - tangan: 155
-        - tangan: 156
-        - tangan: 157
-        - tangan: 158
-        - tangan: 159
+        - tangan: 8
+        - tangan: 9
+        - tangan: 10
+        - tangan: 11
+        - tangan: 12
+        - tangan: 13
+        - tangan: 14
+        - tangan: 15

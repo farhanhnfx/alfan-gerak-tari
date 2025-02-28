@@ -12,7 +12,7 @@ unordered_map<uint8_t, int32_t> Default = {
 /* Kebutuhan Rekam Gerak */
 string fileDataTxt = ""; // Contain the data to be written to the file`
 string fileDataJson = ""; // Contain the data to be written to the file
-int counter = 0;
+int counter_rekam_gerak = 0;
 int32_t selisihPresentDefault = 0;
 
 bool errorBaca = false;
@@ -33,11 +33,11 @@ string FileManager::generateFilename() {
         // Generate the filename with the counter
         // filenameTxt = string(FILE_PATH_TXT) + FILE_BASENAME + to_string(counter);
         // filenameJson = string(FILE_PATH_JSON) + FILE_BASENAME + to_string(counter);
-        filenameTxt = file_path_txt + FILE_BASENAME + to_string(counter);
-        counter++;
+        filenameTxt = file_path_txt + FILE_BASENAME + to_string(counter_rekam_gerak);
+        counter_rekam_gerak++;
     } while (fs::exists(filenameTxt + FILE_EXTENSION_TXT));  // Check if the file already exists
 
-    return FILE_BASENAME + to_string(counter-1);
+    return FILE_BASENAME + to_string(counter_rekam_gerak-1);
 }
 
 void FileManager::createFile(string filename, string dataTxt, string dataJson) {
@@ -47,7 +47,7 @@ void FileManager::createFile(string filename, string dataTxt, string dataJson) {
         errorBaca = false;
         fileDataTxt = ""; // Reset the file data
         fileDataJson = ""; // Reset the file data
-        counter--;
+        counter_rekam_gerak--;
         return;
     }
 
@@ -198,6 +198,24 @@ map<uint8_t, int32_t> FileManager::parseFileJson(int counterGerak) {
     return parsedData;
 }
 
+void FileManager::deleteLatestRecord() {
+    if (counter_rekam_gerak > 0) {
+        counter_rekam_gerak--;
+        // string filePathTxt = string(FILE_PATH_TXT) + FILE_BASENAME + to_string(counter) + FILE_EXTENSION_TXT;
+        string filePathTxt = file_path_txt + FILE_BASENAME + to_string(counter_rekam_gerak) + FILE_EXTENSION_TXT;
+        if (fs::exists(filePathTxt)) {
+            fs::remove(filePathTxt);
+            cout << "File deleted successfully.\n";
+        }
+        else {
+            cerr << "File not found.\n";
+        }
+    }
+    else {
+        cerr << "No record to delete.\n";
+    }
+}
+
 
 
 void RekamGerakHelper::init() {
@@ -317,7 +335,7 @@ void RekamGerakHelper::debugRekam(uint8_t id, int32_t presentPosition) {
 
     if (id == 21) {
         cout << "------------------------------------------------------------------------------" << endl;
-        cout << "Create file GERAK: " + to_string(counter - 1) + "\n";
+        cout << "Create file GERAK: " + to_string(counter_rekam_gerak - 1) + "\n";
     }
       
     cout << "ID: " << to_string(id) << "\t";

@@ -75,6 +75,7 @@ const float CONST_XL320 = 300.0 / 1023.0;   // 0.293
 
 // GLOBAL VARIABLES
 extern unordered_map<uint8_t, int32_t> Default;
+extern int counter_rekam_gerak;
 extern string fileDataTxt;
 extern string fileDataJson;
 extern int32_t selisihPresentDefault;
@@ -113,6 +114,7 @@ class FileManager {
     static void writeFileData(uint8_t id, int32_t selisihPresentDefault);
     static void setSubfolder(string subfolder);
     static void setNewFullPathTxt(string full_path);
+    static void deleteLatestRecord();
 
     static map<uint8_t, int32_t> parseFileTxt(int counterGerak);
 

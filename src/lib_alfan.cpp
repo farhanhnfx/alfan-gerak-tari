@@ -50,7 +50,7 @@ void FileManager::createFile(string filename, string dataTxt, string dataJson) {
 
     ofstream fileTxt(string(FILE_PATH_TXT) + filename + FILE_EXTENSION_TXT);
 
-    ofstream fileJson(string(FILE_PATH_JSON) + filename + FILE_EXTENSION_JSON);
+    // ofstream fileJson(string(FILE_PATH_JSON) + filename + FILE_EXTENSION_JSON);
 
     if (fileTxt.is_open()) {
         fileTxt << dataTxt;
@@ -62,22 +62,22 @@ void FileManager::createFile(string filename, string dataTxt, string dataJson) {
         cerr << "Unable to create the TXT file.\n";
     }
 
-    // Check if the file was created successfully
-    if (fileJson.is_open()) {
-        fileJson << "{\n";
-        fileJson << "  \"data\": [\n";
-        fileJson << dataJson;
-        fileJson << "  ]\n";
-        fileJson << "}\n";
+    // // Check if the file was created successfully
+    // if (fileJson.is_open()) {
+    //     fileJson << "{\n";
+    //     fileJson << "  \"data\": [\n";
+    //     fileJson << dataJson;
+    //     fileJson << "  ]\n";
+    //     fileJson << "}\n";
         
-        // Close the file after writing
-        fileJson.close();
-        cout << "File created and written successfully.\n";
+    //     // Close the file after writing
+    //     fileJson.close();
+    //     cout << "File created and written successfully.\n";
 
-        fileDataJson = ""; // Reset the file data
-    } else {
-        cerr << "Unable to create the JSON file.\n";
-    }
+    //     fileDataJson = ""; // Reset the file data
+    // } else {
+    //     cerr << "Unable to create the JSON file.\n";
+    // }
 
 }
 
@@ -248,7 +248,8 @@ void RekamGerakHelper::debugRekam(uint8_t id, int32_t presentPosition) {
 }
 
 
-
+bool TerminalHelper::is_running = false;
+int TerminalHelper::key_pressed = 0;
 void TerminalHelper::setNonBlockingInput() {
     termios term;
     tcgetattr(STDIN_FILENO, &term);
@@ -265,6 +266,31 @@ void TerminalHelper::resetTerminal() {
     tcsetattr(STDIN_FILENO, TCSANOW, &originalTermios);
 }
 
+void TerminalHelper::buildTerminal(void (*function)()) {
+    saveOriginalTerminal();
+    is_running = true;
+    
+    ((void (*)())function)();
+    printf("\n");
+
+    while (is_running) {
+        key_pressed = getKeyPress();
+        if (key_pressed != -1) {
+            cout << "Key pressed: " << char(key_pressed) << endl;
+            if (key_pressed == 'q') {
+                printf("Quit...\n");
+                is_running = false;
+                break;
+            }
+
+            ((void (*)())function)();
+            printf("\n");
+        }
+    }
+
+    resetTerminal();
+    key_pressed = 0;
+}
 int TerminalHelper::getKeyPress() {
     setNonBlockingInput();
     int ch = -1;

@@ -19,19 +19,53 @@ void TanganController::init() {
         printf("[INFO] Inisialisasi Dynamixel Berhasil! (Baudrate: %d)\n", baud_rate);
     }
 
-    latestPositionInDegree[21] = Default[21];
-    latestPositionInDegree[22] = Default[22];
-    latestPositionInDegree[23] = Default[23];
-    latestPositionInDegree[24] = Default[24];
-    latestPositionInDegree[25] = Default[25];
-    latestPositionInDegree[26] = Default[26];
+    printf("protocol ver: %f\n", dxl_wb.getProtocolVersion());
 
-    latestPositionInDegree[31] = Default[31];
-    latestPositionInDegree[32] = Default[32];
-    latestPositionInDegree[33] = Default[33];
-    latestPositionInDegree[34] = Default[34];
-    latestPositionInDegree[35] = Default[35];
-    latestPositionInDegree[36] = Default[36];
+    pingMX28();
+    pingXL320();
+
+    setTorqueOn();
+
+    // latestPositionInDegree[21] = Default[21];
+    // latestPositionInDegree[22] = Default[22];
+    // latestPositionInDegree[23] = Default[23];
+    // latestPositionInDegree[24] = Default[24];
+    // latestPositionInDegree[25] = Default[25];
+    // latestPositionInDegree[26] = Default[26];
+
+    // latestPositionInDegree[31] = Default[31];
+    // latestPositionInDegree[32] = Default[32];
+    // latestPositionInDegree[33] = Default[33];
+    // latestPositionInDegree[34] = Default[34];
+    // latestPositionInDegree[35] = Default[35];
+    // latestPositionInDegree[36] = Default[36];
+
+    int32_t present_value;
+    dxl_wb.getPresentPositionData(21, &present_value, &log);
+    latestPositionInDegree[21] = ConvertUtils::valueToDegreeMX28(present_value);
+    dxl_wb.getPresentPositionData(22, &present_value, &log);
+    latestPositionInDegree[22] = ConvertUtils::valueToDegreeXL320(present_value);
+    dxl_wb.getPresentPositionData(23, &present_value, &log);
+    latestPositionInDegree[23] = ConvertUtils::valueToDegreeXL320(present_value);
+    dxl_wb.getPresentPositionData(24, &present_value, &log);
+    latestPositionInDegree[24] = ConvertUtils::valueToDegreeXL320(present_value);
+    dxl_wb.getPresentPositionData(25, &present_value, &log);
+    latestPositionInDegree[25] = ConvertUtils::valueToDegreeXL320(present_value);
+    dxl_wb.getPresentPositionData(26, &present_value, &log);
+    latestPositionInDegree[26] = ConvertUtils::valueToDegreeXL320(present_value);
+
+    dxl_wb.getPresentPositionData(31, &present_value, &log);
+    latestPositionInDegree[31] = ConvertUtils::valueToDegreeMX28(present_value);
+    dxl_wb.getPresentPositionData(32, &present_value, &log);
+    latestPositionInDegree[32] = ConvertUtils::valueToDegreeXL320(present_value);
+    dxl_wb.getPresentPositionData(33, &present_value, &log);
+    latestPositionInDegree[33] = ConvertUtils::valueToDegreeXL320(present_value);
+    dxl_wb.getPresentPositionData(34, &present_value, &log);
+    latestPositionInDegree[34] = ConvertUtils::valueToDegreeXL320(present_value);
+    dxl_wb.getPresentPositionData(35, &present_value, &log);
+    latestPositionInDegree[35] = ConvertUtils::valueToDegreeXL320(present_value);
+    dxl_wb.getPresentPositionData(36, &present_value, &log);
+    latestPositionInDegree[36] = ConvertUtils::valueToDegreeXL320(present_value);
 }
 
 void TanganController::setupSyncWriteHandler() {
@@ -223,8 +257,102 @@ void TanganController::toDefaultPose() {
     calculateSpeeds(35, goal_positions[35], 30);
     calculateSpeeds(36, goal_positions[36], 30);
 
-    dxl_wb.torqueOn(21);
-    dxl_wb.torqueOn(31);
-
     transmit();
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(3000));
+}
+
+void TanganController::pingMX28() {
+    const char* log;
+    bool result = false;
+
+    result = dxl_wb.ping(21, &log);
+    if (!result) {
+        printf("[ERROR] Ping MX-28 ID 21: %s\n", log);
+    }
+    else {
+        printf("[INFO] Ping MX-28 ID 21: Berhasil\n");
+    }
+
+    result = dxl_wb.ping(31, &log);
+    if (!result) {
+        printf("[ERROR] Ping MX-28 ID 31: %s\n", log);
+    }
+    else {
+        printf("[INFO] Ping MX-28 ID 31: Berhasil\n");
+    }
+
+}
+
+void TanganController::pingXL320() {
+    const char* log;
+    bool result = false;
+
+    for (int i = 22; i <= 26; i++) {
+        result = dxl_wb.ping(i, &log);
+        if (!result) {
+            printf("[ERROR] Ping XL-320 ID %d: %s\n", i, log);
+        }
+        else {
+            printf("[INFO] Ping XL-320 ID %d: Berhasil\n", i);
+        }
+    }
+
+    for (int i = 32; i <= 36; i++) {
+        result = dxl_wb.ping(i, &log);
+        if (!result) {
+            printf("[ERROR] Ping XL-320 ID %d: %s\n", i, log);
+        }
+        else {
+            printf("[INFO] Ping XL-320 ID %d: Berhasil\n", i);
+        }
+    }
+}
+
+void TanganController::setTorqueOn() {
+    const char* log;
+    bool result = false;
+    for (int i = 21; i <= 26; i++) {
+        result = dxl_wb.torqueOn(i, &log);
+        if (!result) {
+            printf("[ERROR] Torque On ID %d, %s\n", i, log);
+        }
+        else {
+            printf("[INFO] Torque On ID %d Berhasil\n", i);
+        }
+    }
+
+    for (int i = 31; i <= 36; i++) {
+        result = dxl_wb.torqueOn(i, &log);
+        if (!result) {
+            printf("[ERROR] Torque On ID %d, %s\n", i, log);
+        }
+        else {
+            printf("[INFO] Torque On ID %d Berhasil\n", i);
+        }
+    }
+}
+
+void TanganController::setTorqueOff() {
+    const char* log;
+    bool result = false;
+    for (int i = 21; i <= 26; i++) {
+        result = dxl_wb.torqueOff(i, &log);
+        if (!result) {
+            printf("[ERROR] Torque On ID %d, %s\n", i, log);
+        }
+        else {
+            printf("[INFO] Torque On ID %d Berhasil\n", i);
+        }
+    }
+
+    for (int i = 31; i <= 36; i++) {
+        result = dxl_wb.torqueOff(i, &log);
+        if (!result) {
+            printf("[ERROR] Torque On ID %d, %s\n", i, log);
+        }
+        else {
+            printf("[INFO] Torque On ID %d Berhasil\n", i);
+        }
+    }
 }

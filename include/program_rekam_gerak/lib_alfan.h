@@ -15,6 +15,9 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+#include <chrono>
+#include <thread>
+
 #include <program_rekam_gerak/nlohmann_json/json.hpp>
 
 #include <dynamixel_workbench_toolbox/dynamixel_workbench.h>
@@ -122,7 +125,10 @@ class RekamGerakHelper {
 /* Digunakan untuk program Rekam Gerak yang
    memerlukan bantuan terminal */
 class TerminalHelper {
+    private:
+    static bool is_running;
     public:
+    static int key_pressed;
     // Function to make terminal non-blocking
     static void setNonBlockingInput();
 
@@ -132,6 +138,8 @@ class TerminalHelper {
 
     // Function to check for a key press
     static int getKeyPress();
+
+    static void buildTerminal(void (*function)());
 };
 
 

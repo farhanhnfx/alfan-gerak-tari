@@ -63,7 +63,7 @@ ament_target_dependencies(tangan_driver rclcpp dynamixel_workbench_toolbox)
 
 # Library Rapid YAML
 add_subdirectory(external/rapidyaml ryml)
-target_link_libraries(rekam_gerak alfan_lib_main)
+target_link_libraries(rekam_gerak ryml alfan_lib_main)
 target_link_libraries(tangan_driver ryml alfan_lib_main comms_lib gerak_tari_lib)
 
 

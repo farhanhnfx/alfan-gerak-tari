@@ -36,7 +36,7 @@ class GerakTariHandler {
     //     preload_config(list_of_gerak_tari);
     // }
 
-    void preload_config();
+    void preload_config(const char* config_path = PATH_TO_CONFIG);
     void play();
     TanganController tanganController;
     

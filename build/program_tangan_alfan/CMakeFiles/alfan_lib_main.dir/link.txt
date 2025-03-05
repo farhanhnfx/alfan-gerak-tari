@@ -1,0 +1,2 @@
+/usr/bin/ar qc libalfan_lib_main.a CMakeFiles/alfan_lib_main.dir/src/lib_alfan.cpp.o CMakeFiles/alfan_lib_main.dir/src/tangan_controller.cpp.o
+/usr/bin/ranlib libalfan_lib_main.a

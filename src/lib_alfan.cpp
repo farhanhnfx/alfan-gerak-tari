@@ -224,6 +224,7 @@ void RekamGerakHelper::init() {
       printf("%s\n", debuglog);
       printf("Failed to init\n");
       // return 0;
+      exit(1);
     } else {
       printf("Succeed to init (%d)\n", baud_rate);
     }

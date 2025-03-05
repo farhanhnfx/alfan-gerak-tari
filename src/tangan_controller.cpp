@@ -199,6 +199,7 @@ void TanganController::sendMovementCommands() {
     result = dxl_wb.syncWrite(0, mx28_ids, sizeof(mx28_ids)/sizeof(mx28_ids[0]), mx28_moving_speeds, 1, &log);
     if (!result) {
         printf("[ERROR] Sync Write untuk Profile Velocity MX-28 gagal: %s\n", log);
+        exit(1);
     } else {
         // printf("[INFO] Sync Write untuk Profile Velocity MX-28 berhasil untuk %lu servo\n", sizeof(mx28_ids)/sizeof(mx28_ids[0]));
     }
@@ -207,24 +208,27 @@ void TanganController::sendMovementCommands() {
     result = dxl_wb.syncWrite(1, mx28_ids, sizeof(mx28_ids)/sizeof(mx28_ids[0]), mx28_goal_positions, 1, &log);
     if (!result) {
         printf("[ERROR] Sync Write untuk Goal Position MX-28 gagal: %s\n", log);
+        exit(1);
     } else {
         // printf("[INFO] Sync Write untuk Goal Position MX-28 berhasil untuk %lu servo\n", sizeof(mx28_ids)/sizeof(mx28_ids[0]));
-    }
-
-    // Index Handler = 2 untuk Goal Position XL-320
-    result = dxl_wb.syncWrite(2, xl320_ids, sizeof(xl320_ids)/sizeof(xl320_ids[0]), xl320_goal_positions, 1, &log);
-    if (!result) {
-        printf("[ERROR] Sync Write untuk Goal Position XL-320 gagal: %s\n", log);
-    } else {
-        // printf("[INFO] Sync Write untuk Goal Position XL-320 berhasil untuk %lu servo\n", sizeof(xl320_ids)/sizeof(xl320_ids[0]));
     }
 
     // Index Handler = 3 untuk Moving Speed XL-320
     result = dxl_wb.syncWrite(3, xl320_ids, sizeof(xl320_ids)/sizeof(xl320_ids[0]), xl320_moving_speeds, 1, &log);
     if (!result) {
         printf("[ERROR] Sync Write untuk Moving Speed XL-320 gagal: %s\n", log);
+        exit(1);
     } else {
         // printf("[INFO] Sync Write untuk Moving Speed XL-320 berhasil untuk %lu servo\n", sizeof(xl320_ids)/sizeof(xl320_ids[0]));
+    }
+
+    // Index Handler = 2 untuk Goal Position XL-320
+    result = dxl_wb.syncWrite(2, xl320_ids, sizeof(xl320_ids)/sizeof(xl320_ids[0]), xl320_goal_positions, 1, &log);
+    if (!result) {
+        printf("[ERROR] Sync Write untuk Goal Position XL-320 gagal: %s\n", log);
+        exit(1);
+    } else {
+        // printf("[INFO] Sync Write untuk Goal Position XL-320 berhasil untuk %lu servo\n", sizeof(xl320_ids)/sizeof(xl320_ids[0]));
     }
 }
 

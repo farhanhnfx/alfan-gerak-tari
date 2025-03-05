@@ -1,8 +1,16 @@
 #include <program_rekam_gerak/gerak_tari.h>
 
 
-void GerakTariHandler::preload_config() {
-    std::string yaml_content = read_file(PATH_TO_CONFIG);
+void GerakTariHandler::preload_config(const char* config_path) {
+    cout << config_path << endl;
+    if (fs::exists(config_path)) {
+        cout << "File exists" << endl;
+    }
+    else {
+        cout << "File doesn't exist, using main config" << endl;
+        config_path = PATH_TO_CONFIG;
+    }
+    std::string yaml_content = read_file(config_path);
     ryml::Tree tree = ryml::parse_in_place(ryml::to_substr(yaml_content));
 
     // clearing

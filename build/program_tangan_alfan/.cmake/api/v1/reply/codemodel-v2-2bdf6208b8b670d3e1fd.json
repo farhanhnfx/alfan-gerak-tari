@@ -1,0 +1,219 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-91f4ef964283056f9ca0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						3,
+						4,
+						5,
+						6,
+						9,
+						10
+					]
+				},
+				{
+					"build" : "ryml",
+					"childIndexes" : 
+					[
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-ryml-6ea269930d420f1d6f9c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "external/rapidyaml",
+					"targetIndexes" : 
+					[
+						7,
+						8
+					]
+				},
+				{
+					"build" : "ryml/subprojects/c4core/build",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-ryml.subprojects.c4core.build-ecdbf5ee0675de2e268d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 2,
+					"source" : "external/rapidyaml/ext/c4core",
+					"targetIndexes" : 
+					[
+						1,
+						2
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "program_tangan_alfan",
+					"targetIndexes" : 
+					[
+						0,
+						3,
+						4,
+						5,
+						6,
+						9,
+						10
+					]
+				},
+				{
+					"childIndexes" : 
+					[
+						2
+					],
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "ryml",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						7,
+						8
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "c4core",
+					"parentIndex" : 1,
+					"targetIndexes" : 
+					[
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "alfan_lib_main::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-alfan_lib_main-18dc531dc6325b7f250a.json",
+					"name" : "alfan_lib_main",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "c4core::@33ffdb9c8b397333f8f3",
+					"jsonFile" : "target-c4core-e92d2d97b95b301eb487.json",
+					"name" : "c4core",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "c4core-amalgamate::@33ffdb9c8b397333f8f3",
+					"jsonFile" : "target-c4core-amalgamate-d26e707ca38242b27148.json",
+					"name" : "c4core-amalgamate",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "comms_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-comms_lib-53f953ea2e8681215e89.json",
+					"name" : "comms_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "gerak_tari_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gerak_tari_lib-84045ecbac00f82e5255.json",
+					"name" : "gerak_tari_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "program_tangan_alfan_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-program_tangan_alfan_uninstall-1b8b38fbfb2d4c2fd2cc.json",
+					"name" : "program_tangan_alfan_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "rekam_gerak::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-rekam_gerak-607224a46e8ae555f596.json",
+					"name" : "rekam_gerak",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ryml::@cb9aa9d254f173be8a12",
+					"jsonFile" : "target-ryml-c1d3afd0d793bcfbeb89.json",
+					"name" : "ryml",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ryml-uninstall::@cb9aa9d254f173be8a12",
+					"jsonFile" : "target-ryml-uninstall-712dfab0c8c157c20c22.json",
+					"name" : "ryml-uninstall",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "tangan_driver::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-tangan_driver-a42498578b7b941cda11.json",
+					"name" : "tangan_driver",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-c11aa1d3a1e548d0dad9.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/farhanhanif/alfan_ws/src/program_rekam_gerak/build/program_tangan_alfan",
+		"source" : "/home/farhanhanif/alfan_ws/src/program_rekam_gerak"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

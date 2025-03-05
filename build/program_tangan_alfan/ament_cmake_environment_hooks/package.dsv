@@ -1,0 +1,4 @@
+source;share/program_tangan_alfan/local_setup.bash
+source;share/program_tangan_alfan/local_setup.dsv
+source;share/program_tangan_alfan/local_setup.sh
+source;share/program_tangan_alfan/local_setup.zsh

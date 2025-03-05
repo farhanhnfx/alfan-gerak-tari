@@ -1,0 +1,8 @@
+source;share/program_tangan_alfan/hook/cmake_prefix_path.ps1
+source;share/program_tangan_alfan/hook/cmake_prefix_path.dsv
+source;share/program_tangan_alfan/hook/cmake_prefix_path.sh
+source;share/program_tangan_alfan/local_setup.bash
+source;share/program_tangan_alfan/local_setup.dsv
+source;share/program_tangan_alfan/local_setup.ps1
+source;share/program_tangan_alfan/local_setup.sh
+source;share/program_tangan_alfan/local_setup.zsh

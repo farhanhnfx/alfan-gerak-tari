@@ -1,0 +1,42 @@
+gerak_tari_sequences:
+  subfolder: rec
+  sequences:
+    - name: rec 1
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 0
+        - tangan: 1
+        - tangan: 2
+        - tangan: 3
+
+    - name: rec 2
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 4
+        - tangan: 5
+        - tangan: 6
+        - tangan: 7
+
+    - name: rec 3
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 8
+        - tangan: 9
+        - tangan: 10
+        - tangan: 11
+        - tangan: 12
+        - tangan: 13
+
+    - name: rec 4
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 15
+        - tangan: 16

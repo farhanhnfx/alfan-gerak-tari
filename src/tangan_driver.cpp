@@ -1,6 +1,8 @@
 #include <program_rekam_gerak/gerak_tari.h>
 
 GerakTariHandler gerakTariHandler;
+string config_name;
+string fullpath_config;
 
 void cobaGerakTangan() {
     printf("'q' - Quit\n'd' - Default\n'Space' - Play Gerak Tari\n");
@@ -17,7 +19,7 @@ void cobaGerakTangan() {
         cout << "Playing Tari" << endl;
         std::vector<GerakTari> gerak_tari_var_kiri;
         // Preload config gerak tari harapannya akan dijalankan ketika program dimulai
-        gerakTariHandler.preload_config();
+        gerakTariHandler.preload_config(fullpath_config.c_str());
         gerakTariHandler.play();
 
         cout << "Tari Selesai\n\n";
@@ -35,7 +37,14 @@ void cobaGerakTangan() {
 }
 
 
-int main() {
+int main(int argc, char** argv) {
+    if (argc > 1) {
+        config_name = argv[1];
+    }
+    else {
+        config_name = "";
+    }
+    fullpath_config = BASE_PATH + string("config_tari/") + config_name + ".yaml";
 
     TerminalHelper::buildTerminalLoop(cobaGerakTangan);
 

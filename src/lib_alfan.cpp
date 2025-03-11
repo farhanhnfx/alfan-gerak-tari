@@ -372,6 +372,8 @@ void TerminalHelper::resetTerminal() {
 void TerminalHelper::buildTerminalLoop(void (*function)()) {
     saveOriginalTerminal();
     is_running = true;
+
+    atexit(resetTerminal);
     
     ((void (*)())function)();
     printf("\n");

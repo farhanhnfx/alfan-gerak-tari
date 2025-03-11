@@ -16,6 +16,16 @@ void addNewRecordedMotionFrameYAMLFile(int new_motion_frame_recorded);
 void breakCurrentSequenceYAMLFile();
 void deleteLastRecordedMotionFrameYAMLFile();
 
+// Structure to hold comment info
+struct Comment {
+    int line_num;
+    int primary_comment_pos;
+    int additional_comment_pos;
+};
+
+vector<Comment> comments;
+
+
 void updateYAMLFile(string path, ryml::Tree yaml_tree) {
     // Serialize and write back to file
     ofstream out_file(path_to_file);
@@ -41,8 +51,46 @@ void updateYAMLFile(string path, ryml::Tree yaml_tree) {
         name_pos += 7+indentation;  // Move past "- name:"
     }
 
-    out_file << updated_yaml;
+    // out_file << updated_yaml;
+    // out_file.close();
+
+    std::string final_yaml = updated_yaml;
+
+    std::istringstream modified_stream(final_yaml);
+    std::vector<std::string> modified_lines;
+    std::string line;
+    int line_number = 0;
+
+    while (std::getline(modified_stream, line)) {
+        if (comments.size() > 0) {
+            if (line_number == comments.begin()->line_num) {
+                // printf("Comment line_num: %d, primary pos: %d, additional pos: %d\n", comments.begin()->line_num, comments.begin()->primary_comment_pos, comments.begin()->additional_comment_pos);
+                if (comments.begin()->primary_comment_pos != -1) {
+                    line.insert(comments.begin()->primary_comment_pos, "# ");
+                }
+                if (comments.begin()->additional_comment_pos != -1) {
+                    if (comments.begin()->primary_comment_pos != -1) {
+                        line.insert(comments.begin()->additional_comment_pos + 2, "# ");
+                    } else {
+                        line.insert(comments.begin()->additional_comment_pos, "# ");
+                    }
+                }
+                comments.erase(comments.begin());
+            }
+        }
+        modified_lines.push_back(line);
+        line_number++;
+    }
+    
+    std::ostringstream modified_yaml;
+    for (int i = 0; i < modified_lines.size(); i++) {
+        modified_yaml << modified_lines[i] << "\n";
+    }
+
+    out_file << modified_yaml.str();
     out_file.close();
+
+    comments.clear();
 }
 
 void terminalRekamGerak() {
@@ -56,22 +104,22 @@ void terminalRekamGerak() {
           string filename = FileManager::generateFilename();
 
           // Tangan Kanan
-          rekamGerakHelper.readMX28(21);
-          rekamGerakHelper.readXL320(22);
-          rekamGerakHelper.readXL320(23);
-          rekamGerakHelper.readXL320(24);
-          rekamGerakHelper.readXL320(25);
-          rekamGerakHelper.readXL320(26);
+        //   rekamGerakHelper.readMX28(21);
+        //   rekamGerakHelper.readXL320(22);
+        //   rekamGerakHelper.readXL320(23);
+        //   rekamGerakHelper.readXL320(24);
+        //   rekamGerakHelper.readXL320(25);
+        //   rekamGerakHelper.readXL320(26);
 
-          // Tangan Kiri
-          rekamGerakHelper.readMX28(31);
-          rekamGerakHelper.readXL320(32);
-          rekamGerakHelper.readXL320(33);
-          rekamGerakHelper.readXL320(34);
-          rekamGerakHelper.readXL320(35);
-          rekamGerakHelper.readXL320(36);
+        //   // Tangan Kiri
+        //   rekamGerakHelper.readMX28(31);
+        //   rekamGerakHelper.readXL320(32);
+        //   rekamGerakHelper.readXL320(33);
+        //   rekamGerakHelper.readXL320(34);
+        //   rekamGerakHelper.readXL320(35);
+        //   rekamGerakHelper.readXL320(36);
 
-          FileManager::createFile(filename, fileDataTxt, fileDataJson);
+        //   FileManager::createFile(filename, fileDataTxt, fileDataJson);
           addNewRecordedMotionFrameYAMLFile(counter_rekam_gerak - 1);
 
           printf("\n'q' - Quit\n'd' - Default\n");
@@ -95,10 +143,77 @@ std::string read_yaml_file(const std::string &path_to_file) {
         std::cerr << "Error: Cannot open YAML file!" << std::endl;
         return "";
     }
-    
+
     std::ostringstream buffer;
-    buffer << file_yaml.rdbuf();  // Read entire file into the stringstream buffer
-    return buffer.str();
+    std::string line;
+    std::string yaml_content;
+    int line_number = 0;
+    int length = 0;
+
+    while (std::getline(file_yaml, line)) {
+        bool comment_found = false;
+        bool char_found = false;
+
+        for (int i = 0; i < line.size(); i++) {
+            if (line[i] == ' ') {
+                continue;
+            }
+            if (line[i] != '#') {
+                if (line[i] != ' ') {
+                    if (!char_found) {
+                        char_found = true;
+                    }
+                }
+            }
+
+            if (!char_found) {
+                if (line[i] == '#') {   // menandakan bahwa ini comment utama
+                    Comment comment;
+                    comment.line_num = line_number;
+                    comment.primary_comment_pos = i;
+                    comment_found = true;
+                    comments.push_back({line_number, i, -1});
+                    printf("[Line %d][Pos %d][Found at %d] %s\n", line_number, length, i, line.c_str());
+
+                    line.erase(i, 2);  // hapus comment & spasi setelahnya
+                }
+            }
+            else {
+                if (line[i] == '#') {   // menandakan bahwa ini comment tambahan di akhir
+                    int curr_comment_size = comments.size();
+                    if (curr_comment_size > 0) {
+                        Comment latestComment = comments[comments.size()-1];
+                        if (latestComment.line_num == line_number) {
+                            latestComment.additional_comment_pos = i;
+                            comments[comments.size()-1] = latestComment;
+                            comment_found = true;
+                            line.erase(i, 2);  // hapus comment & spasi setelahnya
+                        }
+                        else {
+                            comment_found = true;
+                            comments.push_back({line_number, -1, i});
+                            line.erase(i, 2);  // hapus comment & spasi setelahnya
+                        }
+                    }
+                    else {
+                        comment_found = true;
+                        comments.push_back({line_number, -1, i});
+                        line.erase(i, 2);  // hapus comment & spasi setelahnya
+                    }
+                    printf("[Line %d][Pos %d][Found at %d] %s\n", line_number, length, i, line.c_str());
+                }
+            }
+        }
+        
+
+        length += line.length();
+        yaml_content += line + "\n";
+        line_number++;
+    }
+
+    file_yaml.close();
+
+    return yaml_content;
 }
 
 void createYAMLFile(string name) {
@@ -132,6 +247,8 @@ void createNewSequenceYAMLFile(ryml::NodeRef &sequences_of_gerak_tari) {
 
 void addNewRecordedMotionFrameYAMLFile(int new_motion_frame_recorded) {
     std::string yaml_content = read_yaml_file(path_to_file);
+
+    printf("yaml_content: %s\n", yaml_content.c_str());
 
     ryml::Tree tree = ryml::parse_in_place(ryml::to_substr(yaml_content));
     ryml::NodeRef root = tree.rootref();
@@ -249,7 +366,7 @@ void deleteLastRecordedMotionFrameYAMLFile() {
 
 
 int main() {
-    rekamGerakHelper.init();
+    // rekamGerakHelper.init();
 
     cout << "Masukkan nama Gerak Tari: ";
     string subfolder;

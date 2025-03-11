@@ -40,7 +40,7 @@ namespace fs = std::filesystem;
 #define KANAN22 105  //+keluar
 #define KANAN23 180  //+keluar
 #define KANAN24 65   //+angkat
-#define KANAN25 105  //+keluar
+#define KANAN25 90  //+keluar
 #define KANAN26 150  //-turun
 
 //_LEFT HAND_//
@@ -49,7 +49,7 @@ namespace fs = std::filesystem;
 #define KIRI32 105  //-keluar
 #define KIRI33 105  // +dalam
 #define KIRI34 250  //-naik
-#define KIRI35 195  // +dalam
+#define KIRI35 210  // +dalam
 #define KIRI36 150  // -naek
 
 #define KANAN 0

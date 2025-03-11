@@ -104,26 +104,28 @@ void terminalRekamGerak() {
           string filename = FileManager::generateFilename();
 
           // Tangan Kanan
-        //   rekamGerakHelper.readMX28(21);
-        //   rekamGerakHelper.readXL320(22);
-        //   rekamGerakHelper.readXL320(23);
-        //   rekamGerakHelper.readXL320(24);
-        //   rekamGerakHelper.readXL320(25);
-        //   rekamGerakHelper.readXL320(26);
+          rekamGerakHelper.readMX28(21);
+          rekamGerakHelper.readXL320(22);
+          rekamGerakHelper.readXL320(23);
+          rekamGerakHelper.readXL320(24);
+          rekamGerakHelper.readXL320(25);
+          rekamGerakHelper.readXL320(26);
 
-        //   // Tangan Kiri
-        //   rekamGerakHelper.readMX28(31);
-        //   rekamGerakHelper.readXL320(32);
-        //   rekamGerakHelper.readXL320(33);
-        //   rekamGerakHelper.readXL320(34);
-        //   rekamGerakHelper.readXL320(35);
-        //   rekamGerakHelper.readXL320(36);
+          // Tangan Kiri
+          rekamGerakHelper.readMX28(31);
+          rekamGerakHelper.readXL320(32);
+          rekamGerakHelper.readXL320(33);
+          rekamGerakHelper.readXL320(34);
+          rekamGerakHelper.readXL320(35);
+          rekamGerakHelper.readXL320(36);
 
-        //   FileManager::createFile(filename, fileDataTxt, fileDataJson);
+          FileManager::createFile(filename, fileDataTxt, fileDataJson);
           addNewRecordedMotionFrameYAMLFile(counter_rekam_gerak - 1);
 
           printf("\n'q' - Quit\n'd' - Default\n");
           printf("'r' - Rekam Gerak\n");
+          printf("'b' - Break (buat sequence gerak baru)\n");
+          printf("'c' - Cancel (hapus rekaman gerak/motion frame terakhir)\n");
     }
     else if (TerminalHelper::key_pressed == 'b') {
         // Break
@@ -173,7 +175,7 @@ std::string read_yaml_file(const std::string &path_to_file) {
                     comment.primary_comment_pos = i;
                     comment_found = true;
                     comments.push_back({line_number, i, -1});
-                    printf("[Line %d][Pos %d][Found at %d] %s\n", line_number, length, i, line.c_str());
+                    // printf("[Line %d][Pos %d][Found at %d] %s\n", line_number, length, i, line.c_str());
 
                     line.erase(i, 2);  // hapus comment & spasi setelahnya
                 }
@@ -200,7 +202,7 @@ std::string read_yaml_file(const std::string &path_to_file) {
                         comments.push_back({line_number, -1, i});
                         line.erase(i, 2);  // hapus comment & spasi setelahnya
                     }
-                    printf("[Line %d][Pos %d][Found at %d] %s\n", line_number, length, i, line.c_str());
+                    // printf("[Line %d][Pos %d][Found at %d] %s\n", line_number, length, i, line.c_str());
                 }
             }
         }
@@ -248,7 +250,7 @@ void createNewSequenceYAMLFile(ryml::NodeRef &sequences_of_gerak_tari) {
 void addNewRecordedMotionFrameYAMLFile(int new_motion_frame_recorded) {
     std::string yaml_content = read_yaml_file(path_to_file);
 
-    printf("yaml_content: %s\n", yaml_content.c_str());
+    // printf("yaml_content: %s\n", yaml_content.c_str());
 
     ryml::Tree tree = ryml::parse_in_place(ryml::to_substr(yaml_content));
     ryml::NodeRef root = tree.rootref();
@@ -366,7 +368,7 @@ void deleteLastRecordedMotionFrameYAMLFile() {
 
 
 int main() {
-    // rekamGerakHelper.init();
+    rekamGerakHelper.init();
 
     cout << "Masukkan nama Gerak Tari: ";
     string subfolder;

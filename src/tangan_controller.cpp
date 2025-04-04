@@ -2,8 +2,8 @@
 
 
 TanganController::TanganController() {
-    init();
-    setupSyncWriteHandler();
+    // init();
+    // setupSyncWriteHandler();
 }
 
 void TanganController::init() {
@@ -102,7 +102,7 @@ void TanganController::bacaGerak(int gerakCounter, float speed) {
 }
 
 void TanganController::transmit() {
-    sendMovementCommands();
+    // sendMovementCommands();
 }
 
 void TanganController::processMotionFrame(int gerakCounter, float speed) {
@@ -161,7 +161,7 @@ void TanganController::calculateSpeeds(int id, int goalPosition, float speed) {
     else if (moving_speeds[id] <= 0) {
         moving_speeds[id] = 1;
     }
-    printf("ID: %d\tGoal Position: %d\t(%d derajat)\tPrev Degree: %d\t Diff: %d\tSpeed: %d in %f second\n", id, goalPosition, degree, latestPositionInDegree[id], degreeDifference[id], moving_speeds[id], secondToReach);
+    // printf("ID: %d\tGoal Position: %d\t(%d derajat)\tPrev Degree: %d\t Diff: %d\tSpeed: %d in %f second\n", id, goalPosition, degree, latestPositionInDegree[id], degreeDifference[id], moving_speeds[id], secondToReach);
     // printf("ID: %d\tGoal Position: %d\t(%d derajat)\tPrev Degree: %d\tDiff: %d\n", id, goalPosition, degree, latestPositionInDegree[id], degreeDifference[id]);
 
     updateLatestPositionInDegree(id, goalPosition);

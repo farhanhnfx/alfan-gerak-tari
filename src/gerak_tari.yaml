@@ -57,133 +57,114 @@
 gerak_tari_sequences:
   subfolder: fortune cookie
   sequences:
-    # - name: Syapp
-    #   is_walking: false
-    #   speeds: 5
-    #   times: 500
-    #   motion_frames:
-    #     - tangan: 8
-    #     - tangan: 9
-    #     - tangan: 10
-    #     - tangan: 11
-    #     - tangan: 12
-    #     - tangan: 13
-    #     - tangan: 14
-    #     - tangan: 15
-    #     - tangan: 9
-    #     - tangan: 10
-    #     - tangan: 11
-
-    # - name: Pingwin
-    #   is_walking: false
-    #   speeds: 5
-    #   times: 500
-    #   motion_frames:
-    #     - tangan: 16
-    #     - tangan: 17
-    #     - tangan: 18
-    #     - tangan: 19
-    #     - tangan: 20
-    
-    # - name: Kamey
-    #   is_walking: false
-    #   speeds: 5
-    #   times: 500
-    #   motion_frames:
-    #     - tangan: 62
-    #     - tangan: 63
-    #     - tangan: 64
-    #     - tangan: 65
-    #     - tangan: 66
-    #     - tangan: 67
-    #     - tangan: 68
-    #     - tangan: 69
-    #     - tangan: 70
-    #     - tangan: 71
-    #     - tangan: 72
-    #     - tangan: 73
-    #     - tangan: 74
-    #     - tangan: 75
-    #     - tangan: 76
-    #     - tangan: 77
-    #     - tangan: 78
-    #     - tangan: 79
-    #     - tangan: 80
-    #     - tangan: 81
-    #     - tangan: 82
-    #     - tangan: 83
-    #     - tangan: 84
-        
-    # - name: Kibas
-    #   is_walking: false
-    #   speeds: 5
-    #   times: 500
-    #   motion_frames:
-    #     - tangan: 31
-    #     - tangan: 32
-    #     - tangan: 33
-    #     - tangan: 34
-    #     - tangan: 35
-    #     - tangan: 36
-    #     - tangan: 37
-    #     - tangan: 38
-    #     - tangan: 39
-    #     - tangan: 40
-    #     - tangan: 41
-    #     - tangan: 42
-    #     - tangan: 43
-    #     - tangan: 44
-    #     - tangan: 45
-    #     - tangan: 31
-    #     - tangan: 32
-    #     - tangan: 33
-    #     - tangan: 34
-    #     - tangan: 35
-    #     - tangan: 36
-    #     - tangan: 37
-
-    # - name: Maskulin
-    #   is_walking: false
-    #   speeds: 5
-    #   times: 500
-    #   motion_frames:
-    #     - tangan: 46
-    #     - tangan: 47
-    #     - tangan: 48
-    #     - tangan: 49
-    #     - tangan: 50
-    #     - tangan: 51
-    #     - tangan: 52
-    #     - tangan: 53
-    #     - tangan: 54
-    #     - tangan: 55
-    #     - tangan: 56
-    #     - tangan: 57
-    #     - tangan: 58
-    #     - tangan: 59
-    #     - tangan: 60
-    #     - tangan: 61
-
-    - name: KipasNasi
+    - name: Gerak 1
       is_walking: false
       speeds: 5
       times: 500
       motion_frames:
-        - tangan: 96
-        - tangan: 97
-        - tangan: 98
-        - tangan: 99
-        - tangan: 89
-        - tangan: 90
-        - tangan: 91
-        - tangan: 92
-        - tangan: 93
-        - tangan: 94
-        - tangan: 95
-        - tangan: 89
-        - tangan: 90
-        - tangan: 91
-        - tangan: 92
-        - tangan: 93
-        - tangan: 94
-        - tangan: 95
+        - tangan: 1
+        - tangan: 2
+        - tangan: 3
+        - tangan: 4
+        - tangan: 5
+        - tangan: 6
+        - tangan: 7
+        - tangan: 8
+
+    - name: Gerak 2
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 1
+        - tangan: 2
+        - tangan: 3
+        - tangan: 4
+        - tangan: 5
+        - tangan: 6
+        - tangan: 7
+        - tangan: 8
+
+    - name: Gerak 3
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 1
+        - tangan: 2
+        - tangan: 3
+        - tangan: 4
+        - tangan: 5
+        - tangan: 6
+        - tangan: 7
+        - tangan: 8
+
+    - name: Gerak 4
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 1
+        - tangan: 2
+        - tangan: 3
+        - tangan: 4
+        - tangan: 5
+        - tangan: 6
+        - tangan: 7
+        - tangan: 8
+
+    - name: Gerak 5
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 1
+        - tangan: 2
+        - tangan: 3
+        - tangan: 4
+        - tangan: 5
+        - tangan: 6
+        - tangan: 7
+        - tangan: 8
+
+    - name: Gerak 6
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 1
+        - tangan: 2
+        - tangan: 3
+        - tangan: 4
+        - tangan: 5
+        - tangan: 6
+        - tangan: 7
+        - tangan: 8
+
+    - name: Gerak 7
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 1
+        - tangan: 2
+        - tangan: 3
+        - tangan: 4
+        - tangan: 5
+        - tangan: 6
+        - tangan: 7
+        - tangan: 8
+
+    - name: Gerak 8
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 1
+        - tangan: 2
+        - tangan: 3
+        - tangan: 4
+        - tangan: 5
+        - tangan: 6
+        - tangan: 7
+        - tangan: 8

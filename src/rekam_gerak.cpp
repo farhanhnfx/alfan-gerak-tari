@@ -119,7 +119,7 @@ void terminalRekamGerak() {
           rekamGerakHelper.readXL320(35);
           rekamGerakHelper.readXL320(36);
 
-          FileManager::createFile(filename, fileDataTxt, fileDataJson);
+          FileManager::createFile(filename, fileDataTxt);
           addNewRecordedMotionFrameYAMLFile(counter_rekam_gerak - 1);
 
           printf("\n'q' - Quit\n'd' - Default\n");

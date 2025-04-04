@@ -11,7 +11,6 @@ unordered_map<uint8_t, int32_t> Default = {
 
 /* Kebutuhan Rekam Gerak */
 string fileDataTxt = ""; // Contain the data to be written to the file`
-string fileDataJson = ""; // Contain the data to be written to the file
 int counter_rekam_gerak = 0;
 int32_t selisihPresentDefault = 0;
 
@@ -24,15 +23,17 @@ termios originalTermios;
 
 
 
-
+/*
+ * @brief Fungsi untuk generate nama file (Rekam Gerak)
+ * @return string nama file yang dihasilkan
+ * @note Nama file dihasilkan dengan format "GRK<counter>.txt"
+*/
 string FileManager::generateFilename() {
     string filenameTxt;
     string filenameJson;
 
     do {
         // Generate the filename with the counter
-        // filenameTxt = string(FILE_PATH_TXT) + FILE_BASENAME + to_string(counter);
-        // filenameJson = string(FILE_PATH_JSON) + FILE_BASENAME + to_string(counter);
         filenameTxt = file_path_txt + FILE_BASENAME + to_string(counter_rekam_gerak);
         counter_rekam_gerak++;
     } while (fs::exists(filenameTxt + FILE_EXTENSION_TXT));  // Check if the file already exists
@@ -40,13 +41,12 @@ string FileManager::generateFilename() {
     return FILE_BASENAME + to_string(counter_rekam_gerak-1);
 }
 
-void FileManager::createFile(string filename, string dataTxt, string dataJson) {
+void FileManager::createFile(string filename, string dataTxt) {
     // Error check
     if (errorBaca) {
         cerr << "Error detected. File not created.\n";
         errorBaca = false;
         fileDataTxt = ""; // Reset the file data
-        fileDataJson = ""; // Reset the file data
         counter_rekam_gerak--;
         return;
     }
@@ -65,24 +65,6 @@ void FileManager::createFile(string filename, string dataTxt, string dataJson) {
     } else {
         cerr << "Unable to create the TXT file.\n";
     }
-
-    // // Check if the file was created successfully
-    // if (fileJson.is_open()) {
-    //     fileJson << "{\n";
-    //     fileJson << "  \"data\": [\n";
-    //     fileJson << dataJson;
-    //     fileJson << "  ]\n";
-    //     fileJson << "}\n";
-        
-    //     // Close the file after writing
-    //     fileJson.close();
-    //     cout << "File created and written successfully.\n";
-
-    //     fileDataJson = ""; // Reset the file data
-    // } else {
-    //     cerr << "Unable to create the JSON file.\n";
-    // }
-
 }
 
 void FileManager::setSubfolder(string subfolder) {
@@ -110,18 +92,6 @@ void FileManager::writeFileData(uint8_t id, int32_t selisihPresentDefault) {
     fileDataTxt += ";";
     fileDataTxt += to_string(selisihPresentDefault);
     fileDataTxt += "B\n";
-
-    // buat JSON file-nya
-    fileDataJson += "\t{\n";
-    fileDataJson += "\t\t\"id\": " + to_string(id) + ",\n";
-    fileDataJson += "\t\t\"deltaPosition\": " + to_string(selisihPresentDefault) + "\n";
-    fileDataJson += "\t}";
-    if (id != 36) {
-        fileDataJson += ",\n";
-    }
-    else {
-        fileDataJson += "\n";
-    }
 }
 
 map<uint8_t, int32_t> FileManager::parseFileTxt(int counterGerak) {
@@ -165,43 +135,9 @@ map<uint8_t, int32_t> FileManager::parseFileTxt(int counterGerak) {
     return parsedData;
 }
 
-map<uint8_t, int32_t> FileManager::parseFileJson(int counterGerak) {
-    map<uint8_t, int32_t> parsedData;
-    string filePath = string(FILE_PATH_JSON) + FILE_BASENAME + to_string(counterGerak) + FILE_EXTENSION_JSON;
-    ifstream fileJson(filePath);
-
-    if (fileJson.is_open()) {
-        nlohmann::json jsonData;
-        fileJson >> jsonData;
-        fileJson.close();
-
-        // for (auto const& [id, value] : jsonData.items()) {
-        //     parsedData[stoi(id)] = value;
-        // }
-        for (const auto &entry : jsonData["data"]) {
-            // cout << "ID: " << entry["id"] << ", Value: " << entry["deltaPosition"] << endl;
-            uint8_t id = entry["id"];
-            int32_t deltaPositionInByte = entry["deltaPosition"];
-                
-            if (id == 21 || id == 31) {
-                parsedData[id] = deltaPositionInByte + ConvertUtils::degreeToValueMX28(Default[id]);   // In Byte
-            }
-            else {
-                parsedData[id] = deltaPositionInByte + ConvertUtils::degreeToValueXL320(Default[id]);     // In Byte
-            }
-        }
-
-    } else {
-        cerr << "Unable to open file: " << filePath << endl;
-    }
-
-    return parsedData;
-}
-
 void FileManager::deleteLatestRecord() {
     if (counter_rekam_gerak > 0) {
         counter_rekam_gerak--;
-        // string filePathTxt = string(FILE_PATH_TXT) + FILE_BASENAME + to_string(counter) + FILE_EXTENSION_TXT;
         string filePathTxt = file_path_txt + FILE_BASENAME + to_string(counter_rekam_gerak) + FILE_EXTENSION_TXT;
         if (fs::exists(filePathTxt)) {
             fs::remove(filePathTxt);

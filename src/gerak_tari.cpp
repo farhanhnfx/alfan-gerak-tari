@@ -1,6 +1,76 @@
 #include <program_rekam_gerak/gerak_tari.h>
 
 
+GerakTariHandler::GerakTariHandler() : Node(THIS_ROBOT_NAME + "_gerak_tari_handler") {
+    subs_variasi_gerak = this->create_subscription<std_msgs::msg::String>(
+        THIS_ROBOT_NAME + "/variasi_gerak", 10,
+        [this](std_msgs::msg::String::SharedPtr msg) {
+            variasi_gerak_pressed = msg->data;
+            RCLCPP_INFO(this->get_logger(), "Received: %s", msg->data.c_str());
+
+            /*
+                variasi_gerak_pressed = VAR_KIRI atau VAR_KANAN
+            */
+           // Ambil & load konfigurasi-nya
+            string config_path = BASE_PATH + variasi_gerak_pressed + ".yaml";
+            this->preload_config(config_path.c_str());
+
+            // Hapus subscription-nya setelah set variasi
+            subs_variasi_gerak.reset();
+        });
+    
+}
+
+GerakTariHandler::~GerakTariHandler() {
+
+}
+
+bool GerakTariHandler::isVariasiBtnHasPressed() {
+    return variasi_gerak_pressed == "VAR_KIRI"
+                        ||
+           variasi_gerak_pressed == "VAR_KANAN";
+}
+
+void GerakTariHandler::pingServos() {
+    tanganController.pingMX28();
+    tanganController.pingXL320();
+}
+
+void GerakTariHandler::setTorqueOn() {
+    tanganController.setTorqueOn();
+}
+
+void GerakTariHandler::setTorqueOff() {
+    tanganController.setTorqueOff();
+}
+
+void GerakTariHandler::setDefaultPose() {
+    /*
+        TO DO:
+        Menentukan format konfigurasi .yaml
+        Untuk kemudian nantinya dibaca di fungsi ini
+        Sehingga bisa melakukan kustomisasi pose Default
+
+        Fungsi ini akan dijalankan ketika robot dihidupkan
+
+        Format konfigurasi yang dibayangkan:
+        - tangan: (int) < baca rekaman tangan (mungkin di subfolder "DefaultPose" atau sejenisnya)
+        - kepala: (x, y, z) < sudut yang diperlukan untuk kepala ID 41, 42, 43
+        - kaki:
+          - kanan: (x, y, z)
+          - kiri: (x, y, z)
+
+        Yang diperlukan:
+        - baca posisi tangan yang sudah direkam untuk dijadikan pose default
+        - set kepala dan kaki sesuai yang ditentukan
+        - sleep selama 2-3 detik untuk mencapai posisi Default
+    */
+
+    RCLCPP_INFO(this->get_logger(), "POse default robot");
+
+    tanganController.toDefaultPose();
+}
+
 void GerakTariHandler::preload_config(const char* config_path) {
     cout << config_path << endl;
     if (fs::exists(config_path)) {
@@ -71,18 +141,28 @@ void GerakTariHandler::play() {
         TO DO:
         Sebelum benar-benar play tarian, cek komunikasi terlebih dahulu
     */
-
-    Communication comms;
+   
+    // rclcpp::init(0, nullptr);
+    auto comms = std::make_shared<Communication>();
+    comms->starting_condition();
 
     unsigned long interval = 0;
 
     auto start_tari_times = std::chrono::steady_clock::now();
+
+    int tari_index = 0;
+    if (rescue_mode) {
+        tari_index = gerak_tari_current_index;
+    }
     
-    for (int i = 0; i < gerak_tari_size; i++) {
+    for (tari_index; tari_index< gerak_tari_size; tari_index++) {
         // TO DO
         // if panic dll
+        comms->update_panic_state();
+        comms->publish_internal_index();
+        comms->update_other_index();
         if (!panic_mode) {
-            comms.request_music();
+            comms->request_music();
         }
         else if (panic_mode) {
             // Panic ON
@@ -112,37 +192,35 @@ void GerakTariHandler::play() {
                 long elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(current_millis - previous_millis).count();
                 if (elapsed_time >= interval) {
                     count_time++;
-                    printf("Time out.\n");
+                    RCLCPP_INFO(comms->get_logger(), "Time out.");
                     break;
                 }
             }
 
             if (count_transmit == 0) {
-                comms.transmit_data(music_state, gerak_tari_current_index);
                 count_transmit++;
             }
 
-            printf("Waiting for counter match...(count time: %i)\n", count_time);
-            comms.receives_data();
+            RCLCPP_INFO(comms->get_logger(), "Waiting for counter match...(count time: %i)", count_time);
+            comms->update_other_index();
             std::this_thread::sleep_for(std::chrono::milliseconds(10)); // Simulate delay
         }
 
-        // // check mute sementara
-        // if (list_of_gerak_tari.at(i).name == "contohGerakTari_4") {
-        //     setCurrentMusicState(0);
-        // }
-        // else if (list_of_gerak_tari.at(i).name == "contohGerakTari_5") {
-        //     setCurrentMusicState(1);
-        // }
-
-        gerak_tari_current_index = i;
-        execute_move(list_of_gerak_tari.at(i));
-
+        execute_move(list_of_gerak_tari.at(tari_index));
+        gerak_tari_current_index++;
+        rescue_mode = false;
+        music_state = 1;
     }
 
     auto end_tari_times = std::chrono::steady_clock::now();
     long elapsed_tari_time = std::chrono::duration_cast<std::chrono::milliseconds>(end_tari_times - start_tari_times).count();
-    printf("Total time: %ld ms\n", elapsed_tari_time);
+    RCLCPP_INFO(comms->get_logger(), "Total time: %ld ms", elapsed_tari_time);
+
+    // Selesai - Shutdown ROS2
+    RCLCPP_INFO(comms->get_logger(), "Gerak tari selesai - SHUTDOWN");
+    comms->request_shutdown();
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    // rclcpp::shutdown();
 }
 
 std::string GerakTariHandler::read_file(const char *filename) {
@@ -170,7 +248,7 @@ void GerakTariHandler::execute_move(GerakTari gerak_tari) {
            // [int count_shift di program lama]
             int range_of_shifted_gerak = last_mute_index + mute_on_walk_counter;
 
-            printf("\t\tlast mute index: %i\n", last_mute_index);
+            RCLCPP_INFO(rclcpp::get_logger("gerak_tari"), "last mute index: %i", last_mute_index);
             
             // Melakukan deteksi apakah ada walk setelah kondisi mute selesai
             for (int i = last_mute_index + 1; i <= range_of_shifted_gerak; i++ ) {
@@ -197,10 +275,10 @@ void GerakTariHandler::execute_move(GerakTari gerak_tari) {
             // Melakukan assign walk di shifted_walk_moves ke gerak tari yang dituju
             // jika ada walk yang di-shifting atau perlu digeser
             if (shift_next_walk_counter > 0) {
-                printf("\t\tshift_next_Walk_counter: %i\n", shift_next_walk_counter);
+                RCLCPP_INFO(rclcpp::get_logger("gerak_tari"), "shift_next_Walk_counter: %i", shift_next_walk_counter);
                 for (int i = 0; i < shift_next_walk_counter; i++) {
                     int shifted_idx = range_of_shifted_gerak + (i+1);
-                    printf("\t\t\tshifted index: %i\n", shifted_idx);
+                    RCLCPP_INFO(rclcpp::get_logger("gerak_tari"), "shifted index: %i", shifted_idx);
                     
                     list_of_gerak_tari.at(shifted_idx) = shifted_next_walk_moves.at(i);
                 }
@@ -235,13 +313,11 @@ void GerakTariHandler::execute_move(GerakTari gerak_tari) {
     }
 
     if (music_state == 1) {
-        printf("EXECUTING %s with speeds %0.2f for %0.2f seconds (%i moves)\n", gerak_tari.name.c_str(), gerak_tari.speeds, (gerak_tari.times*gerak_tari.motion_frames.size())/1000.00, gerak_tari.motion_frames.size());
+        RCLCPP_INFO(rclcpp::get_logger("gerak_tari"), "EXECUTING %s with speeds %0.2f for %0.2f seconds (%i moves)", gerak_tari.name.c_str(), gerak_tari.speeds, (gerak_tari.times*gerak_tari.motion_frames.size())/1000.00, gerak_tari.motion_frames.size());
     }
     else {
-        printf("KONDISI MUSIC MUTE - %s tidak dijalankan\n", gerak_tari.name.c_str());
+        RCLCPP_INFO(rclcpp::get_logger("gerak_tari"), "KONDISI MUSIC MUTE - %s tidak dijalankan", gerak_tari.name.c_str());
     }
-
-    // printf("\t\tmute_on_walk_counter: %i, shift_next_walk_counter: %i\n", mute_on_walk_counter, shift_next_walk_counter);
 
     // Eksekusi gerakan di sini aja ding
     for (int i = 0; i < gerak_tari.motion_frames.size(); i++) {
@@ -250,17 +326,16 @@ void GerakTariHandler::execute_move(GerakTari gerak_tari) {
         tanganController.bacaGerak(motion_frame.tangan, gerak_tari.speeds);
 
         if (music_state == 1) {
-            // printf("------------------EXECUTING: %s with speeds %f\n\n", gerak_tari.name.c_str(), gerak_tari.speeds);
             tanganController.transmit();
         }
         else if (music_state == 0) {
-            // printf("MUSIC STATE == FALSE | MOVEMENT NOT EXECUTED\n");
+            // RCLCPP_INFO(rclcpp::get_logger("gerak_tari"), "MUSIC STATE == FALSE | MOVEMENT NOT EXECUTED");
         }
             
         // usleep(gerak_tari.times * 1000);
         std::this_thread::sleep_for(std::chrono::milliseconds(gerak_tari.times));
 
-        printf("\nNext Frame:\n");
+        // RCLCPP_INFO(rclcpp::get_logger("gerak_tari"), "Next Frame:");
     }
 
 }

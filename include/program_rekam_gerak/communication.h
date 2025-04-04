@@ -2,6 +2,8 @@
 #define COMMUNICATION_H
 
 #include <unistd.h>
+#include <rclcpp/rclcpp.hpp>
+#include "communication_interfaces/srv/communication_data.hpp"
 
 extern bool panic_mode;     // Status mode panic (1) atau tidak (0)
 extern bool rescue_mode;    // Status mode rescue (1) atau tidak (0)
@@ -23,6 +25,7 @@ class Communication {
     void request_music();
     void transmit_data(bool music_condition, int count);
     void receives_data();
+    void request_comm_service();
 };
 
 

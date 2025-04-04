@@ -18,7 +18,7 @@
 #include <chrono>
 #include <thread>
 
-#include <program_rekam_gerak/nlohmann_json/json.hpp>
+#include <unordered_map>
 
 #include <dynamixel_workbench_toolbox/dynamixel_workbench.h>
 
@@ -29,10 +29,8 @@ namespace fs = std::filesystem;
 //_FILE SETTINGS_//
 #define BASE_PATH "/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/"
 #define FILE_PATH_TXT BASE_PATH "Result/txt/"
-#define FILE_PATH_JSON BASE_PATH "Result/json/"
 #define FILE_BASENAME "GRK"
 #define FILE_EXTENSION_TXT ".txt"
-#define FILE_EXTENSION_JSON ".json"
 
 //_RIGHT HAND_//
 //___DEGREE___//
@@ -77,7 +75,6 @@ const float CONST_XL320 = 300.0 / 1023.0;   // 0.293
 extern unordered_map<uint8_t, int32_t> Default;
 extern int counter_rekam_gerak;
 extern string fileDataTxt;
-extern string fileDataJson;
 extern int32_t selisihPresentDefault;
 extern bool errorBaca;
 
@@ -105,23 +102,26 @@ class ConvertUtils {
     }
 };
 
-/* Digunakan untuk write/read file Program Rekam Gerak */
+
+/*
+ * Class untuk hal yang berkaitan dengan file (write, read, delete)
+*/
 class FileManager {
     public:
     static string generateFilename();
 
-    static void createFile(string filename, string dataTxt, string dataJson);
+    static void createFile(string filename, string dataTxt);
     static void writeFileData(uint8_t id, int32_t selisihPresentDefault);
     static void setSubfolder(string subfolder);
     static void setNewFullPathTxt(string full_path);
     static void deleteLatestRecord();
 
     static map<uint8_t, int32_t> parseFileTxt(int counterGerak);
-
-    static map<uint8_t, int32_t> parseFileJson(int counterGerak);
 };
 
-/* Helper untuk mempermudah debug rekam gerak */
+/* 
+ * Class Helper untuk mempermudah rekam gerak
+*/
 class RekamGerakHelper {
     private:
     DynamixelWorkbench dxl_wb;
@@ -137,8 +137,11 @@ class RekamGerakHelper {
 };
 
 
-/* Digunakan untuk program Rekam Gerak yang
-   memerlukan bantuan terminal */
+/* 
+ * Class yang digunakan untuk membangun terminal
+ * Contoh penggunaan ketika Rekam Gerak
+ * serta menguji gerakan yang telah direkam
+ */
 class TerminalHelper {
     private:
     static bool is_running;
@@ -157,7 +160,9 @@ class TerminalHelper {
     static void buildTerminalLoop(void (*function)());
 };
 
-
+/*
+ * Class untuk menghubungkan ke servo
+*/
 class ServoConnector {
     private:
     const uint32_t baud_rate = 1000000;

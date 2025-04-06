@@ -6,7 +6,7 @@ Link terkait: https://docs.google.com/document/d/14YH6WwX3MLx6o_tqQHlnr0oFchm8Jj
 
 
 <b>Langkah instalasi:</b>
-1. Clone repository ini ke dalam <i>directory <b>src</b></i> pada workspace-mu! (jalankan terminal '<b><i>git clone [link git repository]</i></b>' di dalam <i>{nama_workspace}/src/</i>)
+1. Clone repository ini ke dalam <i>directory <b>src</b></i> pada workspace-mu! (jalankan terminal '<b><i>git clone --recurse-submodules [link git repository]</i></b>' di dalam <i>{nama_workspace}/src/</i>). Menggunakan tambahan <b><i>'--recurse-submodules'</i></b> karena di-dalam program ini juga menggunakan RapidYAML dari repository lain (https://github.com/biojppm/rapidyaml). Apabila terlanjur clone biasa tanpa --recurse-submodules maka dapat menjalankan <b><i>'git submodule update --init --recursive'</i></b> untuk mendapatkan RapidYAML.
 2. Jika berhasil, maka akan muncul folder baru di dalam <i>{workspace}/src/</i> yaitu program ini sendiri.
 3. Buka terminal lalu kembali ke <i>root</i> dari <i>workspace</i>-mu (bisa menggunakan perintah '<i><b>cd ..</b></i>' sehingga terminal akan berada di <i>root workspace</i>
 4. Build package ini dengan menjalankan perintah '<i><b>colcon build --packages-select alfan_gerak_tari</b></i>'

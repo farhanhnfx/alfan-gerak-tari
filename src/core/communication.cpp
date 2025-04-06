@@ -1,15 +1,5 @@
-#include <program_rekam_gerak/communication_manager.h>
-
-bool panic_mode = true;     // Status mode panic (1) atau tidak (0)
-bool rescue_mode = false;    // Status mode rescue (1) atau tidak (0)
-int music_state = 0;     // Status musik apakah play (1) atau mute (0)
-int gerak_tari_current_index = 0; // Tracker indeks gerak tari ke-berapa
-int data_gerak_tari_others_index = 0;    // Tracker data dari robot satunya
-int count_time = 0; // variabel untuk membantu sinkronisasi gerakan
-
-std::string THIS_ROBOT_NAME = "JUNA";
-std::string OTHER_ROBOT_NAME = "CHACA";
-
+#include <alfan_gerak_tari/core/communication.h>
+#include <alfan_gerak_tari/globals.h>
 
 Communication::Communication(): Node(THIS_ROBOT_NAME + "_communication_manager_cpp"){
     pub_internal_index = this->create_publisher<std_msgs::msg::Int32>(THIS_ROBOT_NAME + "/internal/current_index", 10);
@@ -27,16 +17,16 @@ Communication::Communication(): Node(THIS_ROBOT_NAME + "_communication_manager_c
 
 Communication::~Communication() {}
 
-void Communication::starting_condition() {
+void Communication::startingCondition() {
     while (music_state == 0) {
-        request_music();
+        requestMusic();
         usleep(500);
     }
 
     RCLCPP_INFO(this->get_logger(), "Music oke");
 
-    publish_internal_index();
-    update_other_index();
+    publishInternalIndex();
+    updateOtherIndex();
 
     // Sinkronisasi nilai dari indeks gerak tari sekarang dan data yang didapat dari robot lain
     // untuk keadaan rescue
@@ -55,11 +45,11 @@ void Communication::starting_condition() {
         gerak_tari_current_index++;
     }
 
-    publish_internal_index();
+    publishInternalIndex();
 }
 
-void Communication::request_music() {
-    update_panic_state();
+void Communication::requestMusic() {
+    updatePanicState();
 
     if (panic_mode) {
         // Masuk panic mode, langsung assign 1 ke music_state
@@ -67,16 +57,16 @@ void Communication::request_music() {
         return;
     }
     
-    update_music_state();
-
+    updateMusicState();
 }
-void Communication::publish_internal_index() {
+
+void Communication::publishInternalIndex() {
     std_msgs::msg::Int32 msg;
     msg.data = gerak_tari_current_index;
     pub_internal_index->publish(msg);
 }
 
-void Communication::update_other_index() {
+void Communication::updateOtherIndex() {
     auto request = std::make_shared<std_srvs::srv::Trigger::Request>();
     auto result = cli_get_other_index->async_send_request(request);
     if (rclcpp::spin_until_future_complete(this->shared_from_this(), result, std::chrono::milliseconds(100)) == rclcpp::FutureReturnCode::SUCCESS) {
@@ -88,7 +78,7 @@ void Communication::update_other_index() {
     count_time = 0; // Reset count_time after updating other index
 }
 
-void Communication::update_music_state() {
+void Communication::updateMusicState() {
     auto request = std::make_shared<std_srvs::srv::Trigger::Request>();
     auto result = cli_get_music_state->async_send_request(request);
     if (rclcpp::spin_until_future_complete(this->shared_from_this(), result, std::chrono::milliseconds(50)) == rclcpp::FutureReturnCode::SUCCESS) {
@@ -99,7 +89,7 @@ void Communication::update_music_state() {
     }
 }
 
-void Communication::update_panic_state() {
+void Communication::updatePanicState() {
     auto request = std::make_shared<std_srvs::srv::Trigger::Request>();
     auto result = cli_get_panic_state->async_send_request(request);
     if (rclcpp::spin_until_future_complete(this->shared_from_this(), result, std::chrono::milliseconds(50)) == rclcpp::FutureReturnCode::SUCCESS) {
@@ -110,7 +100,7 @@ void Communication::update_panic_state() {
     }
 }
 
-void Communication::request_shutdown() {
+void Communication::requestShutdown() {
     auto request = std::make_shared<std_srvs::srv::Trigger::Request>();
     auto result = cli_req_shutdown->async_send_request(request);
     if (rclcpp::spin_until_future_complete(this->shared_from_this(), result, std::chrono::milliseconds(200)) == rclcpp::FutureReturnCode::SUCCESS) {

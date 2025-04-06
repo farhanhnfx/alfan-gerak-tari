@@ -1,9 +1,16 @@
-#include <program_rekam_gerak/gerak_tari.h>
+#include <alfan_gerak_tari/core/gerak_tari.h>
+#include <alfan_gerak_tari/core/servo_manager.h>
+#include <alfan_gerak_tari/core/communication.h>
+#include <alfan_gerak_tari/io/file_manager.h>
+#include <alfan_gerak_tari/io/yaml_utils.h>
+#include <filesystem>
+namespace fs = std::filesystem;
 
 
 GerakTariHandler::GerakTariHandler() : Node(THIS_ROBOT_NAME + "_gerak_tari_handler") {
     subs_variasi_gerak = this->create_subscription<std_msgs::msg::String>(
-        THIS_ROBOT_NAME + "/variasi_gerak", 10,
+        THIS_ROBOT_NAME + "/variasi_gerak",
+        rclcpp::QoS(rclcpp::KeepLast(10)).reliable(),  // Explicit QoS
         [this](std_msgs::msg::String::SharedPtr msg) {
             variasi_gerak_pressed = msg->data;
             RCLCPP_INFO(this->get_logger(), "Received: %s", msg->data.c_str());
@@ -16,7 +23,7 @@ GerakTariHandler::GerakTariHandler() : Node(THIS_ROBOT_NAME + "_gerak_tari_handl
             this->preload_config(config_path.c_str());
 
             // Hapus subscription-nya setelah set variasi
-            subs_variasi_gerak.reset();
+            // subs_variasi_gerak.reset();
         });
     
 }
@@ -32,19 +39,19 @@ bool GerakTariHandler::isVariasiBtnHasPressed() {
 }
 
 void GerakTariHandler::pingServos() {
-    tanganController.pingMX28();
-    tanganController.pingXL320();
+    ServoManager::pingMX28();
+    ServoManager::pingXL320();
 }
 
 void GerakTariHandler::setTorqueOn() {
-    tanganController.setTorqueOn();
+    ServoManager::setTorqueOn();
 }
 
 void GerakTariHandler::setTorqueOff() {
-    tanganController.setTorqueOff();
+    ServoManager::setTorqueOff();
 }
 
-void GerakTariHandler::setDefaultPose() {
+void GerakTariHandler::setCustomDefaultPose(int millisec) {
     /*
         TO DO:
         Menentukan format konfigurasi .yaml
@@ -65,22 +72,69 @@ void GerakTariHandler::setDefaultPose() {
         - set kepala dan kaki sesuai yang ditentukan
         - sleep selama 2-3 detik untuk mencapai posisi Default
     */
+    std::string path = BASE_PATH + "custom_default_pose.yaml";
+    if (!fs::exists(path)) {
+        ServoManager::toDefaultPose(millisec);
+        return;
+    }
 
-    RCLCPP_INFO(this->get_logger(), "POse default robot");
+    std::string yaml_content = YamlUtils::readFile(path);
+    ryml::Tree tree = ryml::parse_in_place(ryml::to_substr(yaml_content));
 
-    tanganController.toDefaultPose();
+    ryml::NodeRef root = tree["custom_pose"];
+    std::string pose_name;
+    std::string pose_path;
+    int tangan_recorded;
+    int kepala41, kepala42, kepala43;
+    int kaki_kanan_x, kaki_kanan_y, kaki_kanan_z;
+    int kaki_kiri_x, kaki_kiri_y, kaki_kiri_z;
+
+    root["name"] >> pose_name;
+    if (root.has_child("subfolder")) {
+        root["subfolder"] >> pose_path;
+    }
+    root["tangan"] >> tangan_recorded;
+    if (root.has_child("kepala")) {
+        root["kepala"]["41"] >> kepala41;
+        root["kepala"]["42"] >> kepala42;
+        root["kepala"]["43"] >> kepala43;
+    }
+    if (root.has_child("kaki")) {
+        if (root["kaki"].has_child("kanan")) {
+            root["kaki"]["kanan"]["x"] >> kaki_kanan_x;
+            root["kaki"]["kanan"]["y"] >> kaki_kanan_y;
+            root["kaki"]["kanan"]["z"] >> kaki_kanan_z;
+        }
+        if (root["kaki"].has_child("kiri")) {
+            root["kaki"]["kiri"]["x"] >> kaki_kiri_x;
+            root["kaki"]["kiri"]["y"] >> kaki_kiri_y;
+            root["kaki"]["kiri"]["z"] >> kaki_kiri_z;
+        }
+    }
+
+    FileManager::setNewFullPathTxt(FILE_PATH + pose_path);
+
+    tangan.bacaGerak(tangan_recorded, millisec/100);
+
+
+    RCLCPP_INFO(this->get_logger(), "POse default robot: %s", pose_name.c_str());
+
+    // ServoManager::toDefaultPose();
+    ServoManager::sendMovementCommands();
+    std::this_thread::sleep_for(std::chrono::milliseconds(millisec));
 }
 
 void GerakTariHandler::preload_config(const char* config_path) {
-    cout << config_path << endl;
-    if (fs::exists(config_path)) {
+    std::string path = config_path;
+    cout << path << endl;
+    if (fs::exists(path)) {
         cout << "File exists" << endl;
     }
     else {
         cout << "File doesn't exist, using main config" << endl;
-        config_path = PATH_TO_CONFIG;
+        path = (BASE_PATH + "gerak_tari.yaml").c_str();
     }
-    std::string yaml_content = read_file(config_path);
+    std::string yaml_content = YamlUtils::readFile(path);
     ryml::Tree tree = ryml::parse_in_place(ryml::to_substr(yaml_content));
 
     // clearing
@@ -92,7 +146,7 @@ void GerakTariHandler::preload_config(const char* config_path) {
     cout << root.num_children() << endl;
     string subfolder;
     root["subfolder"] >> subfolder;
-    FileManager::setNewFullPathTxt(FILE_PATH_TXT + subfolder);
+    FileManager::setNewFullPathTxt(FILE_PATH + subfolder);
 
     if (root["sequences"].num_children() > 0) {
         for (int i = 0; i < root["sequences"].num_children(); i++) {
@@ -102,7 +156,13 @@ void GerakTariHandler::preload_config(const char* config_path) {
             tree_gerak_tari["name"] >> gt.name;
             tree_gerak_tari["is_walking"] >> gt.is_walking;
             tree_gerak_tari["speeds"] >> gt.speeds;
-            tree_gerak_tari["times"] >> gt.times;
+            if (tree_gerak_tari.has_child("times")) {
+                tree_gerak_tari["times"] >> gt.times;
+            }
+            else {
+                tree_gerak_tari["speeds"] >> gt.times;
+                gt.times *= 100;
+            }
 
             auto tree_motion_frames = tree_gerak_tari["motion_frames"];
             if (tree_motion_frames.num_children() > 0) {
@@ -112,12 +172,16 @@ void GerakTariHandler::preload_config(const char* config_path) {
                     if (tree_motion_frames[j].has_child("kepala")) {
                         /* TO DO: Menyimpan action kepala ke dalam Motion Frame 
                             tree_motifon_frames[j]["kepala"] >> mf.kepala */
-                        tree_motion_frames[j]["kepala"]["kepala41"] >> mf.kepala["kepala41"];
-
-                        // // cout << tree_motion_frames[j]["kepala"]["kepala41"].val() << endl;
-                        // cout << mf.kepala["kepala41"] << endl;
-                        // cout << tree_motion_frames[j]["kepala"]["kepala42"] << endl;
-                        // cout << tree_motion_frames[j]["kepala"]["kepala43"] << endl;
+                        auto tree_kepala = tree_motion_frames[j]["kepala"];
+                        tree_kepala["kepala41"] >> mf.kepala.gp_degree_41;
+                        tree_kepala["kepala42"] >> mf.kepala.gp_degree_42;
+                        tree_kepala["kepala43"] >> mf.kepala.gp_degree_43;
+                        if (tree_kepala.has_child("speeds")) {
+                            tree_kepala["speeds"] >> mf.kepala.speed;
+                        }
+                        else {
+                            tree_gerak_tari["speeds"] >> mf.kepala.speed;
+                        }
                     }
 
                     gt.motion_frames.push_back(mf);
@@ -142,9 +206,8 @@ void GerakTariHandler::play() {
         Sebelum benar-benar play tarian, cek komunikasi terlebih dahulu
     */
    
-    // rclcpp::init(0, nullptr);
     auto comms = std::make_shared<Communication>();
-    comms->starting_condition();
+    comms->startingCondition();
 
     unsigned long interval = 0;
 
@@ -158,11 +221,11 @@ void GerakTariHandler::play() {
     for (tari_index; tari_index< gerak_tari_size; tari_index++) {
         // TO DO
         // if panic dll
-        comms->update_panic_state();
-        comms->publish_internal_index();
-        comms->update_other_index();
+        comms->updatePanicState();
+        comms->publishInternalIndex();
+        comms->updateOtherIndex();
         if (!panic_mode) {
-            comms->request_music();
+            comms->requestMusic();
         }
         else if (panic_mode) {
             // Panic ON
@@ -202,7 +265,7 @@ void GerakTariHandler::play() {
             }
 
             RCLCPP_INFO(comms->get_logger(), "Waiting for counter match...(count time: %i)", count_time);
-            comms->update_other_index();
+            comms->updateOtherIndex();
             std::this_thread::sleep_for(std::chrono::milliseconds(10)); // Simulate delay
         }
 
@@ -218,20 +281,9 @@ void GerakTariHandler::play() {
 
     // Selesai - Shutdown ROS2
     RCLCPP_INFO(comms->get_logger(), "Gerak tari selesai - SHUTDOWN");
-    comms->request_shutdown();
+    comms->requestShutdown();
     std::this_thread::sleep_for(std::chrono::seconds(1));
     // rclcpp::shutdown();
-}
-
-std::string GerakTariHandler::read_file(const char *filename) {
-    std::ifstream in(filename, std::ios::in | std::ios::binary);
-    if (!in) {
-        std::cerr << "[ERROR] Gagal membuka " << filename << std::endl;
-        exit(1);
-    }
-    std::ostringstream contents;
-    contents << in.rdbuf();
-    return contents.str();
 }
 
 void GerakTariHandler::execute_move(GerakTari gerak_tari) {
@@ -323,10 +375,11 @@ void GerakTariHandler::execute_move(GerakTari gerak_tari) {
     for (int i = 0; i < gerak_tari.motion_frames.size(); i++) {
         MotionFrame motion_frame = gerak_tari.motion_frames.at(i);
 
-        tanganController.bacaGerak(motion_frame.tangan, gerak_tari.speeds);
+        tangan.bacaGerak(motion_frame.tangan, gerak_tari.speeds);
+        kepala.setPosition(motion_frame.kepala);
 
         if (music_state == 1) {
-            tanganController.transmit();
+            ServoManager::sendMovementCommands();
         }
         else if (music_state == 0) {
             // RCLCPP_INFO(rclcpp::get_logger("gerak_tari"), "MUSIC STATE == FALSE | MOVEMENT NOT EXECUTED");

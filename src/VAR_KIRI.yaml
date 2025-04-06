@@ -1,0 +1,65 @@
+#########################################
+#  PROTOTYPING PROGRAM GERAK TARI BARU  #
+#               ALFAN 2025              #
+#########################################
+
+# gerak_tari_sequences:
+#   subfolder: Tiktok 27-02-2025
+#   sequences:
+#     - name: tiktok1_1
+#       is_walking: false
+#       speeds: 5
+#       times: 500
+#       motion_frames:
+#         - tangan: 135
+#           # # di bawah ini opsional parameter semua
+#           # kepala: {kepala41: 30, kepala43: 0, speeds: 6}
+#           # kaki: 0 # misal kalau ada mendak, mungkin
+#           # delay: 2000 # opsional
+#         - tangan: 136
+#         - tangan: 137
+
+gerak_tari_sequences:
+  subfolder: fortune cookie
+  sequences:
+    - name: Gerak 1
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 1
+        - tangan: 2
+        - tangan: 3
+        - tangan: 4
+        - tangan: 5
+        - tangan: 6
+        - tangan: 7
+        - tangan: 8
+
+    - name: Gerak 2
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 1
+        - tangan: 2
+        - tangan: 3
+        - tangan: 4
+        - tangan: 5
+        - tangan: 6
+        - tangan: 7
+        - tangan: 8
+
+    - name: Gerak 3
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 1
+        - tangan: 2
+        - tangan: 3
+        - tangan: 4
+        - tangan: 5
+        - tangan: 6
+        - tangan: 7
+        - tangan: 8

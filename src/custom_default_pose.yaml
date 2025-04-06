@@ -1,0 +1,17 @@
+custom_pose:
+  name: "Pose Opening 1"
+  subfolder: "pose_default"
+  tangan: 1
+  kepala:
+    41: 0
+    42: 0
+    43: 0
+  kaki:
+    kanan:
+      x: 0
+      y: 0
+      z: 0
+    kiri:
+      x: 0
+      y: 0
+      z: 0

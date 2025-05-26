@@ -46,8 +46,6 @@ struct GerakTari {
 */
 class GerakTariHandler: public rclcpp::Node {
     private:
-    // Menyimpan tombol variasi mana yang dipencet (VAR_KIRI atau VAR_KANAN)
-    string variasi_gerak_pressed;
     // Subscriber untuk mendapatkan informasi tombol variasi yang dipencet dari program komunikasi (alfan_communication)
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subs_variasi_gerak;
 
@@ -78,6 +76,8 @@ class GerakTariHandler: public rclcpp::Node {
     public:
     GerakTariHandler();
     ~GerakTariHandler();
+    // Menyimpan tombol variasi mana yang dipencet (VAR_KIRI atau VAR_KANAN)
+    string variasi_gerak_pressed;
     /*
      * @brief Fungsi ini digunakan untuk melakukan load konfigurasi sebuah tari yang akan ditampilkan
      * @param config_path Path menuju file konfigurasi tariannya

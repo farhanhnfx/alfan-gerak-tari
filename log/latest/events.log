@@ -1,0 +1,483 @@
+[0.000000] (-) TimerEvent: {}
+[0.000762] (program_tangan_alfan) JobQueued: {'identifier': 'program_tangan_alfan', 'dependencies': OrderedDict()}
+[0.000848] (program_tangan_alfan) JobStarted: {'identifier': 'program_tangan_alfan'}
+[0.011450] (program_tangan_alfan) JobProgress: {'identifier': 'program_tangan_alfan', 'progress': 'cmake'}
+[0.012393] (program_tangan_alfan) Command: {'cmd': ['/usr/bin/cmake', '/home/farhanhanif/alfan_ws/src/program_rekam_gerak', '-DCMAKE_INSTALL_PREFIX=/home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan'], 'cwd': '/home/farhanhanif/alfan_ws/src/program_rekam_gerak/build/program_tangan_alfan', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'farhanhanif'), ('LC_TIME', 'id_ID.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/farhanhanif'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'id_ID.UTF-8'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('SYSTEMD_EXEC_PID', '1510'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=496bc9c3ae0b197220137de167c670cf'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/opt/ros/humble/'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'farhanhanif'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'farhanhanif'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/farhanhanif-Lenovo-IdeaPad-S340-14API:@/tmp/.ICE-unix/1510,unix/farhanhanif-Lenovo-IdeaPad-S340-14API:/tmp/.ICE-unix/1510'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'id_ID.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/b1004ec8_7b6c_4492_9b16_b48dfc47ef17'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'id_ID.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.LFSX22'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.154'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '1'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'id_ID.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'id_ID.UTF-8'), ('LC_IDENTIFICATION', 'id_ID.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/farhanhanif/alfan_ws/src/program_rekam_gerak/build/program_tangan_alfan'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=496bc9c3ae0b197220137de167c670cf'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'id_ID.UTF-8'), ('LC_PAPER', 'id_ID.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.099526] (-) TimerEvent: {}
+[0.135237] (program_tangan_alfan) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.199667] (-) TimerEvent: {}
+[0.244447] (program_tangan_alfan) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.255672] (program_tangan_alfan) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.299823] (-) TimerEvent: {}
+[0.372111] (program_tangan_alfan) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.385858] (program_tangan_alfan) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.386440] (program_tangan_alfan) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.387201] (program_tangan_alfan) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.391698] (program_tangan_alfan) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.399956] (-) TimerEvent: {}
+[0.500322] (-) TimerEvent: {}
+[0.512831] (program_tangan_alfan) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.522561] (program_tangan_alfan) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.522930] (program_tangan_alfan) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.523511] (program_tangan_alfan) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.529617] (program_tangan_alfan) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.600444] (-) TimerEvent: {}
+[0.700859] (-) TimerEvent: {}
+[0.732723] (program_tangan_alfan) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[0.801009] (-) TimerEvent: {}
+[0.869234] (program_tangan_alfan) StdoutLine: {'line': b'-- Found rclcpp: 16.0.11 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.901118] (-) TimerEvent: {}
+[0.915202] (program_tangan_alfan) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.921147] (program_tangan_alfan) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.932349] (program_tangan_alfan) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.948637] (program_tangan_alfan) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.970073] (program_tangan_alfan) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.001261] (-) TimerEvent: {}
+[1.030392] (program_tangan_alfan) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[1.033060] (program_tangan_alfan) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[1.101372] (-) TimerEvent: {}
+[1.159467] (program_tangan_alfan) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[1.196354] (program_tangan_alfan) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[1.201462] (-) TimerEvent: {}
+[1.254354] (program_tangan_alfan) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.264777] (program_tangan_alfan) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[1.301606] (-) TimerEvent: {}
+[1.367891] (program_tangan_alfan) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.368880] (program_tangan_alfan) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[1.401716] (-) TimerEvent: {}
+[1.476891] (program_tangan_alfan) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[1.479298] (program_tangan_alfan) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.501828] (-) TimerEvent: {}
+[1.546722] (program_tangan_alfan) StdoutLine: {'line': b'-- Found dynamixel_workbench_toolbox: 2.2.3 (/opt/ros/humble/share/dynamixel_workbench_toolbox/cmake)\n'}
+[1.565327] (program_tangan_alfan) StdoutLine: {'line': b'-- ryml: using C++ standard: C++11\n'}
+[1.565722] (program_tangan_alfan) StdoutLine: {'line': b'-- ryml: setting C++ standard: 11\n'}
+[1.565916] (program_tangan_alfan) StdoutLine: {'line': b'-- ryml: setting C++ standard required: ON\n'}
+[1.567857] (program_tangan_alfan) StdoutLine: {'line': b'-- ryml: importing subproject c4core (SUBDIRECTORY)... /home/farhanhanif/alfan_ws/src/program_rekam_gerak/external/rapidyaml/ext/c4core\n'}
+[1.574451] (program_tangan_alfan) StdoutLine: {'line': b'-- c4core: using C++ standard: C++11\n'}
+[1.592410] (program_tangan_alfan) StdoutLine: {'line': b'-- ryml: -----> target ryml PUBLIC incorporating lib c4core\n'}
+[1.601925] (-) TimerEvent: {}
+[1.609318] (program_tangan_alfan) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[1.702052] (-) TimerEvent: {}
+[1.802448] (-) TimerEvent: {}
+[1.872396] (program_tangan_alfan) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.872861] (program_tangan_alfan) StdoutLine: {'line': b'-- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/farhanhanif/alfan_ws/src/program_rekam_gerak/include>\n'}
+[1.873007] (program_tangan_alfan) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.893877] (program_tangan_alfan) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[1.902540] (-) TimerEvent: {}
+[1.933471] (program_tangan_alfan) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.954204] (program_tangan_alfan) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[2.002662] (-) TimerEvent: {}
+[2.102992] (-) TimerEvent: {}
+[2.111344] (program_tangan_alfan) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[2.111815] (program_tangan_alfan) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[2.131803] (program_tangan_alfan) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[2.134194] (program_tangan_alfan) StdoutLine: {'line': b'-- Configuring done\n'}
+[2.186841] (program_tangan_alfan) StdoutLine: {'line': b'-- Generating done\n'}
+[2.202545] (program_tangan_alfan) StdoutLine: {'line': b'-- Build files have been written to: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/build/program_tangan_alfan\n'}
+[2.203065] (-) TimerEvent: {}
+[2.218015] (program_tangan_alfan) CommandEnded: {'returncode': 0}
+[2.218793] (program_tangan_alfan) JobProgress: {'identifier': 'program_tangan_alfan', 'progress': 'build'}
+[2.219590] (program_tangan_alfan) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/farhanhanif/alfan_ws/src/program_rekam_gerak/build/program_tangan_alfan', '--', '-j4', '-l4'], 'cwd': '/home/farhanhanif/alfan_ws/src/program_rekam_gerak/build/program_tangan_alfan', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'farhanhanif'), ('LC_TIME', 'id_ID.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/farhanhanif'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'id_ID.UTF-8'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('SYSTEMD_EXEC_PID', '1510'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=496bc9c3ae0b197220137de167c670cf'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/opt/ros/humble/'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'farhanhanif'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'farhanhanif'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/farhanhanif-Lenovo-IdeaPad-S340-14API:@/tmp/.ICE-unix/1510,unix/farhanhanif-Lenovo-IdeaPad-S340-14API:/tmp/.ICE-unix/1510'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'id_ID.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/b1004ec8_7b6c_4492_9b16_b48dfc47ef17'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'id_ID.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.LFSX22'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.154'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '1'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'id_ID.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'id_ID.UTF-8'), ('LC_IDENTIFICATION', 'id_ID.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/farhanhanif/alfan_ws/src/program_rekam_gerak/build/program_tangan_alfan'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=496bc9c3ae0b197220137de167c670cf'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'id_ID.UTF-8'), ('LC_PAPER', 'id_ID.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[2.294539] (program_tangan_alfan) StdoutLine: {'line': b'[  2%] \x1b[32mBuilding CXX object CMakeFiles/alfan_lib_main.dir/src/lib_alfan.cpp.o\x1b[0m\n'}
+[2.294806] (program_tangan_alfan) StdoutLine: {'line': b'[  5%] \x1b[32mBuilding CXX object CMakeFiles/comms_lib.dir/src/communication.cpp.o\x1b[0m\n'}
+[2.298047] (program_tangan_alfan) StdoutLine: {'line': b'[ 10%] \x1b[32mBuilding CXX object ryml/CMakeFiles/ryml.dir/src/c4/yml/common.cpp.o\x1b[0m\n'}
+[2.299101] (program_tangan_alfan) StdoutLine: {'line': b'[ 10%] \x1b[32mBuilding CXX object ryml/subprojects/c4core/build/CMakeFiles/c4core.dir/src/c4/base64.cpp.o\x1b[0m\n'}
+[2.304346] (-) TimerEvent: {}
+[2.411311] (-) TimerEvent: {}
+[2.511824] (-) TimerEvent: {}
+[2.612336] (-) TimerEvent: {}
+[2.714536] (-) TimerEvent: {}
+[2.746988] (program_tangan_alfan) StderrLine: {'line': b'\x1b[01m\x1b[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/communication.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid Communication::transmit_data(bool, int)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.747384] (program_tangan_alfan) StderrLine: {'line': b'\x1b[01m\x1b[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/communication.cpp:89:9:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kpacket_data\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable\x07-Wunused-variable\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[2.747498] (program_tangan_alfan) StderrLine: {'line': b'   89 |     int \x1b[01;35m\x1b[Kpacket_data\x1b[m\x1b[K = (music_condition * 128) + count;\n'}
+[2.747590] (program_tangan_alfan) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[2.814653] (-) TimerEvent: {}
+[2.829815] (program_tangan_alfan) StdoutLine: {'line': b'[ 12%] \x1b[32m\x1b[1mLinking CXX static library libcomms_lib.a\x1b[0m\n'}
+[2.914889] (-) TimerEvent: {}
+[2.963613] (program_tangan_alfan) StdoutLine: {'line': b'[ 12%] Built target comms_lib\n'}
+[2.981759] (program_tangan_alfan) StdoutLine: {'line': b'[ 15%] \x1b[32mBuilding CXX object ryml/CMakeFiles/ryml.dir/src/c4/yml/node.cpp.o\x1b[0m\n'}
+[3.014984] (-) TimerEvent: {}
+[3.116090] (-) TimerEvent: {}
+[3.175078] (program_tangan_alfan) StdoutLine: {'line': b'[ 17%] \x1b[32mBuilding CXX object CMakeFiles/alfan_lib_main.dir/src/tangan_controller.cpp.o\x1b[0m\n'}
+[3.190034] (program_tangan_alfan) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding CXX object ryml/subprojects/c4core/build/CMakeFiles/c4core.dir/src/c4/char_traits.cpp.o\x1b[0m\n'}
+[3.216204] (-) TimerEvent: {}
+[3.316584] (-) TimerEvent: {}
+[3.416986] (-) TimerEvent: {}
+[3.451273] (program_tangan_alfan) StdoutLine: {'line': b'[ 22%] \x1b[32mBuilding CXX object ryml/subprojects/c4core/build/CMakeFiles/c4core.dir/src/c4/error.cpp.o\x1b[0m\n'}
+[3.517114] (-) TimerEvent: {}
+[3.595811] (program_tangan_alfan) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object ryml/subprojects/c4core/build/CMakeFiles/c4core.dir/src/c4/format.cpp.o\x1b[0m\n'}
+[3.617243] (-) TimerEvent: {}
+[3.717694] (-) TimerEvent: {}
+[3.818112] (-) TimerEvent: {}
+[3.920997] (-) TimerEvent: {}
+[4.024990] (-) TimerEvent: {}
+[4.121333] (program_tangan_alfan) StdoutLine: {'line': b'[ 27%] \x1b[32mBuilding CXX object ryml/CMakeFiles/ryml.dir/src/c4/yml/node_type.cpp.o\x1b[0m\n'}
+[4.125127] (-) TimerEvent: {}
+[4.225795] (program_tangan_alfan) StderrLine: {'line': b'\x1b[01m\x1b[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/lib_alfan.cpp:\x1b[m\x1b[K In static member function \xe2\x80\x98\x1b[01m\x1b[Kstatic void FileManager::createFile(std::string, std::string, std::string)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.226106] (-) TimerEvent: {}
+[4.226294] (program_tangan_alfan) StderrLine: {'line': b'\x1b[01m\x1b[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/lib_alfan.cpp:43:70:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KdataJson\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.226452] (program_tangan_alfan) StderrLine: {'line': b'   43 | Manager::createFile(string filename, string dataTxt, \x1b[01;35m\x1b[Kstring dataJson\x1b[m\x1b[K) {\n'}
+[4.226551] (program_tangan_alfan) StderrLine: {'line': b'      |                                                      \x1b[01;35m\x1b[K~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[4.226643] (program_tangan_alfan) StderrLine: {'line': b'\n'}
+[4.329001] (-) TimerEvent: {}
+[4.429400] (-) TimerEvent: {}
+[4.529803] (-) TimerEvent: {}
+[4.630239] (-) TimerEvent: {}
+[4.688780] (program_tangan_alfan) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object ryml/subprojects/c4core/build/CMakeFiles/c4core.dir/src/c4/language.cpp.o\x1b[0m\n'}
+[4.730383] (-) TimerEvent: {}
+[4.735536] (program_tangan_alfan) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object ryml/subprojects/c4core/build/CMakeFiles/c4core.dir/src/c4/memory_resource.cpp.o\x1b[0m\n'}
+[4.830512] (-) TimerEvent: {}
+[4.933198] (-) TimerEvent: {}
+[5.033622] (-) TimerEvent: {}
+[5.086500] (program_tangan_alfan) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object ryml/subprojects/c4core/build/CMakeFiles/c4core.dir/src/c4/memory_util.cpp.o\x1b[0m\n'}
+[5.133752] (-) TimerEvent: {}
+[5.189826] (program_tangan_alfan) StdoutLine: {'line': b'[ 37%] \x1b[32mBuilding CXX object ryml/subprojects/c4core/build/CMakeFiles/c4core.dir/src/c4/utf.cpp.o\x1b[0m\n'}
+[5.235008] (-) TimerEvent: {}
+[5.335480] (-) TimerEvent: {}
+[5.435922] (-) TimerEvent: {}
+[5.436978] (program_tangan_alfan) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object ryml/CMakeFiles/ryml.dir/src/c4/yml/parse.cpp.o\x1b[0m\n'}
+[5.536015] (-) TimerEvent: {}
+[5.638997] (-) TimerEvent: {}
+[5.739395] (-) TimerEvent: {}
+[5.839785] (-) TimerEvent: {}
+[5.940201] (-) TimerEvent: {}
+[6.036527] (program_tangan_alfan) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding CXX object ryml/subprojects/c4core/build/CMakeFiles/c4core.dir/src/c4/version.cpp.o\x1b[0m\n'}
+[6.040411] (-) TimerEvent: {}
+[6.079035] (program_tangan_alfan) StdoutLine: {'line': b'[ 45%] \x1b[32mBuilding CXX object ryml/CMakeFiles/ryml.dir/src/c4/yml/preprocess.cpp.o\x1b[0m\n'}
+[6.081586] (program_tangan_alfan) StdoutLine: {'line': b'[ 47%] \x1b[32m\x1b[1mLinking CXX static library libc4core.a\x1b[0m\n'}
+[6.140617] (-) TimerEvent: {}
+[6.241049] (-) TimerEvent: {}
+[6.248182] (program_tangan_alfan) StdoutLine: {'line': b'[ 47%] Built target c4core\n'}
+[6.265931] (program_tangan_alfan) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object ryml/CMakeFiles/ryml.dir/src/c4/yml/reference_resolver.cpp.o\x1b[0m\n'}
+[6.341174] (-) TimerEvent: {}
+[6.441584] (-) TimerEvent: {}
+[6.541984] (-) TimerEvent: {}
+[6.643188] (-) TimerEvent: {}
+[6.743570] (-) TimerEvent: {}
+[6.846006] (-) TimerEvent: {}
+[6.946418] (-) TimerEvent: {}
+[6.960724] (program_tangan_alfan) StdoutLine: {'line': b'[ 52%] \x1b[32mBuilding CXX object ryml/CMakeFiles/ryml.dir/src/c4/yml/tag.cpp.o\x1b[0m\n'}
+[7.046756] (-) TimerEvent: {}
+[7.149989] (-) TimerEvent: {}
+[7.250363] (-) TimerEvent: {}
+[7.350803] (-) TimerEvent: {}
+[7.451332] (-) TimerEvent: {}
+[7.539021] (program_tangan_alfan) StdoutLine: {'line': b'[ 55%] \x1b[32m\x1b[1mLinking CXX static library libalfan_lib_main.a\x1b[0m\n'}
+[7.551487] (-) TimerEvent: {}
+[7.635249] (program_tangan_alfan) StdoutLine: {'line': b'[ 57%] \x1b[32mBuilding CXX object ryml/CMakeFiles/ryml.dir/src/c4/yml/tree.cpp.o\x1b[0m\n'}
+[7.653007] (-) TimerEvent: {}
+[7.753472] (-) TimerEvent: {}
+[7.840556] (program_tangan_alfan) StdoutLine: {'line': b'[ 57%] Built target alfan_lib_main\n'}
+[7.853600] (-) TimerEvent: {}
+[7.882993] (program_tangan_alfan) StdoutLine: {'line': b'[ 60%] \x1b[32mBuilding CXX object CMakeFiles/rekam_gerak.dir/src/rekam_gerak.cpp.o\x1b[0m\n'}
+[7.953739] (-) TimerEvent: {}
+[8.054132] (-) TimerEvent: {}
+[8.154810] (-) TimerEvent: {}
+[8.255478] (-) TimerEvent: {}
+[8.329555] (program_tangan_alfan) StdoutLine: {'line': b'[ 62%] \x1b[32mBuilding CXX object ryml/CMakeFiles/ryml.dir/src/c4/yml/version.cpp.o\x1b[0m\n'}
+[8.357995] (-) TimerEvent: {}
+[8.458623] (-) TimerEvent: {}
+[8.475031] (program_tangan_alfan) StdoutLine: {'line': b'[ 65%] \x1b[32mBuilding CXX object ryml/CMakeFiles/ryml.dir/ext/c4core/src/c4/base64.cpp.o\x1b[0m\n'}
+[8.558755] (-) TimerEvent: {}
+[8.659162] (-) TimerEvent: {}
+[8.759564] (-) TimerEvent: {}
+[8.860992] (-) TimerEvent: {}
+[8.961338] (-) TimerEvent: {}
+[9.061737] (-) TimerEvent: {}
+[9.162987] (-) TimerEvent: {}
+[9.263400] (-) TimerEvent: {}
+[9.347633] (program_tangan_alfan) StdoutLine: {'line': b'[ 67%] \x1b[32mBuilding CXX object ryml/CMakeFiles/ryml.dir/ext/c4core/src/c4/char_traits.cpp.o\x1b[0m\n'}
+[9.365015] (-) TimerEvent: {}
+[9.465535] (-) TimerEvent: {}
+[9.566097] (-) TimerEvent: {}
+[9.600826] (program_tangan_alfan) StdoutLine: {'line': b'[ 72%] \x1b[32mBuilding CXX object ryml/CMakeFiles/ryml.dir/ext/c4core/src/c4/format.cpp.o\x1b[0m\n'}
+[9.603859] (program_tangan_alfan) StdoutLine: {'line': b'[ 72%] \x1b[32mBuilding CXX object ryml/CMakeFiles/ryml.dir/ext/c4core/src/c4/error.cpp.o\x1b[0m\n'}
+[9.667985] (-) TimerEvent: {}
+[9.734039] (program_tangan_alfan) StdoutLine: {'line': b'[ 75%] \x1b[32mBuilding CXX object ryml/CMakeFiles/ryml.dir/ext/c4core/src/c4/language.cpp.o\x1b[0m\n'}
+[9.768111] (-) TimerEvent: {}
+[9.789778] (program_tangan_alfan) StdoutLine: {'line': b'[ 77%] \x1b[32mBuilding CXX object ryml/CMakeFiles/ryml.dir/ext/c4core/src/c4/memory_resource.cpp.o\x1b[0m\n'}
+[9.868225] (-) TimerEvent: {}
+[9.968613] (-) TimerEvent: {}
+[10.070001] (-) TimerEvent: {}
+[10.160526] (program_tangan_alfan) StdoutLine: {'line': b'[ 80%] \x1b[32mBuilding CXX object ryml/CMakeFiles/ryml.dir/ext/c4core/src/c4/memory_util.cpp.o\x1b[0m\n'}
+[10.170135] (-) TimerEvent: {}
+[10.270153] (program_tangan_alfan) StdoutLine: {'line': b'[ 82%] \x1b[32mBuilding CXX object ryml/CMakeFiles/ryml.dir/ext/c4core/src/c4/utf.cpp.o\x1b[0m\n'}
+[10.270427] (-) TimerEvent: {}
+[10.371265] (-) TimerEvent: {}
+[10.474259] (-) TimerEvent: {}
+[10.515022] (program_tangan_alfan) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding CXX object ryml/CMakeFiles/ryml.dir/ext/c4core/src/c4/version.cpp.o\x1b[0m\n'}
+[10.574386] (-) TimerEvent: {}
+[10.650587] (program_tangan_alfan) StdoutLine: {'line': b'[ 87%] \x1b[32m\x1b[1mLinking CXX executable rekam_gerak\x1b[0m\n'}
+[10.674508] (-) TimerEvent: {}
+[10.774878] (-) TimerEvent: {}
+[10.875302] (-) TimerEvent: {}
+[10.909192] (program_tangan_alfan) StdoutLine: {'line': b'[ 87%] Built target rekam_gerak\n'}
+[10.967590] (program_tangan_alfan) StdoutLine: {'line': b'[ 90%] \x1b[32m\x1b[1mLinking CXX static library libryml.a\x1b[0m\n'}
+[10.975441] (-) TimerEvent: {}
+[11.075863] (-) TimerEvent: {}
+[11.105989] (program_tangan_alfan) StdoutLine: {'line': b'[ 90%] Built target ryml\n'}
+[11.135726] (program_tangan_alfan) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding CXX object CMakeFiles/gerak_tari_lib.dir/src/gerak_tari.cpp.o\x1b[0m\n'}
+[11.175992] (-) TimerEvent: {}
+[11.276460] (-) TimerEvent: {}
+[11.376972] (-) TimerEvent: {}
+[11.477380] (-) TimerEvent: {}
+[11.577808] (-) TimerEvent: {}
+[11.678273] (-) TimerEvent: {}
+[11.778717] (-) TimerEvent: {}
+[11.879194] (-) TimerEvent: {}
+[11.979668] (-) TimerEvent: {}
+[12.080160] (-) TimerEvent: {}
+[12.180609] (-) TimerEvent: {}
+[12.281059] (-) TimerEvent: {}
+[12.381540] (-) TimerEvent: {}
+[12.481982] (-) TimerEvent: {}
+[12.500031] (program_tangan_alfan) StderrLine: {'line': b'\x1b[01m\x1b[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/gerak_tari.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid GerakTariHandler::preload_config()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[12.500365] (program_tangan_alfan) StderrLine: {'line': b'\x1b[01m\x1b[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/gerak_tari.cpp:20:27:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kc4::yml::id_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[12.500596] (program_tangan_alfan) StderrLine: {'line': b'   20 |         for (int i = 0; \x1b[01;35m\x1b[Ki < root["sequences"].num_children()\x1b[m\x1b[K; i++) {\n'}
+[12.500764] (program_tangan_alfan) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[12.501938] (program_tangan_alfan) StderrLine: {'line': b'\x1b[01m\x1b[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/gerak_tari.cpp:31:35:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kc4::yml::id_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[12.502180] (program_tangan_alfan) StderrLine: {'line': b'   31 |                 for (int j = 0; \x1b[01;35m\x1b[Kj < tree_motion_frames.num_children()\x1b[m\x1b[K; j++) {\n'}
+[12.502343] (program_tangan_alfan) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[12.503600] (program_tangan_alfan) StderrLine: {'line': b'\x1b[01m\x1b[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/gerak_tari.cpp:53:23:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<GerakTari>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[12.503854] (program_tangan_alfan) StderrLine: {'line': b'   53 |     for (int i = 0; \x1b[01;35m\x1b[Ki < list_of_gerak_tari.size()\x1b[m\x1b[K; i++) {\n'}
+[12.504055] (program_tangan_alfan) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[12.506787] (program_tangan_alfan) StderrLine: {'line': b'\x1b[01m\x1b[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/gerak_tari.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid GerakTariHandler::play()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[12.507086] (program_tangan_alfan) StderrLine: {'line': b'\x1b[01m\x1b[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/gerak_tari.cpp:105:34:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Klong int\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[12.507279] (program_tangan_alfan) StderrLine: {'line': b'  105 |                 if (\x1b[01;35m\x1b[Kelapsed_time >= interval\x1b[m\x1b[K) {\n'}
+[12.507474] (program_tangan_alfan) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[12.510239] (program_tangan_alfan) StderrLine: {'line': b'\x1b[01m\x1b[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/gerak_tari.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid GerakTariHandler::execute_move(GerakTari)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[12.510597] (program_tangan_alfan) StderrLine: {'line': b'\x1b[01m\x1b[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/gerak_tari.cpp:230:68:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kformat \xe2\x80\x98\x1b[01m\x1b[K%i\x1b[m\x1b[K\xe2\x80\x99 expects argument of type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99, but argument 5 has type \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<MotionFrame>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=\x07-Wformat=\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[12.510810] (program_tangan_alfan) StderrLine: {'line': b'  230 |  printf("EXECUTING %s with speeds %0.2f for %0.2f seconds (\x1b[01;35m\x1b[K%i\x1b[m\x1b[K moves)\\n", gerak_tari.name.c_str(), gerak_tari.speeds, (gerak_tari.times*gerak_tari.motion_frames.size())/1000.00, \x1b[32m\x1b[Kgerak_tari.motion_frames.size()\x1b[m\x1b[K);\n'}
+[12.510998] (program_tangan_alfan) StderrLine: {'line': b'      |                                                            \x1b[01;35m\x1b[K~^\x1b[m\x1b[K                                                                                                                    \x1b[32m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[12.511161] (program_tangan_alfan) StderrLine: {'line': b'      |                                                             \x1b[01;35m\x1b[K|\x1b[m\x1b[K                                                                                                                                                 \x1b[32m\x1b[K|\x1b[m\x1b[K\n'}
+[12.511313] (program_tangan_alfan) StderrLine: {'line': b'      |                                                             \x1b[01;35m\x1b[Kint\x1b[m\x1b[K                                                                                                                                               \x1b[32m\x1b[Kstd::vector<MotionFrame>::size_type {aka long unsigned int}\x1b[m\x1b[K\n'}
+[12.511467] (program_tangan_alfan) StderrLine: {'line': b'      |                                                            \x1b[32m\x1b[K%li\x1b[m\x1b[K\n'}
+[12.511615] (program_tangan_alfan) StderrLine: {'line': b'\x1b[01m\x1b[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/gerak_tari.cpp:239:23:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<MotionFrame>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare\x07-Wsign-compare\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[12.511791] (program_tangan_alfan) StderrLine: {'line': b'  239 |     for (int i = 0; \x1b[01;35m\x1b[Ki < gerak_tari.motion_frames.size()\x1b[m\x1b[K; i++) {\n'}
+[12.511989] (program_tangan_alfan) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[12.582121] (-) TimerEvent: {}
+[12.682573] (-) TimerEvent: {}
+[12.783032] (-) TimerEvent: {}
+[12.883483] (-) TimerEvent: {}
+[12.983915] (-) TimerEvent: {}
+[13.084346] (-) TimerEvent: {}
+[13.184812] (-) TimerEvent: {}
+[13.285305] (-) TimerEvent: {}
+[13.385746] (-) TimerEvent: {}
+[13.486213] (-) TimerEvent: {}
+[13.586647] (-) TimerEvent: {}
+[13.687038] (-) TimerEvent: {}
+[13.787497] (-) TimerEvent: {}
+[13.887955] (-) TimerEvent: {}
+[13.898307] (program_tangan_alfan) StdoutLine: {'line': b'[ 95%] \x1b[32m\x1b[1mLinking CXX static library libgerak_tari_lib.a\x1b[0m\n'}
+[13.988058] (-) TimerEvent: {}
+[14.000634] (program_tangan_alfan) StdoutLine: {'line': b'[ 95%] Built target gerak_tari_lib\n'}
+[14.029540] (program_tangan_alfan) StdoutLine: {'line': b'[ 97%] \x1b[32mBuilding CXX object CMakeFiles/tangan_driver.dir/src/tangan_driver.cpp.o\x1b[0m\n'}
+[14.088180] (-) TimerEvent: {}
+[14.188605] (-) TimerEvent: {}
+[14.289039] (-) TimerEvent: {}
+[14.389454] (-) TimerEvent: {}
+[14.489860] (-) TimerEvent: {}
+[14.590358] (-) TimerEvent: {}
+[14.690855] (-) TimerEvent: {}
+[14.791357] (-) TimerEvent: {}
+[14.892119] (-) TimerEvent: {}
+[14.992606] (-) TimerEvent: {}
+[15.092975] (-) TimerEvent: {}
+[15.193333] (-) TimerEvent: {}
+[15.293728] (-) TimerEvent: {}
+[15.394114] (-) TimerEvent: {}
+[15.494554] (-) TimerEvent: {}
+[15.594991] (-) TimerEvent: {}
+[15.695454] (-) TimerEvent: {}
+[15.795875] (-) TimerEvent: {}
+[15.896348] (-) TimerEvent: {}
+[15.996773] (-) TimerEvent: {}
+[16.097240] (-) TimerEvent: {}
+[16.156637] (program_tangan_alfan) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable tangan_driver\x1b[0m\n'}
+[16.197380] (-) TimerEvent: {}
+[16.297885] (-) TimerEvent: {}
+[16.398340] (-) TimerEvent: {}
+[16.399805] (program_tangan_alfan) StdoutLine: {'line': b'[100%] Built target tangan_driver\n'}
+[16.427622] (program_tangan_alfan) CommandEnded: {'returncode': 0}
+[16.428535] (program_tangan_alfan) JobProgress: {'identifier': 'program_tangan_alfan', 'progress': 'install'}
+[16.439510] (program_tangan_alfan) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/farhanhanif/alfan_ws/src/program_rekam_gerak/build/program_tangan_alfan'], 'cwd': '/home/farhanhanif/alfan_ws/src/program_rekam_gerak/build/program_tangan_alfan', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'farhanhanif'), ('LC_TIME', 'id_ID.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/farhanhanif'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'id_ID.UTF-8'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('SYSTEMD_EXEC_PID', '1510'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=496bc9c3ae0b197220137de167c670cf'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/opt/ros/humble/'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'farhanhanif'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'farhanhanif'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/farhanhanif-Lenovo-IdeaPad-S340-14API:@/tmp/.ICE-unix/1510,unix/farhanhanif-Lenovo-IdeaPad-S340-14API:/tmp/.ICE-unix/1510'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'id_ID.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/b1004ec8_7b6c_4492_9b16_b48dfc47ef17'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'id_ID.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.LFSX22'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.154'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '1'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'id_ID.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'id_ID.UTF-8'), ('LC_IDENTIFICATION', 'id_ID.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/farhanhanif/alfan_ws/src/program_rekam_gerak/build/program_tangan_alfan'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=496bc9c3ae0b197220137de167c670cf'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'id_ID.UTF-8'), ('LC_PAPER', 'id_ID.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[16.450065] (program_tangan_alfan) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[16.450359] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/lib/program_tangan_alfan/rekam_gerak\n'}
+[16.451844] (program_tangan_alfan) StdoutLine: {'line': b'-- Set runtime path of "/home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/lib/program_tangan_alfan/rekam_gerak" to ""\n'}
+[16.452053] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/lib/program_tangan_alfan/tangan_driver\n'}
+[16.455257] (program_tangan_alfan) StdoutLine: {'line': b'-- Set runtime path of "/home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/lib/program_tangan_alfan/tangan_driver" to ""\n'}
+[16.455503] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include\n'}
+[16.455701] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/program_rekam_gerak\n'}
+[16.455862] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/program_rekam_gerak/communication.h\n'}
+[16.456077] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/program_rekam_gerak/lib_alfan.h\n'}
+[16.456197] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/program_rekam_gerak/nlohmann_json\n'}
+[16.456306] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/program_rekam_gerak/nlohmann_json/json.hpp\n'}
+[16.457523] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/program_rekam_gerak/gerak_tari.h\n'}
+[16.457685] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/program_rekam_gerak/tangan_controller.h\n'}
+[16.458133] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/share/ament_index/resource_index/package_run_dependencies/program_tangan_alfan\n'}
+[16.458395] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/share/ament_index/resource_index/parent_prefix_path/program_tangan_alfan\n'}
+[16.458699] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/share/program_tangan_alfan/environment/ament_prefix_path.sh\n'}
+[16.458952] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/share/program_tangan_alfan/environment/ament_prefix_path.dsv\n'}
+[16.459180] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/share/program_tangan_alfan/environment/path.sh\n'}
+[16.459413] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/share/program_tangan_alfan/environment/path.dsv\n'}
+[16.459656] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/share/program_tangan_alfan/local_setup.bash\n'}
+[16.459972] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/share/program_tangan_alfan/local_setup.sh\n'}
+[16.460203] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/share/program_tangan_alfan/local_setup.zsh\n'}
+[16.460447] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/share/program_tangan_alfan/local_setup.dsv\n'}
+[16.460707] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/share/program_tangan_alfan/package.dsv\n'}
+[16.461061] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/share/ament_index/resource_index/packages/program_tangan_alfan\n'}
+[16.461378] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/share/program_tangan_alfan/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[16.461596] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/share/program_tangan_alfan/cmake/program_tangan_alfanConfig.cmake\n'}
+[16.461797] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/share/program_tangan_alfan/cmake/program_tangan_alfanConfig-version.cmake\n'}
+[16.462061] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/share/program_tangan_alfan/package.xml\n'}
+[16.463041] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/lib/libryml.a\n'}
+[16.466187] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/allocator.hpp\n'}
+[16.466698] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/base64.hpp\n'}
+[16.466953] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/blob.hpp\n'}
+[16.467180] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/bitmask.hpp\n'}
+[16.467711] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/charconv.hpp\n'}
+[16.468201] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/c4_pop.hpp\n'}
+[16.468569] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/c4_push.hpp\n'}
+[16.468961] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/char_traits.hpp\n'}
+[16.469221] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/common.hpp\n'}
+[16.469609] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/compiler.hpp\n'}
+[16.469878] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/config.hpp\n'}
+[16.470153] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/cpu.hpp\n'}
+[16.470413] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/ctor_dtor.hpp\n'}
+[16.470850] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/dump.hpp\n'}
+[16.471201] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/enum.hpp\n'}
+[16.471602] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/error.hpp\n'}
+[16.471876] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/export.hpp\n'}
+[16.472168] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/format.hpp\n'}
+[16.472492] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/gcc-4.8.hpp\n'}
+[16.472874] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/hash.hpp\n'}
+[16.473292] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/language.hpp\n'}
+[16.473563] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/memory_resource.hpp\n'}
+[16.473862] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/memory_util.hpp\n'}
+[16.474196] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/platform.hpp\n'}
+[16.474450] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/preprocessor.hpp\n'}
+[16.474719] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/restrict.hpp\n'}
+[16.475110] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/span.hpp\n'}
+[16.475729] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/std/std.hpp\n'}
+[16.476099] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/std/std_fwd.hpp\n'}
+[16.476340] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/std/string.hpp\n'}
+[16.476583] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/std/string_fwd.hpp\n'}
+[16.476822] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/std/string_view.hpp\n'}
+[16.477202] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/std/tuple.hpp\n'}
+[16.477573] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/std/vector.hpp\n'}
+[16.477829] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/std/vector_fwd.hpp\n'}
+[16.478092] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/substr.hpp\n'}
+[16.478489] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/substr_fwd.hpp\n'}
+[16.478720] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/szconv.hpp\n'}
+[16.478958] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/type_name.hpp\n'}
+[16.479345] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/types.hpp\n'}
+[16.479619] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/unrestrict.hpp\n'}
+[16.480008] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/utf.hpp\n'}
+[16.480239] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/windows.hpp\n'}
+[16.480593] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/version.hpp\n'}
+[16.480834] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/windows_pop.hpp\n'}
+[16.481142] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/windows_push.hpp\n'}
+[16.481620] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/ext/debugbreak/debugbreak.h\n'}
+[16.481930] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/ext/rng/rng.hpp\n'}
+[16.482350] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/ext/sg14/inplace_function.h\n'}
+[16.482671] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/ext/fast_float.hpp\n'}
+[16.482883] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/ext/fast_float_all.h\n'}
+[16.483335] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/c4core.natvis\n'}
+[16.483714] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/ryml.hpp\n'}
+[16.483940] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/ryml_std.hpp\n'}
+[16.484279] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/detail/checks.hpp\n'}
+[16.484893] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/detail/parser_dbg.hpp\n'}
+[16.485247] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/detail/print.hpp\n'}
+[16.485616] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/detail/stack.hpp\n'}
+[16.485866] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/common.hpp\n'}
+[16.486190] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/emit.def.hpp\n'}
+[16.486482] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/emit.hpp\n'}
+[16.486775] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/event_handler_stack.hpp\n'}
+[16.487041] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/event_handler_tree.hpp\n'}
+[16.487342] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/filter_processor.hpp\n'}
+[16.487619] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/fwd.hpp\n'}
+[16.487863] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/export.hpp\n'}
+[16.488117] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/node.hpp\n'}
+[16.488496] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/node_type.hpp\n'}
+[16.488766] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/parser_state.hpp\n'}
+[16.489036] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/parse.hpp\n'}
+[16.489332] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/parse_engine.hpp\n'}
+[16.489644] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/parse_engine.def.hpp\n'}
+[16.490452] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/preprocess.hpp\n'}
+[16.490701] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/reference_resolver.hpp\n'}
+[16.491060] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/std/map.hpp\n'}
+[16.491311] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/std/std.hpp\n'}
+[16.491571] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/std/string.hpp\n'}
+[16.491821] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/std/vector.hpp\n'}
+[16.492100] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/tag.hpp\n'}
+[16.492355] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/tree.hpp\n'}
+[16.492721] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/version.hpp\n'}
+[16.492982] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/writer.hpp\n'}
+[16.493244] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/yml/yml.hpp\n'}
+[16.493494] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/ryml.natvis\n'}
+[16.494280] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/lib/cmake/ryml/rymlTargets.cmake\n'}
+[16.494540] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/lib/cmake/ryml/rymlTargets-noconfig.cmake\n'}
+[16.494795] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/lib/cmake/ryml/rymlConfig.cmake\n'}
+[16.495018] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/lib/cmake/ryml/rymlConfigVersion.cmake\n'}
+[16.495886] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/lib/libc4core.a\n'}
+[16.496322] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/allocator.hpp\n'}
+[16.496453] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/base64.hpp\n'}
+[16.496598] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/blob.hpp\n'}
+[16.496740] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/bitmask.hpp\n'}
+[16.496916] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/charconv.hpp\n'}
+[16.497075] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/c4_pop.hpp\n'}
+[16.497230] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/c4_push.hpp\n'}
+[16.497342] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/char_traits.hpp\n'}
+[16.497503] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/common.hpp\n'}
+[16.497631] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/compiler.hpp\n'}
+[16.497740] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/config.hpp\n'}
+[16.497831] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/cpu.hpp\n'}
+[16.497937] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/ctor_dtor.hpp\n'}
+[16.498115] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/dump.hpp\n'}
+[16.498225] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/enum.hpp\n'}
+[16.498330] (-) TimerEvent: {}
+[16.498513] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/error.hpp\n'}
+[16.498638] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/export.hpp\n'}
+[16.498747] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/format.hpp\n'}
+[16.498854] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/gcc-4.8.hpp\n'}
+[16.499066] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/hash.hpp\n'}
+[16.499182] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/language.hpp\n'}
+[16.499290] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/memory_resource.hpp\n'}
+[16.499398] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/memory_util.hpp\n'}
+[16.499504] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/platform.hpp\n'}
+[16.499626] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/preprocessor.hpp\n'}
+[16.499715] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/restrict.hpp\n'}
+[16.499801] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/span.hpp\n'}
+[16.499983] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/std/std.hpp\n'}
+[16.500079] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/std/std_fwd.hpp\n'}
+[16.500166] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/std/string.hpp\n'}
+[16.500252] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/std/string_fwd.hpp\n'}
+[16.500337] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/std/string_view.hpp\n'}
+[16.500421] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/std/tuple.hpp\n'}
+[16.500508] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/std/vector.hpp\n'}
+[16.500592] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/std/vector_fwd.hpp\n'}
+[16.500676] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/substr.hpp\n'}
+[16.500762] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/substr_fwd.hpp\n'}
+[16.500847] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/szconv.hpp\n'}
+[16.500963] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/type_name.hpp\n'}
+[16.501111] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/types.hpp\n'}
+[16.501190] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/unrestrict.hpp\n'}
+[16.501260] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/utf.hpp\n'}
+[16.501346] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/windows.hpp\n'}
+[16.501431] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/version.hpp\n'}
+[16.501518] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/windows_pop.hpp\n'}
+[16.501603] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/windows_push.hpp\n'}
+[16.501689] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/ext/debugbreak/debugbreak.h\n'}
+[16.501774] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/ext/rng/rng.hpp\n'}
+[16.501858] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/ext/sg14/inplace_function.h\n'}
+[16.501988] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/ext/fast_float.hpp\n'}
+[16.502062] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/ext/fast_float_all.h\n'}
+[16.502131] (program_tangan_alfan) StdoutLine: {'line': b'-- Up-to-date: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/include/c4/c4core.natvis\n'}
+[16.502201] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/lib/cmake/c4core/c4coreTargets.cmake\n'}
+[16.502270] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/lib/cmake/c4core/c4coreTargets-noconfig.cmake\n'}
+[16.502340] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/lib/cmake/c4core/c4coreConfig.cmake\n'}
+[16.502409] (program_tangan_alfan) StdoutLine: {'line': b'-- Installing: /home/farhanhanif/alfan_ws/src/program_rekam_gerak/install/program_tangan_alfan/lib/cmake/c4core/c4coreConfigVersion.cmake\n'}
+[16.504829] (program_tangan_alfan) CommandEnded: {'returncode': 0}
+[16.530401] (program_tangan_alfan) JobEnded: {'identifier': 'program_tangan_alfan', 'rc': 0}
+[16.531851] (-) EventReactorShutdown: {}

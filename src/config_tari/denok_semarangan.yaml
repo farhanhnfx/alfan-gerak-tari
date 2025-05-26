@@ -1,0 +1,106 @@
+gerak_tari_sequences:
+  subfolder: Semarangan 2023
+  sequences:
+    - name: PasangMasker3
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 565
+        - tangan: 565
+        - tangan: 564
+        - tangan: 564
+        - tangan: 565
+        - tangan: 567
+        - tangan: 568
+        - tangan: 569
+        - tangan: 570
+
+    # - name: TransisiPembuka3
+    #   is_walking: false
+    #   speeds: 5
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 451
+    #     - tangan: 452
+    #     - tangan: 453
+    #     - tangan: 454
+    #     - tangan: 455
+    #     - tangan: 428
+    
+    # - name: CuciTangan2Chaca
+    #   is_walking: false
+    #   speeds: 5
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 470
+    #     - tangan: 480
+    #     - tangan: 481
+    #     - tangan: 480
+    #     - tangan: 481
+    #     - tangan: 470
+    #     - tangan: 540
+    #     - tangan: 541
+    #     - tangan: 540
+    #     - tangan: 541
+        
+    # - name: SalamPembuka
+    #   is_walking: false
+    #   speeds: 5
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 505
+    #     - tangan: 506
+    #     - tangan: 507
+    #     - tangan: 508
+    #     - tangan: 502
+    #     - tangan: 14
+    #     - tangan: 14
+    #     - tangan: 14
+    #     - tangan: 502
+
+    # - name: Maskulin
+    #   is_walking: false
+    #   speeds: 5
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 46
+    #     - tangan: 47
+    #     - tangan: 48
+    #     - tangan: 49
+    #     - tangan: 50
+    #     - tangan: 51
+    #     - tangan: 52
+    #     - tangan: 53
+    #     - tangan: 54
+    #     - tangan: 55
+    #     - tangan: 56
+    #     - tangan: 57
+    #     - tangan: 58
+    #     - tangan: 59
+    #     - tangan: 60
+    #     - tangan: 61
+
+    # - name: KipasNasi
+    #   is_walking: false
+    #   speeds: 5
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 96
+    #     - tangan: 97
+    #     - tangan: 98
+    #     - tangan: 99
+    #     - tangan: 89
+    #     - tangan: 90
+    #     - tangan: 91
+    #     - tangan: 92
+    #     - tangan: 93
+    #     - tangan: 94
+    #     - tangan: 95
+    #     - tangan: 89
+    #     - tangan: 90
+    #     - tangan: 91
+    #     - tangan: 92
+    #     - tangan: 93
+    #     - tangan: 94
+    #     - tangan: 95

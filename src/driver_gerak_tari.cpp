@@ -16,7 +16,8 @@ void cobaGerakTangan() {
     if (TerminalHelper::key_pressed == 'd') {
         // Set Posisi Tangan Default
         cout << "Default Pose" << endl;
-        gerakTariHandler->setCustomDefaultPose();
+        // gerakTariHandler->setCustomDefaultPose();
+        ServoManager::toDefaultPose(2500);
     }
     else if (TerminalHelper::key_pressed == ' ') {
         cout << "Playing Tari" << endl;
@@ -63,13 +64,23 @@ int main(int argc, char** argv) {
         auto gerakTariHandler = make_shared<GerakTariHandler>();
         gerakTariHandler->setCustomDefaultPose();
 
-        // keep spinning until the callback sets the flag:
-        while (rclcpp::ok() && !gerakTariHandler->isVariasiBtnHasPressed()) {
+        // // keep spinning until the callback sets the flag:
+        // while (rclcpp::ok() && !gerakTariHandler->isVariasiBtnHasPressed()) {
+        //     rclcpp::spin_some(gerakTariHandler);
+        //     std::this_thread::sleep_for(50ms);
+        // }
+
+        // gerakTariHandler->play();
+
+        while (true) {
             rclcpp::spin_some(gerakTariHandler);
+            if (rclcpp::ok() && gerakTariHandler->isVariasiBtnHasPressed()) {
+                gerakTariHandler->play();
+                gerakTariHandler->variasi_gerak_pressed = ""; // Reset setelah play
+                RCLCPP_INFO(rclcpp::get_logger("GerakTariHandler"), "-- SELESAI --");
+            }
             std::this_thread::sleep_for(50ms);
         }
-
-        gerakTariHandler->play();
     }
     else {
         TerminalHelper::buildTerminalLoop(cobaGerakTangan);

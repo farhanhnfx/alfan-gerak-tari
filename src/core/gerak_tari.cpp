@@ -279,9 +279,9 @@ void GerakTariHandler::play() {
     long elapsed_tari_time = std::chrono::duration_cast<std::chrono::milliseconds>(end_tari_times - start_tari_times).count();
     RCLCPP_INFO(comms->get_logger(), "Total time: %ld ms", elapsed_tari_time);
 
-    // Selesai - Shutdown ROS2
-    RCLCPP_INFO(comms->get_logger(), "Gerak tari selesai - SHUTDOWN");
-    comms->requestShutdown();
+    // // Selesai - Shutdown ROS2
+    // RCLCPP_INFO(comms->get_logger(), "Gerak tari selesai - SHUTDOWN");
+    // comms->requestShutdown();
     std::this_thread::sleep_for(std::chrono::seconds(1));
     // rclcpp::shutdown();
 }

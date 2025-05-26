@@ -19,6 +19,11 @@ uint8_t ServoManager::xl320_ids[13] = {22, 23, 24, 25, 26,
                                        32, 33, 34, 35, 36,
                                        41, 42, 43};
 
+// uint8_t ServoManager::mx28_ids[2] = { 21, 31};
+
+// uint8_t ServoManager::xl320_ids[10] = {22, 23, 24, 25, 26,
+//                                        32, 33, 34, 35, 36};
+
 bool ServoManager::init() {
     const char* log;
     if (is_init) return true;
@@ -27,6 +32,7 @@ bool ServoManager::init() {
     result = dxl_wb.init(usb_port, baud_rate, &log);
     if (result == true) {
         RCLCPP_INFO(rclcpp::get_logger("ServoManager"), "Dynamixel Workbench Initialization Success");
+        setupSyncWriteHandler();
         is_init = true;
     } else {
         RCLCPP_ERROR(rclcpp::get_logger("ServoManager"), "Failed to init: %s", log);
@@ -243,7 +249,8 @@ void ServoManager::sendMovementCommands() {
    
     int xl320_goal_positions[] = {goal_positions[22], goal_positions[23], goal_positions[24], goal_positions[25], goal_positions[26],
                                   goal_positions[32], goal_positions[33], goal_positions[34], goal_positions[35], goal_positions[36],
-                                  goal_positions[41], goal_positions[42], goal_positions[43]};
+                                 goal_positions[41], goal_positions[42], goal_positions[43]
+                                 };
            
     int mx28_moving_speeds[] = {moving_speeds[1], moving_speeds[2], moving_speeds[3], moving_speeds[4], moving_speeds[5], moving_speeds[6],
                                 moving_speeds[11], moving_speeds[12], moving_speeds[13], moving_speeds[14], moving_speeds[15], moving_speeds[16],
@@ -252,7 +259,8 @@ void ServoManager::sendMovementCommands() {
    
     int xl320_moving_speeds[] = {moving_speeds[22], moving_speeds[23], moving_speeds[24], moving_speeds[25], moving_speeds[26],
                                  moving_speeds[32], moving_speeds[33], moving_speeds[34], moving_speeds[35], moving_speeds[36],
-                                 moving_speeds[41], moving_speeds[42], moving_speeds[43]};
+                                 moving_speeds[41], moving_speeds[42], moving_speeds[43]
+                                 };
     bool result = false;
     const char* log;
    
@@ -406,6 +414,7 @@ void ServoManager::updateLatestPositionInDegree(int id, int goalPosition) {
 
 void ServoManager::toDefaultPose(int millisec) {
     // TO DO
+    setCurrentPositionAsLatestPosition();
     std::vector<uint8_t> related_ids = getRelatedServoIdsByGroup(Group::ALL);
     for (int i = 0; i < related_ids.size(); i++) {
         int related_id = related_ids.at(i);

@@ -8,7 +8,7 @@ unordered_map<uint8_t, int32_t> Default = {
 };
 
 
-string BASE_PATH = "/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/";   // Sesuaikan dengan path di komputer masing-masing
+string BASE_PATH = "/home/alfan2/alfan_ws/src/program_rekam_gerak/src/";   // Sesuaikan dengan path di komputer masing-masing
 string FILE_PATH = BASE_PATH + "Result/txt/";                                   // Sesuaikan dengan path di komputer masing-masing [SD Card]
 
 /* Kebutuhan Rekam Gerak */

@@ -1,0 +1,33 @@
+[01m[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/communication.cpp:[m[K In member function ‘[01m[Kvoid Communication::transmit_data(bool, int)[m[K’:
+[01m[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/communication.cpp:89:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kpacket_data[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+   89 |     int [01;35m[Kpacket_data[m[K = (music_condition * 128) + count;
+      |         [01;35m[K^~~~~~~~~~~[m[K
+[01m[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/lib_alfan.cpp:[m[K In static member function ‘[01m[Kstatic void FileManager::createFile(std::string, std::string, std::string)[m[K’:
+[01m[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/lib_alfan.cpp:43:70:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KdataJson[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   43 | Manager::createFile(string filename, string dataTxt, [01;35m[Kstring dataJson[m[K) {
+      |                                                      [01;35m[K~~~~~~~^~~~~~~~[m[K
+
+[01m[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/gerak_tari.cpp:[m[K In member function ‘[01m[Kvoid GerakTariHandler::preload_config()[m[K’:
+[01m[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/gerak_tari.cpp:20:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kc4::yml::id_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   20 |         for (int i = 0; [01;35m[Ki < root["sequences"].num_children()[m[K; i++) {
+      |                         [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/gerak_tari.cpp:31:35:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kc4::yml::id_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   31 |                 for (int j = 0; [01;35m[Kj < tree_motion_frames.num_children()[m[K; j++) {
+      |                                 [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/gerak_tari.cpp:53:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<GerakTari>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   53 |     for (int i = 0; [01;35m[Ki < list_of_gerak_tari.size()[m[K; i++) {
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/gerak_tari.cpp:[m[K In member function ‘[01m[Kvoid GerakTariHandler::play()[m[K’:
+[01m[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/gerak_tari.cpp:105:34:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Klong int[m[K’ and ‘[01m[Klong unsigned int[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  105 |                 if ([01;35m[Kelapsed_time >= interval[m[K) {
+      |                     [01;35m[K~~~~~~~~~~~~~^~~~~~~~~~~[m[K
+[01m[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/gerak_tari.cpp:[m[K In member function ‘[01m[Kvoid GerakTariHandler::execute_move(GerakTari)[m[K’:
+[01m[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/gerak_tari.cpp:230:68:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%i[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 5 has type ‘[01m[Kstd::vector<MotionFrame>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+  230 |  printf("EXECUTING %s with speeds %0.2f for %0.2f seconds ([01;35m[K%i[m[K moves)\n", gerak_tari.name.c_str(), gerak_tari.speeds, (gerak_tari.times*gerak_tari.motion_frames.size())/1000.00, [32m[Kgerak_tari.motion_frames.size()[m[K);
+      |                                                            [01;35m[K~^[m[K                                                                                                                    [32m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                                                             [01;35m[K|[m[K                                                                                                                                                 [32m[K|[m[K
+      |                                                             [01;35m[Kint[m[K                                                                                                                                               [32m[Kstd::vector<MotionFrame>::size_type {aka long unsigned int}[m[K
+      |                                                            [32m[K%li[m[K
+[01m[K/home/farhanhanif/alfan_ws/src/program_rekam_gerak/src/gerak_tari.cpp:239:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<MotionFrame>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  239 |     for (int i = 0; [01;35m[Ki < gerak_tari.motion_frames.size()[m[K; i++) {
+      |                     [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K

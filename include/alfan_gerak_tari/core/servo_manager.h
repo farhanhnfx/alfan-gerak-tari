@@ -40,6 +40,8 @@ class ServoManager {
     static uint32_t degree_difference[45];                      // Selisih derajat antara posisi terakhir dan goal position (Membantu perhitungan Moving Speed)
     static uint8_t mx28_ids[14];                                // ID servo MX-28 (Kaki dan Tangan)
     static uint8_t xl320_ids[13];                               // ID servo XL-320 (Kepala dan Tangan)
+    // static uint8_t mx28_ids[2];                                // ID servo MX-28 (Kaki dan Tangan)
+    // static uint8_t xl320_ids[10];                               // ID servo XL-320 (Kepala dan Tangan)
 
 
     /*

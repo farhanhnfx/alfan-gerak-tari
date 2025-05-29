@@ -10,7 +10,7 @@ struct KepalaStruct {
     int gp_degree_41;
     int gp_degree_42;
     int gp_degree_43;
-    int speed;
+    float speed;
 };
 
 class Kepala {
@@ -24,7 +24,7 @@ class Kepala {
      * @param speed Kecepatan gerakan servo (misal 5 maka diharapkan servo dapat mencapai goal position dalam 500 milidetik)
      * @note Posisi servo kepala 41, 42, dan 43 dalam derajat
     */
-    void setPosition(int gp_kepala41, int gp_kepala42, int gp_kepala43, int speed);
+    void setPosition(int gp_kepala41, int gp_kepala42, int gp_kepala43, float speed);
     /*
      * @brief Mengatur posisi servo kepala
      * @param kepala Data perubahan posisi kepala beserta speed-nya (melalui custom Struct)

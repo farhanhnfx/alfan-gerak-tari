@@ -4,11 +4,12 @@
 unordered_map<uint8_t, int32_t> Default = {
     {1, 0},
     {21, KANAN21}, {22, KANAN22}, {23, KANAN23}, {24, KANAN24}, {25, KANAN25}, {26, KANAN26},
-    {31, KIRI31}, {32, KIRI32}, {33, KIRI33}, {34, KIRI34}, {35, KIRI35}, {36, KIRI36}
+    {31, KIRI31}, {32, KIRI32}, {33, KIRI33}, {34, KIRI34}, {35, KIRI35}, {36, KIRI36},
+    {41, KEPALA41}, {42, KEPALA42}, {43, KEPALA43}
 };
 
 
-string BASE_PATH = "/home/alfan2/alfan_ws/src/program_rekam_gerak/src/";   // Sesuaikan dengan path di komputer masing-masing
+string BASE_PATH = "/home/alfan2/alfan_ws/src/alfan_gerak_tari/src/";   // Sesuaikan dengan path di komputer masing-masing
 string FILE_PATH = BASE_PATH + "Result/txt/";                                   // Sesuaikan dengan path di komputer masing-masing [SD Card]
 
 /* Kebutuhan Rekam Gerak */

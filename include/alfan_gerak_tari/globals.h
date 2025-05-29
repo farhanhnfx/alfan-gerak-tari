@@ -41,6 +41,9 @@ using namespace std;
  * TO DO:
  * Menambahkan KEPLAA dan KAKI
 */
+#define KEPALA41 150
+#define KEPALA42 180
+#define KEPALA43 150
 
 #define KANAN 0
 #define KIRI 1

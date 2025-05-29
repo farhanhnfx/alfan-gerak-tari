@@ -7,100 +7,433 @@ gerak_tari_sequences:
       times: 500
       motion_frames:
         - tangan: 565
+          kepala: { kepala41: -40, kepala42: 0, kepala43: -50 }
         - tangan: 565
         - tangan: 564
+          kepala: { kepala41: -30, kepala42: 0, kepala43: -50 }
         - tangan: 564
         - tangan: 565
         - tangan: 567
         - tangan: 568
         - tangan: 569
+          kepala: { kepala41: -40, kepala42: 0, kepala43: 0 }
         - tangan: 570
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
 
-    # - name: TransisiPembuka3
-    #   is_walking: false
-    #   speeds: 5
-    #   times: 500
-    #   motion_frames:
-    #     - tangan: 451
-    #     - tangan: 452
-    #     - tangan: 453
-    #     - tangan: 454
-    #     - tangan: 455
-    #     - tangan: 428
+    - name: TransisiPembuka3
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 451
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 452
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 30 }
+        - tangan: 453
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 454
+          kepala: { kepala41: -20, kepala42: -20, kepala43: 0 }
+        - tangan: 455
+          kepala: { kepala41: 20, kepala42: 20, kepala43: 0 }
+        - tangan: 428
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
     
-    # - name: CuciTangan2Chaca
-    #   is_walking: false
-    #   speeds: 5
-    #   times: 500
-    #   motion_frames:
-    #     - tangan: 470
-    #     - tangan: 480
-    #     - tangan: 481
-    #     - tangan: 480
-    #     - tangan: 481
-    #     - tangan: 470
-    #     - tangan: 540
-    #     - tangan: 541
-    #     - tangan: 540
-    #     - tangan: 541
+    - name: CuciTangan2Chaca
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 470
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 480
+          kepala: { kepala41: -20, kepala42: 20, kepala43: 0 }
+        - tangan: 481
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 480
+          kepala: { kepala41: -20, kepala42: 20, kepala43: 0 }
+        - tangan: 481
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 470
+        - tangan: 540
+          kepala: { kepala41: 20, kepala42: -20, kepala43: 0 }
+        - tangan: 541
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 540
+          kepala: { kepala41: 20, kepala42: -20, kepala43: 0 }
+        - tangan: 541
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
         
-    # - name: SalamPembuka
-    #   is_walking: false
-    #   speeds: 5
-    #   times: 500
-    #   motion_frames:
-    #     - tangan: 505
-    #     - tangan: 506
-    #     - tangan: 507
-    #     - tangan: 508
-    #     - tangan: 502
-    #     - tangan: 14
-    #     - tangan: 14
-    #     - tangan: 14
-    #     - tangan: 502
+    - name: SalamPembuka
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 505
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 506
+          kepala: { kepala41: 0, kepala42: -20, kepala43: 0 }
+        - tangan: 507
+          kepala: { kepala41: 0, kepala42: 20, kepala43: 0 }
+        - tangan: 508
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 502
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 30 }
+        - tangan: 14
+        - tangan: 14
+        - tangan: 14
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 502
 
-    # - name: Maskulin
-    #   is_walking: false
-    #   speeds: 5
-    #   times: 500
-    #   motion_frames:
-    #     - tangan: 46
-    #     - tangan: 47
-    #     - tangan: 48
-    #     - tangan: 49
-    #     - tangan: 50
-    #     - tangan: 51
-    #     - tangan: 52
-    #     - tangan: 53
-    #     - tangan: 54
-    #     - tangan: 55
-    #     - tangan: 56
-    #     - tangan: 57
-    #     - tangan: 58
-    #     - tangan: 59
-    #     - tangan: 60
-    #     - tangan: 61
+    - name: PosisiSiap
+      is_walking: false
+      speeds: 4.7
+      times: 470
+      motion_frames:
+        - tangan: 112
+        - tangan: 79
 
-    # - name: KipasNasi
-    #   is_walking: false
-    #   speeds: 5
-    #   times: 500
-    #   motion_frames:
-    #     - tangan: 96
-    #     - tangan: 97
-    #     - tangan: 98
-    #     - tangan: 99
-    #     - tangan: 89
-    #     - tangan: 90
-    #     - tangan: 91
-    #     - tangan: 92
-    #     - tangan: 93
-    #     - tangan: 94
-    #     - tangan: 95
-    #     - tangan: 89
-    #     - tangan: 90
-    #     - tangan: 91
-    #     - tangan: 92
-    #     - tangan: 93
-    #     - tangan: 94
-    #     - tangan: 95
+    - name: SembahGeol
+      is_walking: false
+      speeds: 4.5
+      times: 450
+      motion_frames:
+        - tangan: 12
+        - tangan: 13
+        - tangan: 14
+        - tangan: 14
+
+    - name: GerakGeol
+      is_walking: false
+      speeds: 6
+      times: 600
+      motion_frames:
+        - tangan: 14
+          kepala: { kepala41: -20, kepala42: -40, kepala43: 10 }
+        - tangan: 14
+        - tangan: 14
+          kepala: { kepala41: -40, kepala42: -5, kepala43: 0 }
+        - tangan: 14
+          kepala: { kepala41: 20, kepala42: 40, kepala43: 10 }
+        - tangan: 14
+        - tangan: 14
+          kepala: { kepala41: 40, kepala42: 5, kepala43: 0 }
+
+    - name: TanganBerputar
+      is_walking: false
+      speeds: 4.3
+      times: 430
+      motion_frames:
+        - tangan: 15
+        - tangan: 16
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 20 }
+        - tangan: 17
+        - tangan: 18
+        - tangan: 19
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 20
+        - tangan: 21
+        - tangan: 22
+
+    - name: AmbilSelendang
+      is_walking: false
+      speeds: 4
+      times: 400
+      motion_frames:
+        - tangan: 212
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 213
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 30 }
+        - tangan: 214
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 220
+
+    - name: PegangKupuKanKir
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 82
+          kepala: { kepala41: 20, kepala42: 20, kepala43: -30 }
+        - tangan: 83
+          kepala: { kepala41: -30, kepala42: -20, kepala43: 30 }
+        - tangan: 82
+          kepala: { kepala41: 20, kepala42: 20, kepala43: -30 }
+        - tangan: 83
+          kepala: { kepala41: -30, kepala42: -20, kepala43: 30 }
+        - tangan: 82
+          kepala: { kepala41: 20, kepala42: 20, kepala43: -30 }
+        - tangan: 83
+          kepala: { kepala41: -30, kepala42: -20, kepala43: 30 }
+        - tangan: 82
+          kepala: { kepala41: 20, kepala42: 20, kepala43: -30 }
+        - tangan: 83
+          kepala: { kepala41: -30, kepala42: -20, kepala43: 30 }
+        - tangan: 82 # kiri
+          kepala: { kepala41: 20, kepala42: 20, kepala43: -30 }
+        - tangan: 83
+          kepala: { kepala41: -30, kepala42: -20, kepala43: 30 }
+        - tangan: 82
+          kepala: { kepala41: 20, kepala42: 20, kepala43: -30 }
+        - tangan: 83
+          kepala: { kepala41: -30, kepala42: -20, kepala43: 30 }
+        - tangan: 82
+          kepala: { kepala41: 20, kepala42: 20, kepala43: -30 }
+        - tangan: 83
+          kepala: { kepala41: -30, kepala42: -20, kepala43: 30 }
+        - tangan: 82
+          kepala: { kepala41: 20, kepala42: 20, kepala43: -30 }
+        - tangan: 83
+          kepala: { kepala41: -30, kepala42: -20, kepala43: 30 }
+
+    - name: AmbilSelendang
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 212
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 213
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 30 }
+        - tangan: 214
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 220
+
+    - name: SilangTanganChaca
+      is_walking: false
+      speeds: 4
+      times: 400
+      motion_frames:
+        - tangan: 526
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 527
+          kepala: { kepala41: -30, kepala42: 0, kepala43: 20 }
+        - tangan: 526
+          kepala: { kepala41: -30, kepala42: 0, kepala43: 0 }
+        - tangan: 528
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 247
+          kepala: { kepala41: 40, kepala42: 0, kepala43: 0 }
+        - tangan: 248
+          kepala: { kepala41: -40, kepala42: 0, kepala43: 0 }
+        - tangan: 97
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 99
+        - tangan: 103
+          kepala: { kepala41: 0, kepala42: -20, kepala43: 0 }
+        - tangan: 106
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+
+    - name: SilangTanganV2Chaca
+      is_walking: false
+      speeds: 4
+      times: 400
+      motion_frames:
+        - tangan: 247
+          kepala: { kepala41: 40, kepala42: 0, kepala43: 0 }
+        - tangan: 248
+          kepala: { kepala41: -40, kepala42: 0, kepala43: 0 }
+        - tangan: 97
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 99
+        - tangan: 103
+          kepala: { kepala41: 0, kepala42: -20, kepala43: 0 }
+        - tangan: 106
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+
+    - name: TanganNaikChaca
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 27
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 28
+        - tangan: 29
+          kepala: { kepala41: -20, kepala42: 0, kepala43: -20 }
+        - tangan: 30
+          kepala: { kepala41: -20, kepala42: 0, kepala43: 0 }
+        - tangan: 31
+          kepala: { kepala41: 20, kepala42: 0, kepala43: 0 }
+        - tangan: 32
+
+    - name: Berkaca
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 233
+          kepala: { kepala41: -10, kepala42: -20, kepala43: 0 }
+        - tangan: 234
+          kepala: { kepala41: 10, kepala42: 20, kepala43: 0 }
+        - tangan: 235
+          kepala: { kepala41: -10, kepala42: -20, kepala43: 0 }
+        - tangan: 236
+          kepala: { kepala41: 10, kepala42: 20, kepala43: 0 }
+        - tangan: 233
+          kepala: { kepala41: -10, kepala42: -20, kepala43: 0 }
+        - tangan: 234
+          kepala: { kepala41: 10, kepala42: 20, kepala43: 0 }
+        - tangan: 235
+          kepala: { kepala41: -10, kepala42: -20, kepala43: 0 }
+        - tangan: 236
+          kepala: { kepala41: 10, kepala42: 20, kepala43: 0 }
+        - tangan: 233
+          kepala: { kepala41: -10, kepala42: -20, kepala43: 0 }
+        - tangan: 234
+          kepala: { kepala41: 10, kepala42: 20, kepala43: 0 }
+        - tangan: 235
+          kepala: { kepala41: -10, kepala42: -20, kepala43: 0 }
+        - tangan: 236
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+
+    - name: AmbilSelendang
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 212
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 213
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 30 }
+        - tangan: 214
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 220
+
+    - name: AmbilSelendang
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 212
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 213
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 30 }
+        - tangan: 214
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 220
+
+    - name: UltramanTsahV2
+      is_walking: false
+      speeds: 6.2
+      times: 620
+      motion_frames:
+        - tangan: 138
+          kepala: { kepala41: 0, kepala42: -30, kepala43: 0 }
+        - tangan: 138
+          kepala: { kepala41: 0, kepala42: 30, kepala43: 0 }
+        - tangan: 140
+          kepala: { kepala41: 0, kepala42: -30, kepala43: 0 }
+        - tangan: 140
+          kepala: { kepala41: 0, kepala42: 30, kepala43: 0 }
+        - tangan: 138
+          kepala: { kepala41: 0, kepala42: -30, kepala43: 0 }
+        - tangan: 138
+          kepala: { kepala41: 0, kepala42: 30, kepala43: 0 }
+        - tangan: 140
+          kepala: { kepala41: 0, kepala42: -30, kepala43: 0 }
+        - tangan: 140
+          kepala: { kepala41: 0, kepala42: 30, kepala43: 0 }
+
+    - name: UltramanTsahV2
+      is_walking: false
+      speeds: 4.7
+      times: 470
+      motion_frames:
+        - tangan: 138
+          kepala: { kepala41: 0, kepala42: -30, kepala43: 0 }
+        - tangan: 138
+          kepala: { kepala41: 0, kepala42: 30, kepala43: 0 }
+        - tangan: 140
+          kepala: { kepala41: 0, kepala42: -30, kepala43: 0 }
+        - tangan: 140
+          kepala: { kepala41: 0, kepala42: 30, kepala43: 0 }
+        - tangan: 138
+          kepala: { kepala41: 0, kepala42: -30, kepala43: 0 }
+        - tangan: 138
+          kepala: { kepala41: 0, kepala42: 30, kepala43: 0 }
+        - tangan: 140
+          kepala: { kepala41: 0, kepala42: -30, kepala43: 0 }
+        - tangan: 140
+          kepala: { kepala41: 0, kepala42: 30, kepala43: 0 }
+
+    - name: UltramanTsahV2Cacha
+      is_walking: false
+      speeds: 4.7
+      times: 470
+      motion_frames:
+        - tangan: 529
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 529
+          kepala: { kepala41: -30, kepala42: -25, kepala43: 0 }
+        - tangan: 529
+        - tangan: 529
+        - tangan: 529
+        - tangan: 529
+        - tangan: 529
+        - tangan: 529
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+
+    - name: TransisiSeblak
+      is_walking: false
+      speeds: 3.5
+      times: 350
+      motion_frames:
+        - tangan: 91
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 92
+          kepala: { kepala41: 30, kepala42: 0, kepala43: 20 }
+        - tangan: 91
+          kepala: { kepala41: 30, kepala42: 0, kepala43: 0 }
+        - tangan: 94
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 212
+        - tangan: 213
+        - tangan: 214
+        - tangan: 220
+
+    - name: Nyawiji
+      is_walking: false
+      speeds: 3.2
+      times: 320
+      motion_frames:
+        - tangan: 194
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 195
+        - tangan: 196
+        - tangan: 198
+          kepala: { kepala41: 20, kepala42: 10, kepala43: -20 }
+        - tangan: 198
+          kepala: { kepala41: 20, kepala42: 0, kepala43: 0 }
+        - tangan: 200
+          kepala: { kepala41: 0, kepala42: -20, kepala43: 0 }
+        - tangan: 201
+          kepala: { kepala41: -20, kepala42: -20, kepala43: 0 }
+        - tangan: 201
+          kepala: { kepala41: -20, kepala42: -20, kepala43: 15 }
+        - tangan: 194
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 207
+        - tangan: 208
+        - tangan: 209
+          kepala: { kepala41: -20, kepala42: -10, kepala43: -20 }
+        - tangan: 209
+          kepala: { kepala41: -20, kepala42: 0, kepala43: 0 }
+        - tangan: 210
+          kepala: { kepala41: 0, kepala42: 20, kepala43: 0 }
+        - tangan: 211
+          kepala: { kepala41: 20, kepala42: 20, kepala43: 0 }
+        - tangan: 211
+          kepala: { kepala41: 20, kepala42: 20, kepala43: 25 }
+
+    - name: AmbilSelendang
+      is_walking: false
+      speeds: 3.5
+      times: 350
+      motion_frames:
+        - tangan: 212
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 213
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 30 }
+        - tangan: 214
+          kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 220

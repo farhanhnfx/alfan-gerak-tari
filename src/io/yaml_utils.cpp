@@ -21,7 +21,7 @@ std::string YamlUtils::createFile(std::string name) {
         fs::create_directory(BASE_PATH + string("config_tari/"));
     }
 
-    std::string path_to_file = BASE_PATH + string("config_tari/") + file_name + ".yaml";
+    path_to_file = BASE_PATH + string("config_tari/") + file_name + ".yaml";
     if (fs::exists(path_to_file)) {
         return file_name;
     }
@@ -49,6 +49,7 @@ std::string YamlUtils::readFile(const std::string &path_to_file) { // pakai & at
 std::string YamlUtils::readFilePreserveComments(const std::string &path_to_file) {
     std::ifstream file_yaml(path_to_file, std::ios::in | std::ios::binary);
     if (!file_yaml) {
+        std::cerr << path_to_file << " cannot be opened!" << std::endl;
         std::cerr << "Error: Cannot open YAML file!" << std::endl;
         return "";
     }
@@ -131,7 +132,7 @@ void YamlUtils::createNewSequence(ryml::NodeRef &sequences_of_gerak_tari) {
     new_sequence["name"] << file_name + " " + to_string(sequences_of_gerak_tari.num_children());
     new_sequence["is_walking"] << "false";
     new_sequence["speeds"] << 5;
-    new_sequence["times"] << 500;
+    // new_sequence["times"] << 500;
 }
 
 void YamlUtils::addNewRecordedMotionFrame(int new_motion_frame_recorded) {
@@ -207,15 +208,7 @@ void YamlUtils::breakCurrentSequence() {
 }
 
 void YamlUtils::deleteLastRecordedMotionFrame() {
-    ifstream file_yaml(path_to_file);
-    if (!file_yaml) {
-        cerr << "Error: Cannot open YAML file!" << endl;
-        return;
-    }
-
-    string yaml_content((istreambuf_iterator<char>(file_yaml)), istreambuf_iterator<char>());
-    file_yaml.close();
-
+    std::string yaml_content = readFilePreserveComments(path_to_file);
     ryml::Tree tree = ryml::parse_in_place(ryml::to_substr(yaml_content));
     ryml::NodeRef root = tree.rootref();
     if (!root.has_child("gerak_tari_sequences")) {
@@ -240,10 +233,36 @@ void YamlUtils::deleteLastRecordedMotionFrame() {
     }
     auto motion_frames = last_sequence["motion_frames"];
 
+    cout << "sampai sini-------" << endl;
+
+    // int latest_recorded_counter;
+    // motion_frames.child(motion_frames.num_children() - 1) >> latest_recorded_counter;
+    // motion_frames.remove_child(motion_frames.num_children() - 1);
+    // FileManager::deleteRecord(latest_recorded_counter);
+    if (motion_frames.num_children() == 0) {
+        cerr << "Error: motion_frames is empty!" << endl;
+        return;
+    }
+
+    // Get last frame (map node)
+    auto last_frame = motion_frames[motion_frames.num_children() - 1];
+
+    // Check and extract 'tangan' value
+    if (!last_frame.has_child("tangan")) {
+        cerr << "Error: 'tangan' key missing in motion frame!" << endl;
+        return;
+    }
     int latest_recorded_counter;
-    motion_frames.child(motion_frames.num_children() - 1) >> latest_recorded_counter;
-    motion_frames.remove_child(motion_frames.num_children() - 1);
-    FileManager::deleteRecord(latest_recorded_counter);
+    last_frame["tangan"] >> latest_recorded_counter;
+
+    // Delete associated record BEFORE removing from YAML
+    if (!FileManager::deleteRecord(latest_recorded_counter)) {
+        cerr << "Error: Failed to delete record with counter " << latest_recorded_counter << endl;
+        return;
+    }
+
+    // Remove the frame from YAML
+    motion_frames.remove_child(last_frame);
     
     // kondisi ketika motion_frames kosong, maka hapus sequence terakhir sekalian
     if (motion_frames.num_children() == 0) {

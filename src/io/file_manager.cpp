@@ -111,8 +111,8 @@ map<uint8_t, int32_t> FileManager::parseFile(int counterGerak) {
 }
 
 bool FileManager::deleteRecord(int counter) {
-    if (counter != counter_rekam_gerak) {
-        std::cerr << "Tidak Valid (Perbedaan counter)";
+    if (counter != counter_rekam_gerak-1) {
+        std::cerr << "Tidak Valid (Perbedaan counter) - " << counter << " != " << counter_rekam_gerak-1 << std::endl;
         return false;
     }
 

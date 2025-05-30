@@ -1,0 +1,17 @@
+gerak_tari_sequences:
+  subfolder: say hi
+  sequences:
+    - name: say_hi 1
+      is_walking: false
+      speeds: 3.5
+      times: 350
+      motion_frames:
+        - tangan: 0
+        - tangan: 1
+        - tangan: 2
+        - tangan: 3
+        - tangan: 4
+        - tangan: 5
+        - tangan: 6
+        - tangan: 7
+        - tangan: 8

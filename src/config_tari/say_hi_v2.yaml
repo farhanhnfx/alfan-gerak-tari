@@ -1,0 +1,23 @@
+gerak_tari_sequences:
+  subfolder: say hi v2
+  sequences:
+    - name: say_hi_v2 1
+      is_walking: false
+      speeds: 4
+      times: 400
+      motion_frames:
+        - tangan: 0
+          kepala: { kepala41: 20, kepala42: 0, kepala43: 0, speeds: 10 }
+        - tangan: 1
+        - tangan: 2
+        - tangan: 3
+        - tangan: 4
+        - tangan: 5
+        - tangan: 6
+        - tangan: 7
+        - tangan: 2
+        - tangan: 3
+        - tangan: 4
+        - tangan: 5
+        - tangan: 6
+        - tangan: 7

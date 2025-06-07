@@ -3,6 +3,7 @@
 
 #include <alfan_gerak_tari/core/tangan.h>
 #include <alfan_gerak_tari/core/kepala.h>
+#include <alfan_gerak_tari/core/kaki.h>
 #include <alfan_gerak_tari/globals.h>
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/string.hpp>
@@ -18,9 +19,10 @@ using namespace std;
  * @note kaki menyusul?
 */
 struct MotionFrame {
-    int tangan;
+    int tangan_frame;
     // kepala, kaki, dll menyusul
-    KepalaStruct kepala;
+    KepalaStruct kepala_frame;
+    KakiStruct kaki_frame;
 };
 
 /*
@@ -66,6 +68,7 @@ class GerakTariHandler: public rclcpp::Node {
     
     Tangan tangan;  // Instance dari Tangan
     Kepala kepala;  // Instance dari Kepala
+    Kaki kaki;      // Instance dari kaki
     
     /*
      * @brief Fungsi ini digunakan untuk menjalankan sebuah Gerak Tari (jika kondisi music hidup)

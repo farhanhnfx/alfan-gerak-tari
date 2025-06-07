@@ -14,7 +14,16 @@
 #         - tangan: 135
 #           # # di bawah ini opsional parameter semua
 #           # kepala: {kepala41: 30, kepala43: 0, speeds: 6}
-#           # kaki: 0 # misal kalau ada mendak, mungkin
+#           # kaki:
+                # speeds: 5
+                # kanan:
+                #   x: 0
+                #   y: 0
+                #   z: 0
+                # kiri:
+                #   x: 0
+                #   y: 0
+                #   z: 0 # misal kalau ada mendak, mungkin
 #           # delay: 2000 # opsional
 #         - tangan: 136
 #         - tangan: 137

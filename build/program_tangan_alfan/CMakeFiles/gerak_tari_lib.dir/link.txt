@@ -1,2 +1,0 @@
-/usr/bin/ar qc libgerak_tari_lib.a CMakeFiles/gerak_tari_lib.dir/src/gerak_tari.cpp.o
-/usr/bin/ranlib libgerak_tari_lib.a

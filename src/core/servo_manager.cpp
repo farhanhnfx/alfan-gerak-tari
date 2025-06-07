@@ -377,7 +377,7 @@ void ServoManager::sendMovementCommandsByGroup(Group group) {
 void ServoManager::calculateSpeed(int id, int goalPosition, float speed) {
     int degree = 0;
     float secondToReach = 0;
-    if (id == 21 || id == 31) {
+    if (id <= 16 || id == 21 || id == 31) {
         degree = alfan::ConvertUtils::valueToDegreeMX28(goalPosition);
         degree_difference[id] = abs(latest_position_in_degree[id] - degree);
         moving_speeds[id] = degree_difference[id] / (speed * CONVERSION_FACTOR_MX28);
@@ -404,7 +404,7 @@ void ServoManager::calculateSpeed(int id, int goalPosition, float speed) {
 }
 
 void ServoManager::updateLatestPositionInDegree(int id, int goalPosition) {
-    if (id == 21 || id == 31) {
+    if (id <= 16 || id == 21 || id == 31) {
         latest_position_in_degree[id] = alfan::ConvertUtils::valueToDegreeMX28(goalPosition);
     }
     else {

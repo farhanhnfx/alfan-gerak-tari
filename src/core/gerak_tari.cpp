@@ -115,7 +115,9 @@ void GerakTariHandler::setCustomDefaultPose(int millisec) {
     FileManager::setNewFullPathTxt(FILE_PATH + pose_path);
 
     tangan.bacaGerak(tangan_recorded, millisec/100);
-
+    kepala.setPosition(kepala41, kepala42, kepala43, millisec/100);
+    kaki.setPosition(kaki_kanan_x, kaki_kanan_y, kaki_kanan_z, Leg::RIGHT, millisec/100);
+    kaki.setPosition(kaki_kiri_x, kaki_kiri_y, kaki_kiri_z, Leg::LEFT, millisec/100);
 
     RCLCPP_INFO(this->get_logger(), "POse default robot: %s", pose_name.c_str());
 
@@ -168,19 +170,35 @@ void GerakTariHandler::preload_config(const char* config_path) {
             if (tree_motion_frames.num_children() > 0) {
                 for (int j = 0; j < tree_motion_frames.num_children(); j++) {
                     MotionFrame mf;
-                    tree_motion_frames[j]["tangan"] >> mf.tangan;
+                    tree_motion_frames[j]["tangan"] >> mf.tangan_frame;
                     if (tree_motion_frames[j].has_child("kepala")) {
                         /* TO DO: Menyimpan action kepala ke dalam Motion Frame 
                             tree_motifon_frames[j]["kepala"] >> mf.kepala */
                         auto tree_kepala = tree_motion_frames[j]["kepala"];
-                        tree_kepala["kepala41"] >> mf.kepala.gp_degree_41;
-                        tree_kepala["kepala42"] >> mf.kepala.gp_degree_42;
-                        tree_kepala["kepala43"] >> mf.kepala.gp_degree_43;
+                        tree_kepala["kepala41"] >> mf.kepala_frame.gp_degree_41;
+                        tree_kepala["kepala42"] >> mf.kepala_frame.gp_degree_42;
+                        tree_kepala["kepala43"] >> mf.kepala_frame.gp_degree_43;
                         if (tree_kepala.has_child("speeds")) {
-                            tree_kepala["speeds"] >> mf.kepala.speed;
+                            tree_kepala["speeds"] >> mf.kepala_frame.speed;
                         }
                         else {
-                            tree_gerak_tari["speeds"] >> mf.kepala.speed;
+                            tree_gerak_tari["speeds"] >> mf.kepala_frame.speed;
+                        }
+                    }
+
+                    if (tree_motion_frames[j].has_child("kaki")) {
+                        if (tree_motion_frames[j]["kaki"].has_child("speeds")) {
+                            tree_motion_frames[j]["kaki"]["speeds"] >> mf.kaki_frame.speeds;
+                        }
+                        if (tree_motion_frames[j]["kaki"].has_child("kanan")) {
+                            tree_motion_frames[j]["kaki"]["kanan"]["x"] >> mf.kaki_frame.kaki_kanan_x;
+                            tree_motion_frames[j]["kaki"]["kanan"]["y"] >> mf.kaki_frame.kaki_kanan_y;
+                            tree_motion_frames[j]["kaki"]["kanan"]["z"] >> mf.kaki_frame.kaki_kanan_z;
+                        }
+                        if (tree_motion_frames[j]["kaki"].has_child("kiri")) {
+                            tree_motion_frames[j]["kaki"]["kiri"]["x"] >> mf.kaki_frame.kaki_kiri_x;
+                            tree_motion_frames[j]["kaki"]["kiri"]["y"] >> mf.kaki_frame.kaki_kiri_y;
+                            tree_motion_frames[j]["kaki"]["kiri"]["z"] >> mf.kaki_frame.kaki_kiri_z;
                         }
                     }
 
@@ -375,8 +393,9 @@ void GerakTariHandler::execute_move(GerakTari gerak_tari) {
     for (int i = 0; i < gerak_tari.motion_frames.size(); i++) {
         MotionFrame motion_frame = gerak_tari.motion_frames.at(i);
 
-        tangan.bacaGerak(motion_frame.tangan, gerak_tari.speeds);
-        kepala.setPosition(motion_frame.kepala);
+        tangan.bacaGerak(motion_frame.tangan_frame, gerak_tari.speeds);
+        kepala.setPosition(motion_frame.kepala_frame);
+        kaki.setPosition(motion_frame.kaki_frame);
 
         if (music_state == 1) {
             ServoManager::sendMovementCommands();

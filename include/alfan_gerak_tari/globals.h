@@ -45,6 +45,30 @@ using namespace std;
 #define KEPALA42 180
 #define KEPALA43 150
 
+/*
+ * KAKI KANAN
+ * ID 1-6
+ * (DALAM DERAJAT)
+*/
+#define KANAN1 180
+#define KANAN2 180
+#define KANAN3 180
+#define KANAN4 180
+#define KANAN5 180
+#define KANAN6 180
+
+/*
+ * KAKI KIRI
+ * ID 11-16
+ * (DALAM DERAJAT)
+*/
+#define KIRI11 180
+#define KIRI12 180
+#define KIRI13 180
+#define KIRI14 180
+#define KIRI15 180
+#define KIRI16 180
+
 #define KANAN 0
 #define KIRI 1
 

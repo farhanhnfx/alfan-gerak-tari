@@ -3,6 +3,7 @@
 
 #include <alfan_gerak_tari/core/tangan.h>
 #include <alfan_gerak_tari/core/kepala.h>
+#include <alfan_gerak_tari/core/perut.h>
 #include <alfan_gerak_tari/core/kaki.h>
 #include <alfan_gerak_tari/globals.h>
 #include <rclcpp/rclcpp.hpp>
@@ -13,15 +14,17 @@ using namespace std;
 /*
  * Struct ini merupakan Custom Structure
  * yang mendefinisikan setiap frame pergerakan
- * berisikan tangan, kepala, dan kaki (menyusul)
+ * berisikan tangan, kepala, perut, dan kaki (menyusul)
  * @note tangan merupakan GRK<counter>.txt yang akan dibaca
  * @note kepala berisikan KepalaStruct (posisi ID 41, 42, 43, serta speed-nya)
+ * @note perut berisikan KepalaStruct (posisi ID 17 serta speed-nya)
  * @note kaki menyusul?
 */
 struct MotionFrame {
     int tangan_frame;
     // kepala, kaki, dll menyusul
     KepalaStruct kepala_frame;
+    PerutStruct perut_frame;
     KakiStruct kaki_frame;
 };
 
@@ -68,6 +71,7 @@ class GerakTariHandler: public rclcpp::Node {
     
     Tangan tangan;  // Instance dari Tangan
     Kepala kepala;  // Instance dari Kepala
+    Perut perut;  // Instance dari Perut
     Kaki kaki;      // Instance dari kaki
     
     /*
@@ -100,7 +104,7 @@ class GerakTariHandler: public rclcpp::Node {
      * @brief Fungsi ini akan me-load konfigurasi pose default atau kuda-kuda robot berdasarkan custom_default_pose.yaml
      * @param millisec Berapa lama waktu yang dibutuhkan untuk menuju posisi default, dalam milidetik
     */
-    void setCustomDefaultPose(int millisec = 3000);
+    void kudaKuda(int millisec = 3000);
 
     /*
      * @brief Melakukan ping ke semua servo

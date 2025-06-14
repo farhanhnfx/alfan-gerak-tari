@@ -62,7 +62,7 @@ int main(int argc, char** argv) {
     
     if (on_deployment) {
         auto gerakTariHandler = make_shared<GerakTariHandler>();
-        gerakTariHandler->setCustomDefaultPose();
+        gerakTariHandler->kudaKuda();
 
         // // keep spinning until the callback sets the flag:
         // while (rclcpp::ok() && !gerakTariHandler->isVariasiBtnHasPressed()) {
@@ -75,7 +75,31 @@ int main(int argc, char** argv) {
         while (true) {
             rclcpp::spin_some(gerakTariHandler);
             if (rclcpp::ok() && gerakTariHandler->isVariasiBtnHasPressed()) {
-                gerakTariHandler->play();
+                if (gerakTariHandler-> variasi_gerak_pressed == "VAR_SIJI"){  
+                    // Ambil & load konfigurasi-nya
+                    string config_path = BASE_PATH + "VAR_KIRI.yaml";
+                    gerakTariHandler->preload_config(config_path.c_str());
+                    gerakTariHandler->play();
+
+                }
+                else if (gerakTariHandler-> variasi_gerak_pressed == "VAR_LORO"){  
+                    // Ambil & load konfigurasi-nya
+                    string config_path = BASE_PATH + "VAR_KANAN.yaml";
+                    gerakTariHandler->preload_config(config_path.c_str());
+                    gerakTariHandler->play();
+
+                }
+                else if (gerakTariHandler-> variasi_gerak_pressed == "VAR_DEFAULT"){  
+                    ServoManager::toDefaultPose(2500);
+                    gerakTariHandler->kudaKuda();
+                }
+                else if (gerakTariHandler-> variasi_gerak_pressed == "VAR_SUGENG"){  
+                    // Ambil & load konfigurasi-nya
+                    string config_path = BASE_PATH + "VAR_SUGENG.yaml";
+                    gerakTariHandler->preload_config(config_path.c_str());
+                    gerakTariHandler->play();
+                }
+                 
                 gerakTariHandler->variasi_gerak_pressed = ""; // Reset setelah play
                 RCLCPP_INFO(rclcpp::get_logger("GerakTariHandler"), "-- SELESAI --");
             }

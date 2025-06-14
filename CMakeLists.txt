@@ -20,7 +20,10 @@ add_library(lib_core_servomgr src/core/servo_manager.cpp)
 add_library(lib_core_comms src/core/communication.cpp)
 add_library(lib_core_tangan src/core/tangan.cpp)
 add_library(lib_core_kepala src/core/kepala.cpp)
-add_library(lib_core_geraktari src/core/gerak_tari.cpp src/core/servo_manager.cpp src/core/communication.cpp src/core/tangan.cpp src/core/kepala.cpp)
+add_library(lib_core_perut src/core/perut.cpp)
+add_library(lib_core_kinematika src/core/kinematika.cpp)
+add_library(lib_core_kaki src/core/kaki.cpp)
+add_library(lib_core_geraktari src/core/gerak_tari.cpp src/core/servo_manager.cpp src/core/communication.cpp src/core/tangan.cpp src/core/kepala.cpp src/core/perut.cpp src/core/kinematika.cpp src/core/kaki.cpp)
 add_library(lib_recording src/record/rekam_gerak.cpp)
 
 target_include_directories(lib_globals PUBLIC
@@ -52,6 +55,18 @@ target_include_directories(lib_core_tangan PUBLIC
   $<INSTALL_INTERFACE:include>
 )
 target_include_directories(lib_core_kepala PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+target_include_directories(lib_core_perut PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+target_include_directories(lib_core_kaki PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+target_include_directories(lib_core_kinematika PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
@@ -94,6 +109,16 @@ ament_target_dependencies(
   rclcpp
   dynamixel_workbench_toolbox
 )
+ament_target_dependencies(
+  lib_core_perut
+  rclcpp
+  dynamixel_workbench_toolbox
+)
+ament_target_dependencies(
+  lib_core_kaki
+  rclcpp
+  dynamixel_workbench_toolbox
+)
 ament_target_dependencies(lib_core_geraktari rclcpp std_msgs std_srvs dynamixel_workbench_toolbox)
 # recording library (also missing):
 ament_target_dependencies(
@@ -119,7 +144,7 @@ ament_target_dependencies(rekam_gerak rclcpp dynamixel_workbench_toolbox)
 ament_target_dependencies(gerak_tari rclcpp dynamixel_workbench_toolbox)
 
 target_link_libraries(rekam_gerak ryml lib_globals lib_recording lib_io_yamlutils lib_io_filemgr lib_utils_terminal)
-target_link_libraries(gerak_tari ryml lib_globals lib_core_servomgr lib_core_comms lib_core_tangan lib_core_kepala lib_core_geraktari lib_io_yamlutils lib_io_filemgr lib_utils_terminal)
+target_link_libraries(gerak_tari ryml lib_globals lib_core_servomgr lib_core_comms lib_core_tangan lib_core_kepala lib_core_perut lib_core_kaki lib_core_geraktari lib_io_yamlutils lib_io_filemgr lib_utils_terminal)
 
 
 # Install target and include directory

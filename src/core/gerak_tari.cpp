@@ -18,9 +18,9 @@ GerakTariHandler::GerakTariHandler() : Node(THIS_ROBOT_NAME + "_gerak_tari_handl
             /*
                 variasi_gerak_pressed = VAR_KIRI atau VAR_KANAN
             */
-           // Ambil & load konfigurasi-nya
-            string config_path = BASE_PATH + variasi_gerak_pressed + ".yaml";
-            this->preload_config(config_path.c_str());
+        //    // Ambil & load konfigurasi-nya
+        //     string config_path = BASE_PATH + variasi_gerak_pressed + ".yaml";
+        //     this->preload_config(config_path.c_str());
 
             // Hapus subscription-nya setelah set variasi
             // subs_variasi_gerak.reset();
@@ -33,9 +33,7 @@ GerakTariHandler::~GerakTariHandler() {
 }
 
 bool GerakTariHandler::isVariasiBtnHasPressed() {
-    return variasi_gerak_pressed == "VAR_KIRI"
-                        ||
-           variasi_gerak_pressed == "VAR_KANAN";
+    return variasi_gerak_pressed != "";
 }
 
 void GerakTariHandler::pingServos() {
@@ -51,7 +49,7 @@ void GerakTariHandler::setTorqueOff() {
     ServoManager::setTorqueOff();
 }
 
-void GerakTariHandler::setCustomDefaultPose(int millisec) {
+void GerakTariHandler::kudaKuda(int millisec) {
     /*
         TO DO:
         Menentukan format konfigurasi .yaml
@@ -63,6 +61,7 @@ void GerakTariHandler::setCustomDefaultPose(int millisec) {
         Format konfigurasi yang dibayangkan:
         - tangan: (int) < baca rekaman tangan (mungkin di subfolder "DefaultPose" atau sejenisnya)
         - kepala: (x, y, z) < sudut yang diperlukan untuk kepala ID 41, 42, 43
+        - perut: 
         - kaki:
           - kanan: (x, y, z)
           - kiri: (x, y, z)
@@ -72,7 +71,7 @@ void GerakTariHandler::setCustomDefaultPose(int millisec) {
         - set kepala dan kaki sesuai yang ditentukan
         - sleep selama 2-3 detik untuk mencapai posisi Default
     */
-    std::string path = BASE_PATH + "custom_default_pose.yaml";
+    std::string path = BASE_PATH + "kuda_kuda.yaml";
     if (!fs::exists(path)) {
         ServoManager::toDefaultPose(millisec);
         return;
@@ -86,6 +85,7 @@ void GerakTariHandler::setCustomDefaultPose(int millisec) {
     std::string pose_path;
     int tangan_recorded;
     int kepala41, kepala42, kepala43;
+    int perut17;
     int kaki_kanan_x, kaki_kanan_y, kaki_kanan_z;
     int kaki_kiri_x, kaki_kiri_y, kaki_kiri_z;
 
@@ -98,6 +98,9 @@ void GerakTariHandler::setCustomDefaultPose(int millisec) {
         root["kepala"]["41"] >> kepala41;
         root["kepala"]["42"] >> kepala42;
         root["kepala"]["43"] >> kepala43;
+    }
+    if (root.has_child("perut")) {
+        root["perut"]["17"] >> perut17;
     }
     if (root.has_child("kaki")) {
         if (root["kaki"].has_child("kanan")) {
@@ -116,10 +119,11 @@ void GerakTariHandler::setCustomDefaultPose(int millisec) {
 
     tangan.bacaGerak(tangan_recorded, millisec/100);
     kepala.setPosition(kepala41, kepala42, kepala43, millisec/100);
+    perut.setPosition(perut17, millisec/100);
     kaki.setPosition(kaki_kanan_x, kaki_kanan_y, kaki_kanan_z, Leg::RIGHT, millisec/100);
     kaki.setPosition(kaki_kiri_x, kaki_kiri_y, kaki_kiri_z, Leg::LEFT, millisec/100);
 
-    RCLCPP_INFO(this->get_logger(), "POse default robot: %s", pose_name.c_str());
+    RCLCPP_INFO(this->get_logger(), "Pose default robot: %s", pose_name.c_str());
 
     // ServoManager::toDefaultPose();
     ServoManager::sendMovementCommands();
@@ -183,6 +187,19 @@ void GerakTariHandler::preload_config(const char* config_path) {
                         }
                         else {
                             tree_gerak_tari["speeds"] >> mf.kepala_frame.speed;
+                        }
+                    }
+
+                    if (tree_motion_frames[j].has_child("perut")) {
+                        /* TO DO: Menyimpan action perut ke dalam Motion Frame 
+                            tree_motifon_frames[j]["perut"] >> mf.perut */
+                        auto tree_perut = tree_motion_frames[j]["perut"];
+                        tree_perut["perut17"] >> mf.perut_frame.gp_degree_17;
+                        if (tree_perut.has_child("speeds")) {
+                            tree_perut["speeds"] >> mf.perut_frame.speed;
+                        }
+                        else {
+                            tree_gerak_tari["speeds"] >> mf.perut_frame.speed;
                         }
                     }
 

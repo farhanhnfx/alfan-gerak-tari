@@ -2,7 +2,9 @@
 #include <unordered_map>
 
 unordered_map<uint8_t, int32_t> Default = {
-    {1, 0},
+    {1, KANAN1}, {2, KANAN2}, {3, KANAN3}, {4, KANAN4}, {5, KANAN5}, {6, KANAN6},
+    {11, KIRI11}, {12, KIRI12}, {13, KIRI13}, {14, KIRI14}, {15, KIRI15}, {16, KIRI16},
+    {17, PERUT17},
     {21, KANAN21}, {22, KANAN22}, {23, KANAN23}, {24, KANAN24}, {25, KANAN25}, {26, KANAN26},
     {31, KIRI31}, {32, KIRI32}, {33, KIRI33}, {34, KIRI34}, {35, KIRI35}, {36, KIRI36},
     {41, KEPALA41}, {42, KEPALA42}, {43, KEPALA43}

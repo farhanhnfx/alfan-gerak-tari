@@ -10,10 +10,10 @@ int32_t ServoManager::goal_positions[45] = {0};
 int32_t ServoManager::moving_speeds[45] = {0};
 int32_t ServoManager::latest_position_in_degree[45] = {0};
 uint32_t ServoManager::degree_difference[45] = {0};
-uint8_t ServoManager::mx28_ids[14] = {1, 2, 3, 4, 5, 6, 
+uint8_t ServoManager::mx28_ids[15] = {1, 2, 3, 4, 5, 6, 
                                       11, 12, 13, 14, 15, 16,
-                                      21,
-                                      31};
+                                      17,
+                                      21, 31};
 
 uint8_t ServoManager::xl320_ids[13] = {22, 23, 24, 25, 26,
                                        32, 33, 34, 35, 36,
@@ -50,7 +50,7 @@ std::vector<uint8_t> ServoManager::getRelatedServoIdsByGroup(Group group) {
 
     if (group == Group::ALL) {
         related_ids = {  1,  2,  3,  4,  5,  6,
-                        11, 12, 13, 14, 15, 16,
+                        11, 12, 13, 14, 15, 16, 17,
                         21, 22, 23, 24, 25, 26,
                         31, 32, 33, 34, 35, 36,
                         41, 42, 43};
@@ -82,7 +82,7 @@ void ServoManager::ping(uint8_t id) {
 void ServoManager::ping(Group group) {
     std::vector<uint8_t> related_ids = getRelatedServoIdsByGroup(group);
 
-    for (int i = 0; i < related_ids.size(); i++) {
+    for (size_t i = 0; i < related_ids.size(); i++) {
         ping(related_ids.at(i));
     }
 }
@@ -90,29 +90,33 @@ void ServoManager::ping(Group group) {
 void ServoManager::pingMX28() {
     if (!is_init) return;
     const char* log;
-    for (int i = 0; i < sizeof(mx28_ids)/sizeof(mx28_ids[0]); i++) {
+    for (int i = 0; i < (int) (sizeof(mx28_ids)/sizeof(mx28_ids[0])); i++) {
         if (dxl_wb.ping(mx28_ids[i], &log) == false) {
             RCLCPP_ERROR(rclcpp::get_logger("ServoManager"), "Ping MX-28 ID %d failed: %s", mx28_ids[i], log);
         } else {
             RCLCPP_INFO(rclcpp::get_logger("ServoManager"), "Ping MX-28 ID %d success", mx28_ids[i]);
         }
     }
+
+    setCurrentPositionAsLatestPosition();
 }
 void ServoManager::pingXL320() {
     if (!is_init) return;
     const char* log;
-    for (int i = 0; i < sizeof(xl320_ids)/sizeof(xl320_ids[0]); i++) {
+    for (int i = 0; i < (int) (sizeof(xl320_ids)/sizeof(xl320_ids[0])); i++) {
         if (dxl_wb.ping(xl320_ids[i], &log) == false) {
             RCLCPP_ERROR(rclcpp::get_logger("ServoManager"), "Ping XL-320 ID %d failed: %s", xl320_ids[i], log);
         } else {
             RCLCPP_INFO(rclcpp::get_logger("ServoManager"), "Ping XL-320 ID %d success", xl320_ids[i]);
         }
     }
+
+    setCurrentPositionAsLatestPosition();
 }
 void ServoManager::setTorqueOn() {
     if (!is_init) return;
     const char* log;
-    for (int i = 0; i < sizeof(mx28_ids)/sizeof(mx28_ids[0]); i++) {
+    for (int i = 0; i < (int) (sizeof(mx28_ids)/sizeof(mx28_ids[0])); i++) {
         if (dxl_wb.torqueOn(mx28_ids[i], &log) == false) {
             RCLCPP_ERROR(rclcpp::get_logger("ServoManager"), "Set Torque On MX-28 ID %d failed: %s", mx28_ids[i], log);
         } else {
@@ -120,7 +124,7 @@ void ServoManager::setTorqueOn() {
         }
     }
 
-    for (int i = 0; i < sizeof(xl320_ids)/sizeof(xl320_ids[0]); i++) {
+    for (int i = 0; i < (int) (sizeof(xl320_ids)/sizeof(xl320_ids[0])); i++) {
         if (dxl_wb.torqueOn(xl320_ids[i], &log) == false) {
             RCLCPP_ERROR(rclcpp::get_logger("ServoManager"), "Set Torque On XL-320 ID %d failed: %s", xl320_ids[i], log);
         } else {
@@ -131,7 +135,7 @@ void ServoManager::setTorqueOn() {
 void ServoManager::setTorqueOff() {
     if (!is_init) return;
     const char* log;
-    for (int i = 0; i < sizeof(mx28_ids)/sizeof(mx28_ids[0]); i++) {
+    for (int i = 0; i < (int) (sizeof(mx28_ids)/sizeof(mx28_ids[0])); i++) {
         if (dxl_wb.torqueOff(mx28_ids[i], &log) == false) {
             RCLCPP_ERROR(rclcpp::get_logger("ServoManager"), "Set Torque Off MX-28 ID %d failed: %s", mx28_ids[i], log);
         } else {
@@ -139,7 +143,7 @@ void ServoManager::setTorqueOff() {
         }
     }
 
-    for (int i = 0; i < sizeof(xl320_ids)/sizeof(xl320_ids[0]); i++) {
+    for (int i = 0; i < (int) (sizeof(xl320_ids)/sizeof(xl320_ids[0])); i++) {
         if (dxl_wb.torqueOff(xl320_ids[i], &log) == false) {
             RCLCPP_ERROR(rclcpp::get_logger("ServoManager"), "Set Torque Off XL-320 ID %d failed: %s", xl320_ids[i], log);
         } else {
@@ -168,7 +172,7 @@ void ServoManager::setTorqueOn(Group group) {
     std::vector<uint8_t> related_ids = getRelatedServoIdsByGroup(group);
 
     const char* log;
-    for (int i = 0; i < related_ids.size(); i++) {
+    for (size_t i = 0; i < related_ids.size(); i++) {
         if (dxl_wb.torqueOn(related_ids.at(i), &log) == false) {
             RCLCPP_ERROR(rclcpp::get_logger("ServoManager"), "Set Torque On ID %d failed: %s", related_ids.at(i), log);
         } else {
@@ -182,7 +186,7 @@ void ServoManager::setTorqueOff(Group group) {
     std::vector<uint8_t> related_ids = getRelatedServoIdsByGroup(group);
 
     const char* log;
-    for (int i = 0; i < related_ids.size(); i++) {
+    for (size_t i = 0; i < related_ids.size(); i++) {
         if (dxl_wb.torqueOff(related_ids.at(i), &log) == false) {
             RCLCPP_ERROR(rclcpp::get_logger("ServoManager"), "Set Torque On ID %d failed: %s", related_ids.at(i), log);
         } else {
@@ -200,12 +204,12 @@ void ServoManager::setCurrentPositionAsLatestPosition() {
     */
     int32_t present_value;
 
-    for (int i = 0; i < sizeof(mx28_ids)/sizeof(mx28_ids[0]); i++) {
+    for (int i = 0; i < (int) (sizeof(mx28_ids)/sizeof(mx28_ids[0])); i++) {
         dxl_wb.getPresentPositionData(mx28_ids[i], &present_value, &log);
         latest_position_in_degree[mx28_ids[i]] = alfan::ConvertUtils::valueToDegreeMX28(present_value);
     }
 
-    for (int i = 0; i < sizeof(xl320_ids)/sizeof(xl320_ids[0]); i++) {
+    for (int i = 0; i < (int) (sizeof(xl320_ids)/sizeof(xl320_ids[0])); i++) {
         dxl_wb.getPresentPositionData(xl320_ids[i], &present_value, &log);
         latest_position_in_degree[xl320_ids[i]] = alfan::ConvertUtils::valueToDegreeXL320(present_value);
     }
@@ -244,6 +248,7 @@ void ServoManager::sendMovementCommands() {
     if (!is_init) return;
     int mx28_goal_positions[] = {goal_positions[1], goal_positions[2], goal_positions[3], goal_positions[4], goal_positions[5], goal_positions[6],
                                  goal_positions[11], goal_positions[12], goal_positions[13], goal_positions[14], goal_positions[15], goal_positions[16],
+                                 goal_positions[17],
                                  goal_positions[21], 
                                  goal_positions[31]};
    
@@ -254,6 +259,7 @@ void ServoManager::sendMovementCommands() {
            
     int mx28_moving_speeds[] = {moving_speeds[1], moving_speeds[2], moving_speeds[3], moving_speeds[4], moving_speeds[5], moving_speeds[6],
                                 moving_speeds[11], moving_speeds[12], moving_speeds[13], moving_speeds[14], moving_speeds[15], moving_speeds[16],
+                                moving_speeds[17],
                                 moving_speeds[21], 
                                 moving_speeds[31]};
    
@@ -273,35 +279,35 @@ void ServoManager::sendMovementCommands() {
         Ingat index handler untuk masing-masing register tadi */
            
     // Index Handler = 0 untuk Profile Velocity MX-28
-    result = dxl_wb.syncWrite(0, mx28_ids, sizeof(mx28_ids)/sizeof(mx28_ids[0]), mx28_moving_speeds, 1, &log);
+    result = dxl_wb.syncWrite(0, mx28_ids, (int) (sizeof(mx28_ids)/sizeof(mx28_ids[0])), mx28_moving_speeds, 1, &log);
     if (!result) {
         RCLCPP_ERROR(rclcpp::get_logger("ServoManager"), "Sync Write untuk Profile Velocity MX-28 gagal: %s", log);
     } else {
-        // printf("[INFO] Sync Write untuk Profile Velocity MX-28 berhasil untuk %lu servo\n", sizeof(mx28_ids)/sizeof(mx28_ids[0]));
+        // printf("[INFO] Sync Write untuk Profile Velocity MX-28 berhasil untuk %lu servo\n", (int) (sizeof(mx28_ids)/sizeof(mx28_ids[0])));
     }
    
     // Index Handler = 1 untuk Goal Position MX-28
-    result = dxl_wb.syncWrite(1, mx28_ids, sizeof(mx28_ids)/sizeof(mx28_ids[0]), mx28_goal_positions, 1, &log);
+    result = dxl_wb.syncWrite(1, mx28_ids, (int) (sizeof(mx28_ids)/sizeof(mx28_ids[0])), mx28_goal_positions, 1, &log);
     if (!result) {
         RCLCPP_ERROR(rclcpp::get_logger("ServoManager"), "Sync Write untuk Goal Position MX-28 gagal: %s", log);
     } else {
-        // printf("[INFO] Sync Write untuk Goal Position MX-28 berhasil untuk %lu servo\n", sizeof(mx28_ids)/sizeof(mx28_ids[0]));
+        // printf("[INFO] Sync Write untuk Goal Position MX-28 berhasil untuk %lu servo\n", (int) (sizeof(mx28_ids)/sizeof(mx28_ids[0])));
     }
    
     // Index Handler = 3 untuk Moving Speed XL-320
-    result = dxl_wb.syncWrite(3, xl320_ids, sizeof(xl320_ids)/sizeof(xl320_ids[0]), xl320_moving_speeds, 1, &log);
+    result = dxl_wb.syncWrite(3, xl320_ids, (int) (sizeof(xl320_ids)/sizeof(xl320_ids[0])), xl320_moving_speeds, 1, &log);
     if (!result) {
         RCLCPP_ERROR(rclcpp::get_logger("ServoManager"), "Sync Write untuk Moving Speed XL-320 gagal: %s", log);
     } else {
-        // printf("[INFO] Sync Write untuk Moving Speed XL-320 berhasil untuk %lu servo\n", sizeof(xl320_ids)/sizeof(xl320_ids[0]));
+        // printf("[INFO] Sync Write untuk Moving Speed XL-320 berhasil untuk %lu servo\n", (int) (sizeof(xl320_ids)/sizeof(xl320_ids[0])));
     }
    
     // Index Handler = 2 untuk Goal Position XL-320
-    result = dxl_wb.syncWrite(2, xl320_ids, sizeof(xl320_ids)/sizeof(xl320_ids[0]), xl320_goal_positions, 1, &log);
+    result = dxl_wb.syncWrite(2, xl320_ids, (int) (sizeof(xl320_ids)/sizeof(xl320_ids[0])), xl320_goal_positions, 1, &log);
     if (!result) {
         RCLCPP_ERROR(rclcpp::get_logger("ServoManager"), "Sync Write untuk Goal Position XL-320 gagal: %s", log);
     } else {
-        // printf("[INFO] Sync Write untuk Goal Position XL-320 berhasil untuk %lu servo\n", sizeof(xl320_ids)/sizeof(xl320_ids[0]));
+        // printf("[INFO] Sync Write untuk Goal Position XL-320 berhasil untuk %lu servo\n", (int) (sizeof(xl320_ids)/sizeof(xl320_ids[0])));
     }
    
 }
@@ -321,7 +327,7 @@ void ServoManager::sendMovementCommandsByGroup(Group group) {
     std::vector<int> related_mx28_ms;
     std::vector<int> related_xl320_ms;
 
-    for (int i = 0; i < related_ids.size(); i++) {
+    for (size_t i = 0; i < related_ids.size(); i++) {
         int related_id = related_ids.at(i);
         if (related_id <= 16 || related_id == 21 || related_id == 31) {
             related_mx28_ids.push_back(related_id);
@@ -345,7 +351,7 @@ void ServoManager::sendMovementCommandsByGroup(Group group) {
     if (!result) {
     RCLCPP_ERROR(rclcpp::get_logger("ServoManager"), "Sync Write untuk Profile Velocity MX-28 gagal: %s", log);
     } else {
-    // printf("[INFO] Sync Write untuk Profile Velocity MX-28 berhasil untuk %lu servo\n", sizeof(mx28_ids)/sizeof(mx28_ids[0]));
+    // printf("[INFO] Sync Write untuk Profile Velocity MX-28 berhasil untuk %lu servo\n", (int) (sizeof(mx28_ids)/sizeof(mx28_ids[0])));
     }
 
     // Index Handler = 1 untuk Goal Position MX-28
@@ -353,7 +359,7 @@ void ServoManager::sendMovementCommandsByGroup(Group group) {
     if (!result) {
     RCLCPP_ERROR(rclcpp::get_logger("ServoManager"), "Sync Write untuk Goal Position MX-28 gagal: %s", log);
     } else {
-    // printf("[INFO] Sync Write untuk Goal Position MX-28 berhasil untuk %lu servo\n", sizeof(mx28_ids)/sizeof(mx28_ids[0]));
+    // printf("[INFO] Sync Write untuk Goal Position MX-28 berhasil untuk %lu servo\n", (int) (sizeof(mx28_ids)/sizeof(mx28_ids[0])));
     }
 
     // Index Handler = 3 untuk Moving Speed XL-320
@@ -361,7 +367,7 @@ void ServoManager::sendMovementCommandsByGroup(Group group) {
     if (!result) {
     RCLCPP_ERROR(rclcpp::get_logger("ServoManager"), "Sync Write untuk Moving Speed XL-320 gagal: %s", log);
     } else {
-    // printf("[INFO] Sync Write untuk Moving Speed XL-320 berhasil untuk %lu servo\n", sizeof(xl320_ids)/sizeof(xl320_ids[0]));
+    // printf("[INFO] Sync Write untuk Moving Speed XL-320 berhasil untuk %lu servo\n", (int) (sizeof(xl320_ids)/sizeof(xl320_ids[0])));
     }
 
     // Index Handler = 2 untuk Goal Position XL-320
@@ -369,42 +375,50 @@ void ServoManager::sendMovementCommandsByGroup(Group group) {
     if (!result) {
     RCLCPP_ERROR(rclcpp::get_logger("ServoManager"), "Sync Write untuk Goal Position XL-320 gagal: %s", log);
     } else {
-    // printf("[INFO] Sync Write untuk Goal Position XL-320 berhasil untuk %lu servo\n", sizeof(xl320_ids)/sizeof(xl320_ids[0]));
+    // printf("[INFO] Sync Write untuk Goal Position XL-320 berhasil untuk %lu servo\n", (int) (sizeof(xl320_ids)/sizeof(xl320_ids[0])));
     }
 
 }
 
 void ServoManager::calculateSpeed(int id, int goalPosition, float speed) {
     int degree = 0;
-    float secondToReach = 0;
-    if (id <= 16 || id == 21 || id == 31) {
+    // float secondToReach = 0.0f;
+    if (id <= 17 || id == 21 || id == 31) {
         degree = alfan::ConvertUtils::valueToDegreeMX28(goalPosition);
         degree_difference[id] = abs(latest_position_in_degree[id] - degree);
         moving_speeds[id] = degree_difference[id] / (speed * CONVERSION_FACTOR_MX28);
 
-        secondToReach = (degree_difference[id]/360.0) / ((moving_speeds[id] * 0.229) / 60.0); // for debug purpose only
+        // secondToReach = (degree_difference[id]/360.0) / ((moving_speeds[id] * 0.229) / 60.0); // for debug purpose only
+
+        if (moving_speeds[id] > 230) {
+            moving_speeds[id] = 150;
+        }
+        else if (moving_speeds[id] <= 0) {
+            moving_speeds[id] = 1;
+        }
     }
     else {
         degree = alfan::ConvertUtils::valueToDegreeXL320(goalPosition);
         degree_difference[id] = abs(latest_position_in_degree[id] - degree);
         moving_speeds[id] = degree_difference[id] / (speed * CONVERSION_FACTOR_XL320);
 
-        secondToReach = (degree_difference[id]/360.0) / ((moving_speeds[id] * 0.111) / 60.0); // for debug purpose only
+        // secondToReach = (degree_difference[id]/360.0) / ((moving_speeds[id] * 0.111) / 60.0); // for debug purpose only
+        
+        if (moving_speeds[id] > 1023) {
+            moving_speeds[id] = 1023;
+        }
+        else if (moving_speeds[id] <= 0) {
+            moving_speeds[id] = 1;
+        }
     }
 
-    if (moving_speeds[id] > 1023) {
-        moving_speeds[id] = 1023;
-    }
-    else if (moving_speeds[id] <= 0) {
-        moving_speeds[id] = 1;
-    }
     // printf("ID: %d\tGoal Position: %d\t(%d derajat)\tPrev Degree: %d\t Diff: %d\tSpeed: %d in %f second\n", id, goalPosition, degree, ServoManager::latest_position_in_degree[id], ServoManager::degree_difference[id], ServoManager::moving_speeds[id], secondToReach);
 
     updateLatestPositionInDegree(id, goalPosition);
 }
 
 void ServoManager::updateLatestPositionInDegree(int id, int goalPosition) {
-    if (id <= 16 || id == 21 || id == 31) {
+    if (id <= 17 || id == 21 || id == 31) {
         latest_position_in_degree[id] = alfan::ConvertUtils::valueToDegreeMX28(goalPosition);
     }
     else {
@@ -414,11 +428,10 @@ void ServoManager::updateLatestPositionInDegree(int id, int goalPosition) {
 
 void ServoManager::toDefaultPose(int millisec) {
     // TO DO
-    setCurrentPositionAsLatestPosition();
     std::vector<uint8_t> related_ids = getRelatedServoIdsByGroup(Group::ALL);
-    for (int i = 0; i < related_ids.size(); i++) {
+    for (size_t i = 0; i < related_ids.size(); i++) {
         int related_id = related_ids.at(i);
-        if (related_id <= 16 || related_id == 21 || related_id == 31) {
+        if (related_id <= 17 || related_id == 21 || related_id == 31) {
             goal_positions[related_id] = alfan::ConvertUtils::degreeToValueMX28(Default[related_id]);
         } else {
             goal_positions[related_id] = alfan::ConvertUtils::degreeToValueXL320(Default[related_id]);
@@ -428,4 +441,13 @@ void ServoManager::toDefaultPose(int millisec) {
 
     sendMovementCommands();
     std::this_thread::sleep_for(std::chrono::milliseconds(millisec));
+    
+    setCurrentPositionAsLatestPosition();
+
+    for (int i = 1; i <= 6; i++) {
+        RCLCPP_INFO(rclcpp::get_logger("ServoManager"), "GP %d : %d, MS: %d", i, goal_positions[i], moving_speeds[i]);
+    }
+    for (int i = 11; i <= 17; i++) {
+        RCLCPP_INFO(rclcpp::get_logger("ServoManager"), "GP %d : %d, MS: %d", i, goal_positions[i], moving_speeds[i]);
+    }
 }

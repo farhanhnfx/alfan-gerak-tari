@@ -1,0 +1,778 @@
+gerak_tari_sequences:
+  subfolder: fortune cookie
+  sequences:
+    - name: Syapp
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - tangan: 8
+        - tangan: 9
+        - tangan: 10
+        - tangan: 11
+        - tangan: 12
+        - tangan: 13
+        - tangan: 14
+        - tangan: 15
+        - tangan: 9
+        - tangan: 10
+        - tangan: 11
+
+    - name: Pingwin
+      is_walking: false
+      speeds: 5
+      times: 500
+      motion_frames:
+        - kepala: { kepala41: 0, kepala42: 5, kepala43: 0 }
+        - tangan: 17
+        - kepala: { kepala41: 0, kepala42: 0, kepala43: 0 }
+        - tangan: 18
+        - tangan: 19
+        - tangan: 20
+
+    # # - name: Pingwin alt
+    # #   is_walking: false
+    # #   speeds: 5
+    # #   times: 500
+    # #   motion_frames:
+    # #     - tangan: 459
+    # #     - tangan: 460
+    # #     - tangan: 461
+    # #     - tangan: 462
+
+    # - name: meha meha
+    #   is_walking: false
+    #   speeds: 5
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 528
+    #     - tangan: 529
+    #     - tangan: 530
+    #     # - tangan: 531
+    #     # - tangan: 532
+    #     - tangan: 533
+    #     - tangan: 534
+    #     - tangan: 535
+    #     # - tangan: 536
+    #     # - tangan: 537
+    #     - tangan: 528
+    #     - tangan: 529
+    #     - tangan: 530
+    #     # - tangan: 531
+    #     # - tangan: 532
+    #     - tangan: 533
+    #     - tangan: 534
+    #     - tangan: 535
+    #     # - tangan: 536
+    #     # - tangan: 537
+    #     - tangan: 528
+    #     - tangan: 529
+    #     - tangan: 530
+    #     # - tangan: 531
+    #     # - tangan: 532
+    #     - tangan: 533
+    #     - tangan: 534
+    #     - tangan: 535
+    #     # - tangan: 536
+    #     # - tangan: 537
+
+    # # - name: Kamey
+    # #   is_walking: false
+    # #   speeds: 5
+    # #   times: 525
+    # #   motion_frames:
+    # #     - tangan: 160
+    # #     - tangan: 161
+    # #     - tangan: 162
+    # #     - tangan: 163
+    # #     - tangan: 164
+    # #     - tangan: 165
+    # #     - tangan: 166
+    # #     - tangan: 167
+    # #     - tangan: 168
+    # #     - tangan: 169
+    # #     - tangan: 170
+    # #     - tangan: 171
+    # #     - tangan: 160
+    # #     - tangan: 161
+    # #     - tangan: 162
+    # #     - tangan: 163
+    # #     - tangan: 164
+    # #     - tangan: 165
+    # #     - tangan: 166
+    # #     - tangan: 167
+    # #     - tangan: 168
+    # #     - tangan: 169
+    # #     - tangan: 170
+    # #     - tangan: 171
+    # #     - tangan: 160
+    # #     - tangan: 161
+    # #     - tangan: 162
+    # #     - tangan: 163
+    # #     - tangan: 164
+    # #     - tangan: 165
+
+    # # - name: Cangkul2
+    # #   is_walking: false
+    # #   speeds: 5.4
+    # #   times: 500
+    # #   motion_frames:
+    # #     - tangan: 511
+    # #     - tangan: 512
+    # #     - tangan: 513
+    # #     - tangan: 514
+    # #     - tangan: 515
+    # #     - tangan: 516
+    # #     - tangan: 517
+    # #     - tangan: 518
+    # #     - tangan: 519
+    # #     - tangan: 518
+    # #     - tangan: 511
+    # #     - tangan: 512
+    # #     - tangan: 513
+    # #     - tangan: 514
+    # #     - tangan: 515
+
+    # - name: Cangkul
+    #   is_walking: false
+    #   speeds: 6
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 172
+    #     # - tangan: 173
+    #     - tangan: 174
+    #     - tangan: 175
+    #     - tangan: 176
+    #     - tangan: 177
+    #     - tangan: 178
+    #     - tangan: 179
+    #     - tangan: 180
+    #     - tangan: 172
+    #     # - tangan: 173
+    #     - tangan: 174
+    #     - tangan: 175
+    #     - tangan: 176
+    #     - tangan: 177
+    #     - tangan: 178
+    #     - tangan: 179
+    #     # - tangan: 180
+
+    # - name: Eskulin gak nembak
+    #   is_walking: false
+    #   speeds: 4.2
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 481
+    #     - tangan: 482
+    #     - tangan: 483
+    #     - tangan: 484
+    #     - tangan: 485
+    #     - tangan: 486
+    #     - tangan: 487
+    #     - tangan: 488
+    #     - tangan: 489
+    #     - tangan: 490
+    #     - tangan: 491
+    #     - tangan: 492
+    #     - tangan: 493
+    #     - tangan: 494
+    #     - tangan: 495
+    #     - tangan: 496
+    #     - tangan: 497
+    #     - tangan: 498
+    #     - tangan: 499
+    #     - tangan: 500
+
+    # # - name: Eskulin nembak empat
+    # #   is_walking: false
+    # #   speeds: 5
+    # #   times: 500
+    # #   motion_frames:
+    # #     - tangan: 463
+    # #     - tangan: 464
+    # #     - tangan: 465
+    # #     - tangan: 466
+    # #     - tangan: 466
+    # #     - tangan: 467
+    # #     - tangan: 468
+    # #     - tangan: 469
+    # #     - tangan: 470
+    # #     - tangan: 470
+    # #     - tangan: 471
+    # #     - tangan: 472
+    # #     - tangan: 473
+    # #     - tangan: 474
+    # #     - tangan: 474
+    # #     - tangan: 475
+    # #     - tangan: 476
+    # #     - tangan: 477
+    # #     - tangan: 478
+    # #     - tangan: 478
+    # #     - tangan: 479
+
+    # # - name: Eskulin
+    # #   is_walking: false
+    # #   speeds: 5
+    # #   times: 500
+    # #   motion_frames:
+    # #     - tangan: 425
+    # #     - tangan: 426
+    # #     - tangan: 427
+    # #     - tangan: 428
+    # #     - tangan: 429
+    # #     - tangan: 430
+    # #     - tangan: 431
+    # #     - tangan: 432
+    # #     - tangan: 433
+    # #     - tangan: 434
+    # #     - tangan: 435
+    # #     - tangan: 436
+    # #     - tangan: 437
+    # #     - tangan: 438
+    # #     - tangan: 439
+    # #     - tangan: 440
+    # #     - tangan: 441
+    # #     - tangan: 442
+    # #     - tangan: 443
+    # #     - tangan: 444
+    # #     - tangan: 445
+
+    # - name: Kibas
+    #   is_walking: false
+    #   speeds: 5
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 207
+    #     - tangan: 208
+    #     - tangan: 209
+    #     # - tangan: 210
+    #     - tangan: 211
+    #     - tangan: 212
+    #     - tangan: 236
+    #     - tangan: 237
+    #     - tangan: 238
+    #     # - tangan: 239
+    #     - tangan: 240
+    #     - tangan: 241
+
+    # # - name: Bulet
+    # #   is_walking: false
+    # #   speeds: 2
+    # #   times: 500
+    # #   motion_frames:
+    # #     - tangan: 446
+    # #     - tangan: 447
+    # #     - tangan: 448
+    # #     - tangan: 449
+    # #     - tangan: 450
+    # #     - tangan: 451
+    # #     - tangan: 452
+    # #     - tangan: 453
+
+    # - name: Yeyy
+    #   is_walking: false
+    #   speeds: 4.5
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 230
+    #     - tangan: 231
+    #     - tangan: 232
+    #     - tangan: 233
+    #     - tangan: 234
+    #     - tangan: 235
+
+    # - name: Eskulin gak nembak
+    #   is_walking: false
+    #   speeds: 4.3
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 481
+    #     - tangan: 482
+    #     - tangan: 483
+    #     - tangan: 484
+    #     - tangan: 485
+    #     - tangan: 486
+    #     - tangan: 487
+    #     - tangan: 488
+    #     - tangan: 489
+    #     - tangan: 490
+    #     - tangan: 491
+    #     - tangan: 492
+    #     - tangan: 493
+    #     - tangan: 494
+    #     - tangan: 495
+    #     - tangan: 496
+    #     - tangan: 497
+    #     - tangan: 498
+    #     - tangan: 499
+    #     - tangan: 500
+
+    # - name: Kibas
+    #   is_walking: false
+    #   speeds: 5
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 207
+    #     - tangan: 208
+    #     - tangan: 209
+    #     # - tangan: 210
+    #     - tangan: 211
+    #     - tangan: 212
+    #     - tangan: 236
+    #     - tangan: 237
+    #     - tangan: 238
+    #     # - tangan: 239
+    #     - tangan: 240
+    #     - tangan: 241
+
+    # - name: Yeyy
+    #   is_walking: false
+    #   speeds: 4.5
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 230
+    #     - tangan: 231
+    #     - tangan: 232
+    #     - tangan: 233
+    #     # - tangan: 234
+    #     # - tangan: 235
+
+    # - name: Byebye1
+    #   is_walking: false
+    #   speeds: 4
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 243
+    #     - tangan: 244
+    #     - tangan: 245
+    #     - tangan: 246
+    #     - tangan: 247
+    #     - tangan: 245
+    #     - tangan: 244
+    #     - tangan: 243
+    #     - tangan: 244
+    #     - tangan: 245
+    #     - tangan: 246
+    #     - tangan: 247
+    #     - tangan: 246
+    #     - tangan: 245
+    #     - tangan: 244
+    #     - tangan: 243
+
+    # - name: Byebye2
+    #   is_walking: false
+    #   speeds: 4
+    #   times: 500
+    #   motion_frames:
+    #     # - tangan: 243
+    #     - tangan: 244
+    #     - tangan: 245
+    #     - tangan: 246
+    #     - tangan: 247
+    #     - tangan: 245
+    #     - tangan: 244
+    #     - tangan: 243
+    #     - tangan: 244
+    #     - tangan: 245
+    #     - tangan: 246
+    #     - tangan: 247
+    #     - tangan: 246
+    #     - tangan: 245
+    #     - tangan: 244
+    #     - tangan: 243
+
+    # - name: Gulunggg
+    #   is_walking: false
+    #   speeds: 4
+    #   times: 500
+    #   motion_frames:
+    #     # - tangan: 285
+    #     - tangan: 286
+    #     # - tangan: 287
+    #     - tangan: 288
+    #     - tangan: 289
+    #     - tangan: 290
+    #     - tangan: 291
+    #     # - tangan: 292
+    #     # - tangan: 293
+    #     # - tangan: 294
+    #     # - tangan: 295
+    #     # - tangan: 296
+    #     # - tangan: 297
+    #     # - tangan: 298
+    #     - tangan: 285
+    #     - tangan: 286
+    #     # - tangan: 287
+    #     - tangan: 288
+    #     - tangan: 289
+    #     - tangan: 297
+    #     - tangan: 298
+
+    # - name: Comeon
+    #   is_walking: false
+    #   speeds: 4.5
+    #   times: 500
+    #   motion_frames:
+    #     # - tangan: 334
+    #     - tangan: 335
+    #     - tangan: 336
+    #     - tangan: 337
+    #     - tangan: 338
+    #     - tangan: 339
+    #     # - tangan: 340
+    #     # - tangan: 341
+    #     # - tangan: 342
+    #     # - tangan: 335
+    #     # - tangan: 336
+    #     - tangan: 337
+    #     - tangan: 337
+    #     - tangan: 337
+
+    # - name: Fortune
+    #   is_walking: false
+    #   speeds: 4
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 343
+    #     - tangan: 344
+    #     - tangan: 345
+    #     - tangan: 346
+    #     - tangan: 347
+    #     - tangan: 348
+    #     - tangan: 349
+    #     - tangan: 350
+    #     - tangan: 351
+
+    # # - name: Cookies
+    # #   is_walking: false
+    # #   speeds: 4
+    # #   times: 500
+    # #   motion_frames:
+    # #     - tangan: 363
+    # #     - tangan: 364
+    # #     - tangan: 365
+    # #     - tangan: 366
+    # #     - tangan: 367
+    # #     - tangan: 368
+    # #     - tangan: 369
+    # #     - tangan: 370
+
+    # - name: Silang
+    #   is_walking: false
+    #   speeds: 4.5
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 372
+    #     - tangan: 373
+    #     - tangan: 374
+    #     - tangan: 375
+    #     - tangan: 376
+
+    # - name: Geol
+    #   is_walking: false
+    #   speeds: 4.5
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 402
+    #     - tangan: 403
+    #     - tangan: 404
+    #     - tangan: 405
+    #     - tangan: 406
+    #     - tangan: 407
+    #     - tangan: 408
+    #     - tangan: 409
+    #     - tangan: 410
+    #     - tangan: 411
+    #     - tangan: 412
+    #     - tangan: 413
+    #     - tangan: 414
+    #     - tangan: 415
+    #     - tangan: 416
+    #     - tangan: 417
+    #     - tangan: 418
+    #     - tangan: 419
+    #     - tangan: 420
+    #     - tangan: 421
+    #     # - tangan: 422
+    #     # - tangan: 423
+  
+    # - name: Fortune
+    #   is_walking: false
+    #   speeds: 4
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 343
+    #     - tangan: 344
+    #     - tangan: 345
+    #     - tangan: 346
+    #     - tangan: 347
+    #     - tangan: 348
+    #     - tangan: 349
+    #     - tangan: 350
+    #     - tangan: 351
+
+    # - name: Silang
+    #   is_walking: false
+    #   speeds: 4.5
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 372
+    #     - tangan: 373
+    #     - tangan: 374
+    #     - tangan: 375
+    #     - tangan: 376
+
+    # - name: Geol
+    #   is_walking: false
+    #   speeds: 4.5
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 402
+    #     - tangan: 403
+    #     - tangan: 404
+    #     - tangan: 405
+    #     - tangan: 406
+    #     - tangan: 407
+    #     - tangan: 408
+    #     - tangan: 409
+    #     - tangan: 410
+    #     - tangan: 411
+    #     - tangan: 412
+    #     - tangan: 413
+    #     - tangan: 414
+    #     - tangan: 415
+    #     - tangan: 416
+    #     - tangan: 417
+    #     - tangan: 418
+    #     - tangan: 419
+    #     - tangan: 420
+    #     - tangan: 421
+    #     # - tangan: 422
+    #     # - tangan: 423
+
+    # - name: Byebye1
+    #   is_walking: false
+    #   speeds: 4
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 243
+    #     - tangan: 244
+    #     - tangan: 245
+    #     - tangan: 246
+    #     - tangan: 247
+    #     - tangan: 245
+    #     - tangan: 244
+    #     - tangan: 243
+    #     - tangan: 244
+    #     - tangan: 245
+    #     - tangan: 246
+    #     - tangan: 247
+    #     - tangan: 246
+    #     - tangan: 245
+    #     - tangan: 244
+    #     - tangan: 243
+
+    # - name: Byebye2
+    #   is_walking: false
+    #   speeds: 4
+    #   times: 500
+    #   motion_frames:
+    #     # - tangan: 243
+    #     - tangan: 244
+    #     - tangan: 245
+    #     - tangan: 246
+    #     - tangan: 247
+    #     - tangan: 245
+    #     - tangan: 244
+    #     - tangan: 243
+    #     - tangan: 244
+    #     - tangan: 245
+    #     - tangan: 246
+    #     - tangan: 247
+    #     - tangan: 246
+    #     - tangan: 245
+    #     # - tangan: 244
+    #     # - tangan: 243
+
+    # - name: meha meha
+    #   is_walking: false
+    #   speeds: 5
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 528
+    #     - tangan: 529
+    #     - tangan: 530
+    #     # - tangan: 531
+    #     # - tangan: 532
+    #     - tangan: 533
+    #     - tangan: 534
+    #     - tangan: 535
+    #     # - tangan: 536
+    #     # - tangan: 537
+    #     - tangan: 528
+    #     - tangan: 529
+    #     - tangan: 530
+    #     # - tangan: 531
+    #     # - tangan: 532
+    #     - tangan: 533
+    #     - tangan: 534
+    #     - tangan: 535
+    #     # - tangan: 536
+    #     # - tangan: 537
+    #     - tangan: 528
+    #     # - tangan: 529
+    #     # - tangan: 530
+    #     # - tangan: 531
+    #     # - tangan: 532
+    #     # - tangan: 533
+    #     # - tangan: 534
+    #     # - tangan: 535
+    #     # - tangan: 536
+    #     # - tangan: 537
+
+    # - name: Eskulin gak nembak
+    #   is_walking: false
+    #   speeds: 4.2
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 481
+    #     - tangan: 482
+    #     - tangan: 483
+    #     - tangan: 484
+    #     - tangan: 485
+    #     - tangan: 486
+    #     - tangan: 487
+    #     - tangan: 488
+    #     - tangan: 489
+    #     - tangan: 490
+    #     - tangan: 491
+    #     - tangan: 492
+    #     - tangan: 493
+    #     - tangan: 494
+    #     - tangan: 495
+    #     - tangan: 496
+    #     - tangan: 497
+    #     - tangan: 498
+    #     - tangan: 499
+    #     - tangan: 500
+
+    # - name: Kibas
+    #   is_walking: false
+    #   speeds: 5
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 207
+    #     - tangan: 208
+    #     - tangan: 209
+    #     # - tangan: 210
+    #     - tangan: 211
+    #     - tangan: 212
+    #     - tangan: 236
+    #     - tangan: 237
+    #     - tangan: 238
+    #     # - tangan: 239
+    #     - tangan: 240
+    #     - tangan: 241
+
+    # - name: Yeyy
+    #   is_walking: false
+    #   speeds: 4.5
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 230
+    #     - tangan: 231
+    #     - tangan: 232
+    #     - tangan: 233
+    #     # - tangan: 234
+    #     # - tangan: 235
+
+    # - name: Byebye1
+    #   is_walking: false
+    #   speeds: 4
+    #   times: 500
+    #   motion_frames:
+    #     - tangan: 243
+    #     - tangan: 244
+    #     - tangan: 245
+    #     - tangan: 246
+    #     - tangan: 247
+    #     - tangan: 245
+    #     - tangan: 244
+    #     - tangan: 243
+    #     - tangan: 244
+    #     - tangan: 245
+    #     - tangan: 246
+    #     - tangan: 247
+    #     - tangan: 246
+    #     - tangan: 245
+    #     - tangan: 244
+    #     - tangan: 243
+
+    # - name: Byebye2
+    #   is_walking: false
+    #   speeds: 4
+    #   times: 500
+    #   motion_frames:
+    #     # - tangan: 243
+    #     - tangan: 244
+    #     - tangan: 245
+    #     - tangan: 246
+    #     - tangan: 247
+    #     - tangan: 245
+    #     - tangan: 244
+    #     - tangan: 243
+    #     - tangan: 244
+    #     - tangan: 245
+    #     - tangan: 246
+    #     - tangan: 247
+    #     - tangan: 246
+    #     - tangan: 245
+    #     - tangan: 244
+    #     - tangan: 243
+
+    # - name: Gulunggg
+    #   is_walking: false
+    #   speeds: 4
+    #   times: 500
+    #   motion_frames:
+    #     # - tangan: 285
+    #     - tangan: 286
+    #     # - tangan: 287
+    #     - tangan: 288
+    #     - tangan: 289
+    #     - tangan: 290
+    #     - tangan: 291
+    #     # - tangan: 292
+    #     # - tangan: 293
+    #     # - tangan: 294
+    #     # - tangan: 295
+    #     # - tangan: 296
+    #     # - tangan: 297
+    #     # - tangan: 298
+    #     - tangan: 285
+    #     - tangan: 286
+    #     # - tangan: 287
+    #     - tangan: 288
+    #     - tangan: 289
+    #     - tangan: 297
+    #     - tangan: 298
+
+    # - name: Comeon
+    #   is_walking: false
+    #   speeds: 4.5
+    #   times: 500
+    #   motion_frames:
+    #     # - tangan: 334
+    #     - tangan: 335
+    #     - tangan: 336
+    #     - tangan: 337
+    #     - tangan: 338
+    #     - tangan: 339
+    #     # - tangan: 340
+    #     # - tangan: 341
+    #     # - tangan: 342
+    #     # - tangan: 335
+    #     # - tangan: 336
+    #     - tangan: 337
+    #     - tangan: 337
+    #     - tangan: 337

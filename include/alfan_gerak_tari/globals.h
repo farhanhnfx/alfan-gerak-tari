@@ -38,12 +38,20 @@ using namespace std;
 #define KIRI36 150  // -naek
 
 /*
- * TO DO:
- * Menambahkan KEPLAA dan KAKI
+ * KEPALA
+ * ID 41, 42, 43
+ * (DALAM DERAJAT)
 */
 #define KEPALA41 150
 #define KEPALA42 180
 #define KEPALA43 150
+
+/*
+ * PERUT
+ * ID 17
+ * (DALAM DERAJAT)
+*/
+#define PERUT17 180
 
 /*
  * KAKI KANAN
